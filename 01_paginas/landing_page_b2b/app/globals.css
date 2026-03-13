@@ -1,0 +1,43 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #3B82F6; /* Azul eléctrico */
+  --color-primary-hover: #2563EB;
+  --color-accent: #8B5CF6; /* Púrpura neón */
+  --color-background: #020617; /* Slate 950 muy oscuro */
+  --color-foreground: #F8FAFC;
+  --color-card: rgba(15, 23, 42, 0.6);
+  --color-card-border: rgba(51, 65, 85, 0.5);
+  
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+:root {
+  color-scheme: dark;
+}
+
+body {
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+  background-image: 
+    radial-gradient(at 0% 0%, rgba(59, 130, 246, 0.15) 0px, transparent 50%),
+    radial-gradient(at 100% 100%, rgba(139, 92, 246, 0.15) 0px, transparent 50%);
+  background-attachment: fixed;
+  font-family: var(--font-sans);
+}
+
+/* Clases utilitarias de Glassmorphism */
+.glass-effect {
+  background-color: var(--color-card);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--color-card-border);
+}
+
+.text-gradient {
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-image: linear-gradient(to right, var(--color-primary), var(--color-accent));
+}
