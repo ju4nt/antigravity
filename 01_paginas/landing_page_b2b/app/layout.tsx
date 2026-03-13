@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist } from "next/font/google";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -7,21 +7,17 @@ const geistSans = Geist({
   subsets: ["latin"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
 export const metadata: Metadata = {
-  title: "Colconexus Datacenter SAS | Agencia de IA Profesionales",
-  description: "Especialistas en Data Business (IA & Agentes), Plantas Telefónicas, Desarrollo de Apps y Integraciones B2B. Automatizamos y digitalizamos tu empresa.",
-  keywords: "IA, agentes IA, CRM, ERP, plantas telefónicas, VoIP, desarrollo de apps, Colombia, Colconexus",
-  authors: [{ name: "Colconexus Datacenter SAS" }],
+  title: "Colconexus Data Center SAS | Agencia de IA Profesionales",
+  description: "Especialistas en Data Business con Agentes IA, Plantas Telefónicas VoIP, Desarrollo de Apps y Automatizaciones Empresariales a medida.",
+  icons: {
+    icon: "/logo.png",
+    apple: "/logo.png",
+  },
   openGraph: {
-    title: "Colconexus Datacenter SAS | Agencia de IA",
-    description: "Automatizamos y digitalizamos tu empresa con IA, Telefonía y Apps a Medida.",
-    locale: "es_CO",
-    type: "website",
+    title: "Colconexus Data Center SAS | Agencia de IA Profesionales",
+    description: "Agencia de IA con profesionales virtuales en tu PC. CRM, ERP, Telefonía y Bots 24/7.",
+    siteName: "Colconexus Data Center SAS",
   },
 };
 
@@ -34,7 +30,7 @@ export default function RootLayout({
     <html lang="es" suppressHydrationWarning>
       <body
         suppressHydrationWarning
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} antialiased`}
       >
         {children}
       </body>
