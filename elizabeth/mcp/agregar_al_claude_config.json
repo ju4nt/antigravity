@@ -1,0 +1,9 @@
+    "elizabeth-mcp": {
+      "command": "python",
+      "args": ["D:\\erp-ia-proyect\\elizabeth\\mcp\\elizabeth_mcp_server.py"],
+      "env": {
+        "PYTHONIOENCODING": "utf-8",
+        "ELIZABETH_API_URL": "http://localhost:8000"
+      },
+      "description": "Elizabeth ERP-IA: clientes, interacciones, agentes, canales"
+    },
