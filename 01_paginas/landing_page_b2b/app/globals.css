@@ -1,13 +1,10 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary: #3B82F6; /* Azul eléctrico */
-  --color-primary-hover: #2563EB;
-  --color-accent: #8B5CF6; /* Púrpura neón */
-  --color-background: #020617; /* Slate 950 muy oscuro */
+  --color-primary: #06B6D4; /* Cyan */
+  --color-secondary: #8B5CF6; /* Purple */
+  --color-background: #020617; 
   --color-foreground: #F8FAFC;
-  --color-card: rgba(15, 23, 42, 0.6);
-  --color-card-border: rgba(51, 65, 85, 0.5);
   
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
@@ -20,24 +17,74 @@
 body {
   background-color: var(--color-background);
   color: var(--color-foreground);
-  background-image: 
-    radial-gradient(at 0% 0%, rgba(59, 130, 246, 0.15) 0px, transparent 50%),
-    radial-gradient(at 100% 100%, rgba(139, 92, 246, 0.15) 0px, transparent 50%);
-  background-attachment: fixed;
   font-family: var(--font-sans);
+  overflow-x: hidden;
+  @apply antialiased;
 }
 
-/* Clases utilitarias de Glassmorphism */
-.glass-effect {
-  background-color: var(--color-card);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid var(--color-card-border);
+/* Base Grid Pattern */
+.bg-grid-overlay {
+  position: fixed;
+  inset: 0;
+  background-image: 
+    linear-gradient(rgba(59, 130, 246, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(59, 130, 246, 0.05) 1px, transparent 1px);
+  background-size: 50px 50px;
+  z-index: -1;
+}
+
+/* Animated Grid (The "Cyberpunk" look) */
+.bg-grid-animate {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 200%;
+  background-image: 
+    linear-gradient(rgba(6, 182, 212, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(6, 182, 212, 0.04) 1px, transparent 1px);
+  background-size: 40px 40px;
+  transform: perspective(600px) rotateX(45deg);
+  transform-origin: top;
+  animation: grid-scroll 30s linear infinite;
+  z-index: -2;
+  opacity: 0.5;
+}
+
+@keyframes grid-scroll {
+  from { transform: perspective(600px) rotateX(45deg) translateY(0); }
+  to { transform: perspective(600px) rotateX(45deg) translateY(40px); }
+}
+
+/* Soft Orbs for depth */
+.bg-orb {
+  position: fixed;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  filter: blur(140px);
+  z-index: -3;
+  opacity: 0.12;
+  pointer-events: none;
 }
 
 .text-gradient {
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  background-image: linear-gradient(to right, var(--color-primary), var(--color-accent));
+  background-image: linear-gradient(to right, #06B6D4, #8B5CF6);
+}
+
+.glass-card {
+  background: rgba(15, 23, 42, 0.4);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: all 0.3s ease;
+}
+
+.glass-card:hover {
+  border-color: rgba(6, 182, 212, 0.4);
+  background: rgba(15, 23, 42, 0.6);
+  transform: translateY(-4px);
 }
