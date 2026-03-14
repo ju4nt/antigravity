@@ -12,7 +12,6 @@ import {
   Linkedin,
   Mail
 } from "lucide-react";
-import CircuitBackground from "./components/CircuitBackground";
 
 export default function Home() {
   const WHATSAPP_NUMBER = "573214378318";
@@ -61,11 +60,12 @@ export default function Home() {
 
   return (
     <div className="min-h-screen relative overflow-hidden bg-[#020617]">
-      {/* === Animated Circuit Background === */}
-      <CircuitBackground />
-
-      {/* Deep overlay for readability */}
-      <div className="fixed inset-0 bg-gradient-to-b from-[#020617]/60 via-transparent to-[#020617]/80 pointer-events-none z-[1]" />
+      {/* === Optimized Static Background with CSS Effects === */}
+      <div 
+        className="fixed inset-0 bg-cover bg-center bg-no-repeat opacity-40 mix-blend-screen"
+        style={{ backgroundImage: "url('/circuit-bg.png')" }}
+      />
+      <div className="fixed inset-0 bg-gradient-to-b from-[#020617] via-transparent to-[#020617] pointer-events-none z-[1]" />
 
       {/* === Navbar === */}
       <nav className="fixed top-0 w-full z-50 border-b border-white/5" style={{ background: "rgba(2,6,23,0.85)", backdropFilter: "blur(16px)" }}>
