@@ -159,17 +159,31 @@ export default function Home() {
         {/* --- Hero Section (Optimized Position) --- */}
         <section className="max-w-6xl mx-auto text-center mb-16 mt-8">
           <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            className="inline-flex items-center gap-2 px-6 py-2 rounded-full border border-cyan-500/30 bg-cyan-500/10 text-[10px] font-black text-cyan-400 mb-8 tracking-[0.3em] uppercase animate-pulse"
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="flex flex-col items-center mb-12"
           >
-            <Rocket className="w-3.5 h-3.5" /> Innovación Tecnológica B2B
+            <div className="w-32 h-32 md:w-48 md:h-48 mb-8 relative">
+              <div className="absolute inset-0 bg-cyan-500/20 blur-[50px] rounded-full animate-pulse" />
+              <img 
+                src="/logo.png" 
+                alt="Colconexus Logo" 
+                className="w-full h-full object-contain relative z-10 drop-shadow-[0_0_20px_rgba(34,211,238,0.5)]" 
+              />
+            </div>
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              className="inline-flex items-center gap-2 px-6 py-2 rounded-full border border-cyan-500/30 bg-cyan-500/10 text-[10px] font-black text-cyan-400 tracking-[0.3em] uppercase animate-pulse"
+            >
+              <Rocket className="w-3.5 h-3.5" /> Innovación Tecnológica B2B
+            </motion.div>
           </motion.div>
           
           <motion.h1 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-7xl md:text-[8.5rem] font-black mb-8 leading-[0.8] tracking-tighter"
+            className="text-6xl md:text-[7.5rem] font-black mb-8 leading-[0.85] tracking-tighter"
           >
             Impulsa tu compañía <br /> a la era del <span className="text-gradient">futuro digital</span>
           </motion.h1>
