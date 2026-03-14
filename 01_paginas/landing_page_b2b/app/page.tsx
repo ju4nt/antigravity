@@ -171,7 +171,7 @@ export default function Home() {
             animate={{ opacity: 1, y: 0 }}
             className="text-7xl md:text-[8.5rem] font-black mb-8 leading-[0.8] tracking-tighter"
           >
-            Impulsa tu <br /> <span className="text-gradient">Futuro Digital</span>
+            Impulsa tu compañía <br /> a la era del <span className="text-gradient">futuro digital</span>
           </motion.h1>
 
           <motion.p 
