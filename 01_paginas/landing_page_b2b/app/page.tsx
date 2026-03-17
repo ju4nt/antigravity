@@ -47,6 +47,7 @@ export default function Home() {
     { role: 'bot', text: 'SISTEMA INICIADO. Soy Colconexus Engineering Bot. ¿Deseas medir tu nivel de automatización hoy?' }
   ]);
   const [isTyping, setIsTyping] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   
   const handleWhatsAppRedirect = (service = "") => {
     const text = service 
@@ -78,34 +79,34 @@ export default function Home() {
 
   const BUSINESS_UNITS = [
     {
-      id: "ia-agency",
+      id: "agencia-ia",
       title: "1. AGENCIA DE IA",
       description: "Desarrollo de agentes inteligentes especializados que automatizan tareas empresariales.",
       icon: <Bot className="w-8 h-8" />,
       items: [
         {
           title: "AI Voice Agents",
-          desc: "Atención al cliente, call center automatizado, encuestas, agendamiento y seguimiento.",
+          desc: "Agentes de voz capaces de atención al cliente, call center automatizado, encuestas, agendamiento y seguimiento.",
           features: ["Atención al cliente", "Call center automatizado", "Encuestas automáticas", "Agendamiento de citas", "Seguimiento de clientes"]
         },
         {
           title: "AI Chat Agents",
-          desc: "Chatbots para Web y WhatsApp, asistentes corporativos y automatización de soporte.",
-          features: ["Chatbots para web", "Chatbots para WhatsApp", "Asistentes corporativos", "Automatización de soporte"]
+          desc: "Asistentes inteligentes para canales digitales.",
+          features: ["Chatbots para Web", "Chatbots para WhatsApp", "Asistentes corporativos", "Automatización de soporte"]
         },
         {
           title: "OCR Intelligent Processing",
-          desc: "Procesamiento automático: facturas, extracción de datos, digitalización y validación.",
+          desc: "Procesamiento automático de documentos.",
           features: ["Lectura de facturas", "Extracción de datos", "Digitalización documental", "Validación de formularios"]
         },
         {
           title: "AI Vision",
-          desc: "Sistemas de visión: reconocimiento facial, validación de identidad y detección de objetos.",
+          desc: "Sistemas de visión computacional avanzada.",
           features: ["Reconocimiento facial", "Validación de identidad", "Análisis de imágenes", "Detección de objetos"]
         },
         {
           title: "AI Security Systems",
-          desc: "Agentes de seguridad: detección de movimiento, vigilancia y monitoreo automatizado.",
+          desc: "Agentes de seguridad inteligente y vigilancia.",
           features: ["Detección de movimiento", "Vigilancia automatizada", "Monitoreo de cámaras", "Alertas de seguridad"]
         }
       ]
@@ -118,27 +119,27 @@ export default function Home() {
       items: [
         {
           title: "Industrial Data Pipelines",
-          desc: "ETL / ELT, integración de datos y pipelines automatizados en tiempo real.",
+          desc: "Flujos de datos automatizados en tiempo real.",
           features: ["ETL / ELT", "Integración de datos", "Pipelines automatizados", "Ingestión en tiempo real"]
         },
         {
           title: "Data Warehouse & Lake",
-          desc: "Diseño de arquitecturas Data Warehouse, Data Lake y Lakehouse.",
+          desc: "Arquitecturas modernas de almacenamiento.",
           features: ["Diseño de Data Warehouse", "Arquitectura Data Lake", "Arquitectura Lakehouse"]
         },
         {
           title: "Business Intelligence",
-          desc: "Dashboards ejecutivos, reportes automatizados y monitoreo de KPIs.",
+          desc: "Dashboards y reportes automatizados.",
           features: ["Dashboards ejecutivos", "Reportes automatizados", "Monitoreo de KPIs", "Análisis empresarial"]
         },
         {
           title: "Advanced Data Analytics",
-          desc: "Análisis estadístico, correlaciones y detección de anomalías.",
+          desc: "Analítica estadística y detección de anomalías.",
           features: ["Análisis estadístico", "Correlaciones", "Análisis de comportamiento", "Detección de anomalías"]
         },
         {
           title: "Predictive Engineering",
-          desc: "Predicción de demanda y ventas, scoring de clientes y detección de fraude.",
+          desc: "Modelos de predicción y scoring.",
           features: ["Predicción de demanda", "Predicción de ventas", "Scoring de clientes", "Detección de fraude"]
         }
       ]
@@ -146,56 +147,79 @@ export default function Home() {
     {
       id: "wfm-ops",
       title: "3. WFM OPERATIONS",
-      description: "Optimización de operaciones intensivas en personal.",
-      icon: <Users className="w-8 h-8" />,
+      description: "Optimización de operaciones intensivas en personal (Workforce Management).",
+      icon: <BarChart className="w-8 h-8" />,
       items: [
         {
           title: "Forecasting",
-          desc: "Predicción de demanda para llamadas, chats, emails y redes sociales.",
+          desc: "Predicción de demanda de contactos.",
           features: ["Llamadas", "Chats", "Emails", "Redes sociales"]
         },
         {
           title: "Dimensionamiento",
-          desc: "Cálculo de personal requerido a largo, mediano y corto plazo.",
-          features: ["Largo plazo (Estratégico)", "Mediano plazo (Mensual)", "Corto plazo (Semanal)"]
+          desc: "Cálculo de personal requerido (Planificación).",
+          features: [
+            "Largo plazo: Planeación estratégica, Expansión de operaciones", 
+            "Mediano plazo: Planeación mensual, Ajustes de capacidad", 
+            "Corto plazo: Planeación semanal, Redistribución operativa"
+          ]
         },
         {
-          title: "Rostering & Scheduling",
-          desc: "Generación automática y optimización matemática de turnos.",
-          features: ["Asignación de turnos", "Cumplimiento normativo", "Mallas optimizadas", "Reducción de tiempos muertos"]
+          title: "Rostering",
+          desc: "Generación automática de horarios de trabajo.",
+          features: ["Asignación de turnos", "Cumplimiento normativo", "Optimización de cobertura"]
+        },
+        {
+          title: "Strategic Scheduler",
+          desc: "Optimización matemática de turnos.",
+          features: ["Mallas de turnos optimizadas", "Reducción de tiempos muertos", "Maximización de productividad"]
         },
         {
           title: "Workforce Analytics",
-          desc: "Análisis de AHT, Nivel de Servicio, Ocupación y Productividad.",
+          desc: "Análisis de desempeño operativo.",
           features: ["AHT", "Nivel de servicio", "Ocupación", "Productividad", "Abandono"]
         },
         {
+          title: "Pricing Operativo",
+          desc: "Modelos financieros para operaciones.",
+          features: ["Costo por agente", "Costo por contacto", "Rentabilidad por campaña"]
+        },
+        {
           title: "Gestión Outbound",
-          desc: "Diseño de campañas, marcación inteligente y optimización comercial.",
-          features: ["Segmentación y targets", "Predictive dialing", "Análisis de conversión"]
+          desc: "Optimización de campañas salientes.",
+          features: [
+            "Diseño de campañas: Segmentación, Targets, Estrategias de contacto", 
+            "Marcación inteligente: Predictive dialing, Power dialing", 
+            "Optimización comercial: Análisis de conversión, Optimización de scripts"
+          ]
         }
       ]
     },
     {
       id: "consultoria",
       title: "4. CONSULTORÍA OPERATIVA",
-      description: "Servicios de asesoría estratégica para empresas.",
-      icon: <BarChart3 className="w-8 h-8" />,
+      description: "Asesoría estratégica y auditoría de alto nivel.",
+      icon: <Briefcase className="w-8 h-8" />,
       items: [
         {
           title: "Diagnóstico de Operaciones",
-          desc: "Evaluación completa de KPIs, procesos y eficiencia de contact centers.",
+          desc: "Evaluación integral de contact centers.",
           features: ["Análisis de KPIs", "Análisis de procesos", "Análisis de eficiencia"]
         },
         {
           title: "Diseño de Contact Center",
-          desc: "Creación de operaciones desde cero: estructura, procesos y tecnología.",
+          desc: "Creación de operaciones desde cero.",
           features: ["Estructura organizacional", "Definición de procesos", "Arquitectura tecnológica"]
         },
         {
-          title: "Optimización & Auditoría",
-          desc: "Rediseño de procesos y revisión independiente de desempeño financiero.",
-          features: ["Productividad y eficiencia", "Reducción de costos", "Auditoría de KPIs", "Auditoría financiera"]
+          title: "Optimización Operativa",
+          desc: "Rediseño para mejorar productividad.",
+          features: ["Productividad y eficiencia", "Reducción de costos"]
+        },
+        {
+          title: "Auditoría Operativa",
+          desc: "Revisión independiente de desempeño.",
+          features: ["Auditoría de KPIs", "Auditoría financiera", "Auditoría de productividad"]
         }
       ]
     },
@@ -203,67 +227,76 @@ export default function Home() {
       id: "bpo-services",
       title: "5. SERVICIOS BPO",
       description: "Externalización completa de procesos empresariales.",
-      icon: <Briefcase className="w-8 h-8" />,
+      icon: <Users className="w-8 h-8" />,
       items: [
         {
           title: "BPO Contact Center",
-          desc: "Customer Support, Sales Operations y Campaign Management omnicanal.",
-          features: ["Atención omnicanal", "Telemarketing", "Generación de leads", "Gestión de bases de datos"]
+          desc: "Operación completa de centros de contacto omnicanal.",
+          features: [
+            "Customer Support: Atención al cliente, Soporte omnicanal, Gestión de reclamos", 
+            "Sales Operations: Ventas telefónicas, Telemarketing, Generación de leads", 
+            "Campaign Management: Campañas Inbound, Campañas Outbound, Gestión de bases de datos"
+          ]
         },
         {
           title: "BPO Back Office",
-          desc: "Procesamiento de documentos, gestión de datos y validación documental.",
-          features: ["Procesamiento de docs", "Gestión de datos", "Digitación", "Validación"]
+          desc: "Procesos administrativos y validación.",
+          features: ["Procesamiento de documentos", "Gestión de datos", "Digitación", "Validación documental"]
         },
         {
-          title: "BPO Data & Analytics",
-          desc: "Limpieza y etiquetado de datos para IA y reporting operativo.",
-          features: ["Limpieza de datos", "Etiquetado para IA", "Monitoreo de KPIs", "Análisis de desempeño"]
+          title: "BPO Data Operations",
+          desc: "Servicios de operación y limpieza de datos.",
+          features: ["Limpieza de datos", "Clasificación", "Etiquetado para IA"]
+        },
+        {
+          title: "BPO Analítico",
+          desc: "Analítica operativa y reporting.",
+          features: ["Monitoreo de KPIs", "Análisis de desempeño", "Reporting operativo"]
         }
       ]
     },
     {
       id: "enterprise-sol",
       title: "6. ENTERPRISE SOLUTIONS",
-      description: "Creación de software empresarial y desarrollo tecnológico personalizado.",
+      description: "Desarrollo tecnológico y software a medida.",
       icon: <Cpu className="w-8 h-8" />,
       items: [
         {
           title: "Custom Functional Apps",
-          desc: "Aplicaciones empresariales, plataformas de gestión y sistemas internos.",
-          features: ["Aplicaciones a medida", "Plataformas de gestión", "Sistemas operativos internos"]
+          desc: "Aplicaciones y plataformas internas.",
+          features: ["Aplicaciones empresariales", "Plataformas de gestión", "Sistemas operativos internos"]
         },
         {
           title: "Integración de Sistemas",
-          desc: "Integración CRM, ERP y desarrollo de APIs empresariales.",
+          desc: "Integración de ecosistemas corporativos.",
           features: ["Integración CRM", "Integración ERP", "APIs empresariales"]
         },
         {
           title: "Automatización Empresarial",
-          desc: "RPA y flujos automatizados para integración de sistemas.",
-          features: ["RPA", "Flujos automatizados", "Integración de procesos"]
+          desc: "Flujos RPA y procesos automáticos.",
+          features: ["RPA", "Flujos automatizados", "Integración de sistemas"]
         }
       ]
     },
     {
       id: "smart-systems",
       title: "7. SMART SYSTEMS",
-      description: "Automatización de espacios y domótica inteligente.",
+      description: "Automatización de espacios e infraestructura inteligente.",
       icon: <HomeIcon className="w-8 h-8" />,
       items: [
         {
           title: "Smart Home",
-          desc: "Control de iluminación, clima y automatización doméstica.",
-          features: ["Iluminación", "Clima", "Domótica"]
+          desc: "Automatización doméstica avanzada.",
+          features: ["Control de iluminación", "Control de clima", "Domótica"]
         },
         {
           title: "Smart Security",
-          desc: "Cámaras inteligentes, sensores e identificación facial.",
+          desc: "Seguridad electrónica inteligente.",
           features: ["Cámaras inteligentes", "Sensores de movimiento", "Reconocimiento facial"]
         },
         {
           title: "Smart Buildings",
-          desc: "Edificios inteligentes, sensores IoT y eficiencia energética.",
+          desc: "Eficiencia energética y gestión IoT.",
           features: ["Edificios inteligentes", "Sensores IoT", "Eficiencia energética"]
         }
       ]
@@ -278,19 +311,69 @@ export default function Home() {
       {/* --- Mint Navbar --- */}
       <nav className="navbar-mint">
         <div className="flex items-center gap-4">
-          <span className="text-xl">COLCONEXUS</span>
+          <span className="text-xl font-tech font-black italic tracking-tighter">COLCONEXUS</span>
         </div>
-        <div className="hidden md:flex gap-8">
-          <a href="#servicios" className="text-[#080315] font-tech font-black text-[10px] uppercase tracking-widest hover:opacity-60 transition-opacity">Servicios</a>
-          <a href="#diagnostico" className="text-[#080315] font-tech font-black text-[10px] uppercase tracking-widest hover:opacity-60 transition-opacity">Diagnóstico</a>
-          <a href="#" onClick={() => handleWhatsAppRedirect()} className="text-[#080315] font-tech font-black text-[10px] uppercase tracking-widest hover:opacity-60 transition-opacity">Contacto</a>
+        
+        {/* Navigation Dropdown Desktop */}
+        <div className="hidden lg:flex gap-6 items-center">
+          {BUSINESS_UNITS.map(unit => (
+            <a 
+              key={unit.id} 
+              href={`#${unit.id}`} 
+              className="text-[#080315] font-tech font-black text-[8px] uppercase tracking-widest hover:opacity-100 opacity-70 transition-all border-b border-transparent hover:border-[#080315] pb-1"
+            >
+              {unit.title.split('. ')[1]}
+            </a>
+          ))}
         </div>
-        <button
-          onClick={() => handleWhatsAppRedirect("Solicitud de Ingeniería")}
-          className="bg-[#080315] text-neon px-4 py-1 text-[9px] font-tech font-black uppercase tracking-tighter"
-        >
-          Iniciar Proyecto
-        </button>
+
+        <div className="flex items-center gap-4">
+          <button
+            onClick={() => handleWhatsAppRedirect("Solicitud de Ingeniería")}
+            className="hidden sm:block bg-[#080315] text-neon px-4 py-1 text-[9px] font-tech font-black uppercase tracking-tighter hover:scale-105 transition-transform"
+          >
+            Iniciar Proyecto
+          </button>
+          
+          <button 
+            className="lg:hidden text-[#080315]"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+          >
+            {isMenuOpen ? <X className="w-6 h-6" /> : <Layers className="w-6 h-6" />}
+          </button>
+        </div>
+
+        {/* Mobile Menu */}
+        <AnimatePresence>
+          {isMenuOpen && (
+            <motion.div 
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              className="absolute top-full left-0 w-full bg-neon p-6 flex flex-col gap-4 border-t border-[#080315]/10 lg:hidden shadow-2xl"
+            >
+              {BUSINESS_UNITS.map(unit => (
+                <a 
+                  key={unit.id} 
+                  href={`#${unit.id}`} 
+                  onClick={() => setIsMenuOpen(false)}
+                  className="text-[#080315] font-tech font-black text-xs uppercase tracking-widest border-b border-[#080315]/5 pb-2"
+                >
+                  {unit.title}
+                </a>
+              ))}
+              <button
+                onClick={() => {
+                  setIsMenuOpen(false);
+                  handleWhatsAppRedirect("Mobile Nav Inquiry");
+                }}
+                className="bg-[#080315] text-neon p-4 text-xs font-tech font-black uppercase"
+              >
+                Solicitar Ingeniería
+              </button>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </nav>
 
       <main className="pt-20">
@@ -389,34 +472,51 @@ export default function Home() {
         </section>
 
         {/* --- Business Units Expansion --- */}
-        <section className="max-w-7xl mx-auto mb-16 px-6">
-          <div className="grid md:grid-cols-2 gap-6">
+        <section className="max-w-7xl mx-auto mb-24 px-6 overflow-hidden">
+          <div className="grid md:grid-cols-2 gap-8">
             {BUSINESS_UNITS.map((unit, idx) => (
               <motion.div
                 key={unit.id}
-                initial={{ opacity: 0, y: 10 }}
+                id={unit.id}
+                initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                className="glass-card p-10 border border-white/5 hover:border-neon/30 transition-all group"
+                className="glass-card p-10 md:p-12 border border-white/5 hover:border-neon/40 transition-all group relative"
               >
-                <div className="flex items-center gap-6 mb-8">
-                  <div className="p-3 bg-neon/10 rounded-sm border border-neon/20 group-hover:border-neon transition-colors text-neon">{unit.icon}</div>
-                  <h3 className="font-tech text-2xl font-black uppercase italic tracking-tight text-ice">{unit.title}</h3>
+                <div className="absolute -top-10 -right-10 w-40 h-40 bg-neon/5 blur-[80px] opacity-0 group-hover:opacity-100 transition-opacity" />
+                
+                <div className="flex items-center gap-6 mb-8 relative z-10">
+                  <div className="p-4 bg-neon/10 rounded-sm border border-neon/20 group-hover:border-neon transition-colors text-neon shadow-[0_0_15px_rgba(0,255,204,0.1)]">
+                    {unit.icon}
+                  </div>
+                  <h3 className="font-tech text-3xl font-black uppercase italic tracking-tighter text-ice leading-none group-hover:neon-glow transition-all">
+                    {unit.title}
+                  </h3>
                 </div>
-                <p className="text-slate-500 text-[10px] mb-8 font-black uppercase tracking-widest leading-relaxed border-l-2 border-neon pl-4">{unit.description}</p>
+                
+                <p className="text-slate-500 text-[11px] mb-10 font-bold uppercase tracking-widest leading-relaxed border-l-2 border-neon pl-6 py-1 italic relative z-10">
+                  {unit.description}
+                </p>
 
-                <div className="grid gap-4">
+                <div className="grid gap-6 relative z-10">
                   {unit.items.map((item) => (
                     <div
                       key={item.title}
-                      className="p-6 rounded-sm bg-obsidian/60 border border-white/5 hover:border-electric/30 transition-all"
+                      className="p-8 rounded-sm bg-[#0a0518]/60 border border-white/5 hover:border-electric/40 transition-all hover:bg-[#0a0518]/80 cursor-default"
                     >
-                      <h4 className="font-tech font-black text-ice uppercase tracking-tight text-lg mb-2">{item.title}</h4>
-                      <p className="text-[10px] text-slate-500 mb-4 font-bold uppercase tracking-wider">{item.desc}</p>
+                      <h4 className="font-tech font-black text-ice uppercase tracking-tight text-xl mb-4 flex items-center gap-3">
+                        <div className="w-1.5 h-1.5 bg-electric rounded-full" />
+                        {item.title}
+                      </h4>
+                      
+                      <p className="text-[10px] text-slate-400 mb-6 font-medium uppercase tracking-wider leading-relaxed">
+                        {item.desc}
+                      </p>
+                      
                       <div className="flex flex-wrap gap-2">
                         {item.features.map(f => (
-                          <span key={f} className="text-[8px] bg-electric/10 text-electric border border-electric/20 px-2 py-0.5 rounded-full uppercase font-black tracking-tighter">
-                            {f}
+                          <span key={f} className="text-[9px] bg-white/5 text-slate-300 border border-white/10 px-3 py-1 rounded-sm uppercase font-black tracking-tighter hover:border-neon/50 hover:text-neon transition-colors">
+                            • {f}
                           </span>
                         ))}
                       </div>
