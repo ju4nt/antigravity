@@ -37,6 +37,7 @@ import {
 export default function Home() {
   const WHATSAPP_NUMBER = "573214378318";
   const [selectedRole, setSelectedRole] = useState<null | any>(null);
+  const [isChatOpen, setIsChatOpen] = useState(false);
   
   const handleWhatsAppRedirect = (service = "") => {
     const text = service 
@@ -150,31 +151,74 @@ export default function Home() {
 
       <main className="pt-24 pb-20 px-6">
         {/* --- Hero Section (Optimized Position) --- */}
-        <section className="max-w-6xl mx-auto text-center mb-24 mt-20">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            className="inline-flex items-center gap-2 px-6 py-2 rounded-sm border border-mint/30 bg-mint/5 text-[10px] font-black text-mint tracking-[0.3em] uppercase mb-12"
-          >
-            <ShieldCheck className="w-3.5 h-3.5" /> High-Performance Infrastructure
-          </motion.div>
-          
-          <motion.h1 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="font-tech text-6xl md:text-[8rem] font-black mb-12 leading-[0.85] tracking-tighter uppercase italic"
-          >
-            Optimizar. Escalar. <br /> <span className="text-mint-glow italic">Blindar.</span>
-          </motion.h1>
+        <section className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-12 mb-24 mt-20 px-6">
+          <div className="flex-1 text-center md:text-left">
+            <motion.h1 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="font-tech text-5xl md:text-7xl font-black mb-10 leading-[0.9] tracking-tighter uppercase italic"
+            >
+              Optimizar. Escalar. <br /> <span className="text-mint-glow italic">Blindar.</span>
+            </motion.h1>
 
-          <motion.p 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            className="text-slate-400 text-xl md:text-2xl mb-16 max-w-4xl mx-auto font-medium tracking-tight leading-snug"
+            <motion.p 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              className="text-slate-400 text-lg md:text-xl mb-12 max-w-2xl font-medium tracking-tight leading-relaxed"
+            >
+              Ingeniería de precisión aplicada a la rentabilidad corporativa. <br />
+              Soluciones de arquitectura de datos y automatización para operaciones de alto nivel.
+            </motion.p>
+            
+            <button 
+              onClick={() => handleWhatsAppRedirect()}
+              className="btn-copper px-12 py-5 text-sm"
+            >
+              Iniciar Auditoría Técnica
+            </button>
+          </div>
+          
+          <motion.div 
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            className="flex-1 relative group"
           >
-            Ingeniería de precisión aplicada a la rentabilidad corporativa. 
-            Soluciones de arquitectura de datos y automatización para operaciones de alto nivel.
-          </motion.p>
+            <div className="absolute -inset-4 bg-mint/10 blur-3xl opacity-30 group-hover:opacity-50 transition-opacity" />
+            <img 
+              src="file:///C:/Users/ElkinT/.gemini/antigravity/brain/e83d6572-be87-4c99-af26-f208e8550752/media__1773772390709.jpg" 
+              alt="IA Strategic Leap" 
+              className="rounded-sm border border-white/10 grayscale hover:grayscale-0 transition-all duration-700 shadow-2xl relative z-10"
+            />
+          </motion.div>
+        </section>
+
+        {/* --- Comparison Section: Talento vs Inercia --- */}
+        <section className="max-w-7xl mx-auto mb-32 px-6">
+          <div className="glass-card overflow-hidden rounded-sm flex flex-col md:flex-row items-stretch border-copper/10">
+            <div className="flex-1 p-16 flex flex-col justify-center bg-obsidian/50">
+              <h2 className="font-tech text-4xl md:text-5xl font-black text-white mb-8 leading-none uppercase italic tracking-tighter">
+                ¿Estás pagando por el <br /> <span className="text-copper">Talento</span> o por la <span className="text-slate-600">Inercia</span>?
+              </h2>
+              <p className="text-mint-glow font-tech text-xl font-bold mb-8 uppercase tracking-tight">
+                La IA es inversión única, el ejecutivo senior es gasto perpetuo.
+              </p>
+              <div className="space-y-4 mb-12">
+                <div className="flex items-center gap-4 text-[10px] uppercase tracking-widest font-black text-slate-500">
+                  <span className="w-2 h-2 bg-copper rounded-full" /> Automatiza el rol, no el salario.
+                </div>
+                <div className="flex items-center gap-4 text-[10px] uppercase tracking-widest font-black text-slate-500">
+                  <span className="w-2 h-2 bg-copper rounded-full" /> Elimina riesgos operativos de inmediato.
+                </div>
+              </div>
+            </div>
+            <div className="flex-1 min-h-[400px]">
+              <img 
+                src="file:///C:/Users/ElkinT/.gemini/antigravity/brain/e83d6572-be87-4c99-af26-f208e8550752/media__1773772390787.jpg" 
+                alt="Talento vs Inercia Comparison" 
+                className="w-full h-full object-cover"
+              />
+            </div>
+          </div>
         </section>
 
         {/* --- NEW: IMPACT SOLUTIONS PANEL --- */}
@@ -258,17 +302,99 @@ export default function Home() {
           </div>
         </section>
 
-        {/* --- Video Section --- */}
-        <section className="max-w-6xl mx-auto mb-32 relative px-4 text-center">
-          <div className="absolute inset-0 bg-copper/5 blur-[120px] -z-10" />
-          <div className="aspect-video w-full rounded-sm overflow-hidden border border-white/10 bg-black shadow-2xl">
-             <iframe 
-              className="w-full h-full grayscale opacity-80 hover:grayscale-0 transition-all duration-700"
-              src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
-              title="Colconexus Tech Hub - Ingeniería de Precisión"
-              allowFullScreen
-            />
+        {/* --- AI Industrial Demo: Terminal Simulation --- */}
+        <section className="max-w-7xl mx-auto mb-32 px-6">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div className="order-2 md:order-1">
+              <div className="bg-[#0a0c10] border border-mint/20 rounded-sm p-6 shadow-[0_0_50px_rgba(46,229,157,0.05)]">
+                <div className="flex items-center justify-between mb-4 border-b border-white/5 pb-4">
+                  <div className="flex gap-2">
+                    <div className="w-2 h-2 rounded-full bg-red-500/50" />
+                    <div className="w-2 h-2 rounded-full bg-yellow-500/50" />
+                    <div className="w-2 h-2 rounded-full bg-mint" />
+                  </div>
+                  <span className="text-[9px] font-tech text-mint/50 uppercase tracking-widest">Colconexus IA - Agent_Audit.sh</span>
+                </div>
+                <div className="terminal-code space-y-2">
+                   <p className="opacity-50">[SYSTEM] Initializing Neural Audit Engine...</p>
+                   <p>[AUTH] Identity: Engineering_Admin_01</p>
+                   <p className="text-white">&gt; Run audit --deep --target global_ops</p>
+                   <p className="text-mint"> [PROCESSING] Analyzing Data Pipelines... 98%</p>
+                   <p className="text-mint"> [SUCCESS] 42 Potential Inefficiencies Fixed.</p>
+                   <p className="text-copper"> [ROI] Efficiency Gain: +34.2% Estimated.</p>
+                   <p className="text-white">&gt; Status: <span className="terminal-cursor"></span></p>
+                </div>
+              </div>
+            </div>
+            <div className="order-1 md:order-2">
+              <h2 className="font-tech text-4xl md:text-5xl font-black text-white mb-8 leading-none uppercase italic tracking-tighter">
+                Auditoría Autónoma <br /> en <span className="text-mint">Tiempo Real</span>
+              </h2>
+              <p className="text-slate-400 text-lg mb-8 leading-relaxed">
+                Nuestros agentes de ingeniería no solo observan, ejecutan. Blindamos sus operaciones mediante una capa de inteligencia que recalcula la rentabilidad cada segundo.
+              </p>
+              <div className="flex gap-8">
+                <div>
+                  <div className="font-tech text-3xl font-black text-white mb-1 tracking-tighter">1.2ms</div>
+                  <div className="text-[9px] text-copper font-black uppercase tracking-widest">Latencia de Decisión</div>
+                </div>
+                <div>
+                  <div className="font-tech text-3xl font-black text-white mb-1 tracking-tighter">100%</div>
+                  <div className="text-[9px] text-mint font-black uppercase tracking-widest">Ejecución sin Error</div>
+                </div>
+              </div>
+            </div>
           </div>
+        </section>
+
+        {/* --- Media Hub: YouTube Integration --- */}
+        <section className="max-w-7xl mx-auto mb-32 px-6">
+          <div className="grid md:grid-cols-12 gap-8">
+            <div className="md:col-span-8">
+              <div className="relative aspect-video rounded-sm overflow-hidden border border-white/10 shadow-2xl group">
+                <iframe 
+                  className="w-full h-full grayscale hover:grayscale-0 transition-all duration-700"
+                  src="https://www.youtube.com/embed/aW-6Zbc-Lyw" 
+                  title="Colconexus Technical Overview"
+                  allowFullScreen
+                />
+              </div>
+            </div>
+            <div className="md:col-span-4 flex flex-col gap-8">
+              <div className="relative aspect-[9/16] rounded-sm overflow-hidden border border-mint/20 shadow-2xl group">
+                <iframe 
+                  className="w-full h-full"
+                  src="https://www.youtube.com/embed/ROrzZBpJUag" 
+                  title="Colconexus Insights Reel"
+                  allowFullScreen
+                />
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* --- Orquestación Section --- */}
+        <section className="max-w-7xl mx-auto mb-32 px-6">
+           <div className="relative rounded-sm overflow-hidden border border-white/5 bg-obsidian group">
+              <div className="grid md:grid-cols-2">
+                <div className="p-16 flex flex-col justify-center gap-6">
+                  <h3 className="font-tech text-4xl font-black text-white uppercase italic tracking-tighter">
+                    La IA no es Código, <br /> es <span className="text-mint">Orquestación</span>.
+                  </h3>
+                  <p className="text-slate-500 text-sm uppercase tracking-widest font-bold">
+                    Entiende las herramientas, nosotros las unimos por ti.
+                  </p>
+                  <button onClick={() => handleWhatsAppRedirect("Engine Orchestra")} className="btn-copper w-fit px-12 py-4">Saber Más</button>
+                </div>
+                <div className="relative min-h-[400px]">
+                   <img 
+                    src="file:///C:/Users/ElkinT/.gemini/antigravity/brain/e83d6572-be87-4c99-af26-f208e8550752/media__1773772390708.jpg" 
+                    alt="AI Orchestration" 
+                    className="absolute inset-0 w-full h-full object-cover opacity-80"
+                   />
+                </div>
+              </div>
+           </div>
         </section>
 
         <section className="max-w-7xl mx-auto mb-32 relative px-4 text-center">
@@ -323,22 +449,37 @@ export default function Home() {
       </main>
 
       {/* --- Footer Lux --- */}
-      <footer className="max-w-7xl mx-auto px-6 py-20 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-10 text-[10px] text-slate-600 uppercase tracking-widest font-black">
-        <div className="flex flex-col">
-          <span className="font-tech text-white text-lg">COLCONEXUS</span>
-          <span className="text-copper italic">Global Engineering Hub</span>
+      <footer className="max-w-7xl mx-auto px-6 py-32 border-t border-white/5 flex flex-col gap-20">
+        <div className="grid md:grid-cols-2 items-center gap-20">
+          <div className="flex flex-col gap-3">
+            <span className="font-tech text-white text-3xl font-black tracking-tighter uppercase italic">COLCONEXUS</span>
+            <span className="text-copper italic font-black text-[11px] uppercase tracking-[0.4em]">Global Engineering Hub</span>
+            <p className="max-w-md text-slate-600 text-[10px] font-black uppercase tracking-widest leading-relaxed mt-4">
+              Blindando la rentabilidad corporativa mediante orquestación de datos e inteligencia artificial de grado industrial.
+            </p>
+          </div>
+          <div className="rounded-sm overflow-hidden border border-white/5">
+             <img 
+              src="file:///C:/Users/ElkinT/.gemini/antigravity/brain/e83d6572-be87-4c99-af26-f208e8550752/media__1773772390738.png" 
+              alt="Colconexus Brand" 
+              className="w-full grayscale opacity-40 hover:opacity-100 transition-all duration-700"
+             />
+          </div>
         </div>
-        <div className="flex gap-16 font-black uppercase text-[10px]">
-          <a href="https://www.linkedin.com/company/colconexus-datacenter-sas/" target="_blank" rel="noopener noreferrer" className="hover:text-mint transition-colors flex items-center gap-2">
-            LinkedIn
-          </a>
-          <a href="https://tiktok.com/@colconexus" target="_blank" rel="noopener noreferrer" className="hover:text-mint transition-colors flex items-center gap-2">
-            TikTok
-          </a>
-          <a href="https://instagram.com/colconexusdatacenter" target="_blank" rel="noopener noreferrer" className="hover:text-mint transition-colors flex items-center gap-2">
-            Instagram
-          </a>
-          <span className="text-slate-800">Status: Terminal Active</span>
+        
+        <div className="flex flex-col md:flex-row justify-between items-center gap-10 text-[10px] text-slate-600 uppercase tracking-widest font-black pt-10 border-t border-white/5">
+          <div className="flex gap-16">
+            <a href="https://www.linkedin.com/company/colconexus-datacenter-sas/" target="_blank" rel="noopener noreferrer" className="hover:text-mint transition-colors">
+              LinkedIn
+            </a>
+            <a href="https://tiktok.com/@colconexus" target="_blank" rel="noopener noreferrer" className="hover:text-mint transition-colors">
+              TikTok
+            </a>
+            <a href="https://instagram.com/colconexusdatacenter" target="_blank" rel="noopener noreferrer" className="hover:text-mint transition-colors">
+              Instagram
+            </a>
+          </div>
+          <span className="text-slate-800">Status: Terminal Active // session_id: b2b_2026</span>
         </div>
       </footer>
 
@@ -399,6 +540,66 @@ export default function Home() {
           </div>
         )}
       </AnimatePresence>
+
+      {/* --- Floating AI Chat Widget --- */}
+      <div className="chat-widget">
+        <AnimatePresence>
+          {isChatOpen && (
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.9, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.9, y: 20 }}
+              className="chat-bubble mb-6 p-8 rounded-sm"
+            >
+              <div className="flex justify-between items-center mb-6">
+                <div className="flex items-center gap-3">
+                  <div className="w-8 h-8 rounded-sm bg-mint/10 flex items-center justify-center border border-mint/30">
+                    <Bot className="w-5 h-5 text-mint" strokeWidth={1.5} />
+                  </div>
+                  <div>
+                    <h5 className="font-tech text-white text-[11px] font-black uppercase tracking-tighter">Colconexus BOT</h5>
+                    <div className="flex items-center gap-1.5">
+                      <div className="w-1.5 h-1.5 rounded-full bg-mint animate-pulse" />
+                      <span className="text-[9px] text-mint/50 font-bold uppercase tracking-widest">Active System</span>
+                    </div>
+                  </div>
+                </div>
+                <button onClick={() => setIsChatOpen(false)} className="text-white/30 hover:text-white transition-colors">
+                  <X className="w-6 h-6" />
+                </button>
+              </div>
+              
+              <div className="space-y-6 text-[10px] text-slate-400 font-bold uppercase tracking-widest leading-relaxed">
+                <p className="bg-white/5 p-4 rounded-sm border-l-2 border-mint">
+                  Saludos. Soy el asistente de ingeniería de Colconexus. ¿Desea optimizar su flujo de datos o automatizar procesos críticos?
+                </p>
+                <div className="grid gap-3">
+                  <button 
+                    onClick={() => handleWhatsAppRedirect("Consultoría IA")}
+                    className="w-full py-4 bg-copper/10 border border-copper/30 text-copper hover:bg-copper hover:text-white transition-all rounded-sm uppercase tracking-widest"
+                  >
+                    Hablar con un Humano
+                  </button>
+                  <button 
+                    onClick={() => setIsChatOpen(false)}
+                    className="w-full py-4 border border-white/5 hover:border-mint/50 transition-all rounded-sm uppercase tracking-widest"
+                  >
+                    Seguir Navegando
+                  </button>
+                </div>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+
+        <button 
+          onClick={() => setIsChatOpen(!isChatOpen)}
+          className="ml-auto w-20 h-20 rounded-sm bg-obsidian border border-copper/40 flex items-center justify-center text-copper shadow-2xl hover:border-mint hover:text-mint transition-all relative group overflow-hidden"
+        >
+          <div className="absolute inset-0 bg-gradient-to-tr from-copper/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+          <MessageSquare className="w-10 h-10 relative z-10" strokeWidth={1.5} />
+        </button>
+      </div>
     </div>
   );
 }

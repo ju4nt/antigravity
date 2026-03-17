@@ -88,9 +88,65 @@ body {
   letter-spacing: -0.05em;
 }
 
-.xxi-glow {
-  font-size: clamp(5rem, 15vw, 12rem);
+/* AI Industrial Demo Terminal */
+.terminal-code {
+  font-family: 'JetBrains Mono', monospace;
   color: #2ee59d;
-  text-shadow: 0 0 50px rgba(46, 229, 157, 0.3);
-  font-weight: 900;
+  font-size: 0.8rem;
+  line-height: 1.4;
+}
+
+.terminal-cursor {
+  display: inline-block;
+  width: 8px;
+  height: 15px;
+  background: #2ee59d;
+  animation: blink 1s step-end infinite;
+  vertical-align: middle;
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+/* Floating AI Chat Widget */
+.chat-widget {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 1000;
+  width: 350px;
+  max-width: calc(100vw - 4rem);
+}
+
+.chat-bubble {
+  background: rgba(28, 31, 38, 0.95);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(184, 115, 51, 0.4);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+}
+
+/* Float Animations */
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+  100% { transform: translateY(0px); }
+}
+
+/* Efficiency Counter */
+.counter-glow {
+  color: #b87333;
+  text-shadow: 0 0 15px rgba(184, 115, 51, 0.5);
+}
+
+/* New Parallax Layers */
+.bg-parallax {
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
