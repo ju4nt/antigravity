@@ -1,13 +1,18 @@
-@import "tailwindcss";
+@import "tailwindcss"; /* Colconexus 2.7: Deep Purple & Mint Palette */
 
 @theme {
-  --color-obsidian: #05070a;
-  --color-mint: #2ee59d;
-  --color-copper: #b87333;
-  --color-graphite: #1c1f26;
+  --color-obsidian: #080315;
+  --color-purple-deep: #160a2c;
+  --color-neon: #00ffcc; /* MINT */
+  --color-electric: #0088ff; /* BLUE */
+  --color-ice: #f8faff;
+  --color-graphite: #1a1e26;
   
   --font-sans: 'Inter', sans-serif;
   --font-tech: 'Space Grotesk', sans-serif;
+
+  --glass-bg: rgba(26, 10, 44, 0.4);
+  --section-gap: 5rem; /* Reduced from 8rem */
 }
 
 :root {
@@ -25,11 +30,13 @@
 }
 
 body {
-  background-color: var(--color-obsidian);
+  background: radial-gradient(circle at top right, var(--color-purple-deep), var(--color-obsidian));
+  background-attachment: fixed;
   color: var(--color-ice);
-  font-family: var(--font-inter), sans-serif;
-  -webkit-font-smoothing: antialiased;
+  font-family: var(--font-inter);
   overflow-x: hidden;
+  letter-spacing: -0.01em;
+  -webkit-font-smoothing: antialiased;
   @apply antialiased;
 }
 
@@ -50,9 +57,7 @@ body {
 
 /* Glassmorphism Industrial */
 .glass-card {
-  background: rgba(28, 31, 38, 0.4);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(0, 240, 255, 0.1);
+  @apply bg-glass-bg backdrop-blur-md border border-white/5;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -62,52 +67,35 @@ body {
   transform: translateY(-4px);
 }
 
-/* Accent Buttons */
-.btn-neon {
-  background: var(--color-neon);
-  color: var(--color-obsidian);
-  font-weight: 900;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  padding: 1rem 2rem;
-  border-radius: 2px;
-  transition: all 0.3s ease;
-  font-family: var(--font-space-grotesk);
+/* Navbar */
+.navbar-mint {
+  @apply fixed top-0 left-0 w-full z-[100] bg-neon py-3 px-8 flex justify-between items-center shadow-lg;
 }
 
-.btn-neon:hover {
-  filter: brightness(1.1);
-  box-shadow: 0 0 30px rgba(204, 255, 0, 0.4);
-  transform: scale(1.02);
+.navbar-mint span {
+  @apply text-[#080315] font-tech font-black uppercase tracking-tighter;
+}
+
+/* Accent Buttons */
+.btn-neon {
+  @apply bg-neon text-[#080315] font-tech font-black uppercase tracking-widest px-10 py-4 rounded-sm
+         hover:bg-white hover:scale-[1.02] transition-all duration-300 shadow-[0_0_20px_rgba(0,255,204,0.3)];
 }
 
 .btn-outline {
-  border: 1px solid rgba(0, 240, 255, 0.3);
-  color: var(--color-electric);
-  background: transparent;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  padding: 1rem 2rem;
-  border-radius: 2px;
-  transition: all 0.3s ease;
-}
-
-.btn-outline:hover {
-  background: rgba(0, 240, 255, 0.05);
-  border-color: var(--color-electric);
-  box-shadow: 0 0 20px rgba(0, 240, 255, 0.2);
+  @apply border border-neon/40 text-neon font-tech font-black uppercase tracking-widest px-10 py-4 rounded-sm
+         hover:bg-neon/10 hover:border-neon transition-all duration-300;
 }
 
 /* Glow Mint */
 .neon-glow {
   color: var(--color-neon);
-  text-shadow: 0 0 20px rgba(204, 255, 0, 0.5);
+  text-shadow: 0 0 15px rgba(0, 255, 204, 0.5);
 }
 
 .electric-glow {
   color: var(--color-electric);
-  text-shadow: 0 0 20px rgba(0, 240, 255, 0.5);
+  text-shadow: 0 0 15px rgba(0, 136, 255, 0.4);
 }
 
 /* Counter/Status Styles */

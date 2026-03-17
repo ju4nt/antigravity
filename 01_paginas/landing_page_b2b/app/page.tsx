@@ -28,10 +28,15 @@ import {
   Layers,
   Cpu,
   Globe,
-  Lock,
-  Mic2,
+  Briefcase,
+  Home as HomeIcon,
   ShieldCheck,
-  Rocket
+  Search,
+  CheckCircle2,
+  Activity,
+  BarChart,
+  HardDrive,
+  Mic2
 } from "lucide-react";
 
 export default function Home() {
@@ -73,74 +78,193 @@ export default function Home() {
 
   const BUSINESS_UNITS = [
     {
-      id: "ia_agency",
-      title: "Agencia de IA",
-      description: "Blindaje de procesos mediante ejecución autónoma sin margen de error.",
-      icon: <Bot className="w-8 h-8 text-copper" strokeWidth={1.5} />,
+      id: "ia-agency",
+      title: "1. AGENCIA DE IA",
+      description: "Desarrollo de agentes inteligentes especializados que automatizan tareas empresariales.",
+      icon: <Bot className="w-8 h-8" />,
       items: [
         {
-          title: "Intelligent Analysts Pro",
-          desc: "Optimización de flujo mediante asistencia experta aumentada.",
-          skills: ["Speech Analytics industrial", "Auditores IA de flujo masivo", "Copilots de blindaje operativo", "Automatización de tareas críticas"]
+          title: "AI Voice Agents",
+          desc: "Atención al cliente, call center automatizado, encuestas, agendamiento y seguimiento.",
+          features: ["Atención al cliente", "Call center automatizado", "Encuestas automáticas", "Agendamiento de citas", "Seguimiento de clientes"]
         },
         {
-          title: "Financial AI Architect",
-          desc: "Escalabilidad rentable mediante ML predictivo.",
-          skills: ["Modelos Early Warning de rentabilidad", "Recálculo automático de KPIs críticos", "Alertas de impacto financiero proactivo", "Estrategias de optimización de márgenes"]
+          title: "AI Chat Agents",
+          desc: "Chatbots para Web y WhatsApp, asistentes corporativos y automatización de soporte.",
+          features: ["Chatbots para web", "Chatbots para WhatsApp", "Asistentes corporativos", "Automatización de soporte"]
+        },
+        {
+          title: "OCR Intelligent Processing",
+          desc: "Procesamiento automático: facturas, extracción de datos, digitalización y validación.",
+          features: ["Lectura de facturas", "Extracción de datos", "Digitalización documental", "Validación de formularios"]
+        },
+        {
+          title: "AI Vision",
+          desc: "Sistemas de visión: reconocimiento facial, validación de identidad y detección de objetos.",
+          features: ["Reconocimiento facial", "Validación de identidad", "Análisis de imágenes", "Detección de objetos"]
+        },
+        {
+          title: "AI Security Systems",
+          desc: "Agentes de seguridad: detección de movimiento, vigilancia y monitoreo automatizado.",
+          features: ["Detección de movimiento", "Vigilancia automatizada", "Monitoreo de cámaras", "Alertas de seguridad"]
         }
       ]
     },
     {
-      id: "data_master",
-      title: "Data Precision Hub",
-      description: "Ingeniería de datos avanzada para la toma de decisiones basada en rentabilidad.",
-      icon: <BarChart3 className="w-8 h-8 text-copper" strokeWidth={1.5} />,
+      id: "data-hub",
+      title: "2. DATA PRECISION HUB",
+      description: "Infraestructura para transformar datos en inteligencia de negocio.",
+      icon: <Database className="w-8 h-8" />,
       items: [
         {
           title: "Industrial Data Pipelines",
-          desc: "Estructura Medallón para consistencia absoluta de datos.",
-          skills: ["Arquitectura Delta Lake de alta fidelidad", "Diseño Entidad Relación industrial", "Integración de flujos SQL y NoSQL", "Reportes de precisión milimétrica"]
+          desc: "ETL / ELT, integración de datos y pipelines automatizados en tiempo real.",
+          features: ["ETL / ELT", "Integración de datos", "Pipelines automatizados", "Ingestión en tiempo real"]
+        },
+        {
+          title: "Data Warehouse & Lake",
+          desc: "Diseño de arquitecturas Data Warehouse, Data Lake y Lakehouse.",
+          features: ["Diseño de Data Warehouse", "Arquitectura Data Lake", "Arquitectura Lakehouse"]
+        },
+        {
+          title: "Business Intelligence",
+          desc: "Dashboards ejecutivos, reportes automatizados y monitoreo de KPIs.",
+          features: ["Dashboards ejecutivos", "Reportes automatizados", "Monitoreo de KPIs", "Análisis empresarial"]
+        },
+        {
+          title: "Advanced Data Analytics",
+          desc: "Análisis estadístico, correlaciones y detección de anomalías.",
+          features: ["Análisis estadístico", "Correlaciones", "Análisis de comportamiento", "Detección de anomalías"]
         },
         {
           title: "Predictive Engineering",
-          desc: "Modelado matemático de alta precisión para eficiencia de recursos.",
-          skills: ["Perfilamiento avanzado de eficiencia", "Feature Engineering industrial", "Testing de modelos bajo carga crítica", "Modelos de optimización de capital"]
+          desc: "Predicción de demanda y ventas, scoring de clientes y detección de fraude.",
+          features: ["Predicción de demanda", "Predicción de ventas", "Scoring de clientes", "Detección de fraude"]
         }
       ]
     },
     {
-      id: "wfm_strategic",
-      title: "WFM Operations",
-      description: "Ingeniería de staff con enfoque en blindaje operativo y financiero.",
-      icon: <Clock className="w-8 h-8 text-copper" strokeWidth={1.5} />,
+      id: "wfm-ops",
+      title: "3. WFM OPERATIONS",
+      description: "Optimización de operaciones intensivas en personal.",
+      icon: <Users className="w-8 h-8" />,
       items: [
         {
-          title: "Strategic Scheduler",
-          desc: "Mallas de turno optimizadas para rentabilidad inmediata.",
-          skills: ["Forecast de tráfico de alta precisión", "Alertas Over/Under de impacto directo", "Mallas de turno automatizadas", "Gestión de novedades en tiempo real"]
+          title: "Forecasting",
+          desc: "Predicción de demanda para llamadas, chats, emails y redes sociales.",
+          features: ["Llamadas", "Chats", "Emails", "Redes sociales"]
         },
         {
-          title: "Financial Intelligence",
-          desc: "Correlación de KPIs operativos con el P&L corporativo.",
-          skills: ["Análisis de impacto en factura", "Sugerencias tácticas de gestión de costos", "Modelado de rentabilidad operativa", "Monitoreo de KPIs de alta criticidad"]
+          title: "Dimensionamiento",
+          desc: "Cálculo de personal requerido a largo, mediano y corto plazo.",
+          features: ["Largo plazo (Estratégico)", "Mediano plazo (Mensual)", "Corto plazo (Semanal)"]
+        },
+        {
+          title: "Rostering & Scheduling",
+          desc: "Generación automática y optimización matemática de turnos.",
+          features: ["Asignación de turnos", "Cumplimiento normativo", "Mallas optimizadas", "Reducción de tiempos muertos"]
+        },
+        {
+          title: "Workforce Analytics",
+          desc: "Análisis de AHT, Nivel de Servicio, Ocupación y Productividad.",
+          features: ["AHT", "Nivel de servicio", "Ocupación", "Productividad", "Abandono"]
+        },
+        {
+          title: "Gestión Outbound",
+          desc: "Diseño de campañas, marcación inteligente y optimización comercial.",
+          features: ["Segmentación y targets", "Predictive dialing", "Análisis de conversión"]
         }
       ]
     },
     {
-      id: "erp_modular",
-      title: "Enterprise Solutions",
-      description: "Estructuras modulares escalables con gobierno corporativo de datos.",
-      icon: <Cloud className="w-8 h-8 text-copper" strokeWidth={1.5} />,
+      id: "consultoria",
+      title: "4. CONSULTORÍA OPERATIVA",
+      description: "Servicios de asesoría estratégica para empresas.",
+      icon: <BarChart3 className="w-8 h-8" />,
+      items: [
+        {
+          title: "Diagnóstico de Operaciones",
+          desc: "Evaluación completa de KPIs, procesos y eficiencia de contact centers.",
+          features: ["Análisis de KPIs", "Análisis de procesos", "Análisis de eficiencia"]
+        },
+        {
+          title: "Diseño de Contact Center",
+          desc: "Creación de operaciones desde cero: estructura, procesos y tecnología.",
+          features: ["Estructura organizacional", "Definición de procesos", "Arquitectura tecnológica"]
+        },
+        {
+          title: "Optimización & Auditoría",
+          desc: "Rediseño de procesos y revisión independiente de desempeño financiero.",
+          features: ["Productividad y eficiencia", "Reducción de costos", "Auditoría de KPIs", "Auditoría financiera"]
+        }
+      ]
+    },
+    {
+      id: "bpo-services",
+      title: "5. SERVICIOS BPO",
+      description: "Externalización completa de procesos empresariales.",
+      icon: <Briefcase className="w-8 h-8" />,
+      items: [
+        {
+          title: "BPO Contact Center",
+          desc: "Customer Support, Sales Operations y Campaign Management omnicanal.",
+          features: ["Atención omnicanal", "Telemarketing", "Generación de leads", "Gestión de bases de datos"]
+        },
+        {
+          title: "BPO Back Office",
+          desc: "Procesamiento de documentos, gestión de datos y validación documental.",
+          features: ["Procesamiento de docs", "Gestión de datos", "Digitación", "Validación"]
+        },
+        {
+          title: "BPO Data & Analytics",
+          desc: "Limpieza y etiquetado de datos para IA y reporting operativo.",
+          features: ["Limpieza de datos", "Etiquetado para IA", "Monitoreo de KPIs", "Análisis de desempeño"]
+        }
+      ]
+    },
+    {
+      id: "enterprise-sol",
+      title: "6. ENTERPRISE SOLUTIONS",
+      description: "Creación de software empresarial y desarrollo tecnológico personalizado.",
+      icon: <Cpu className="w-8 h-8" />,
       items: [
         {
           title: "Custom Functional Apps",
-          desc: "Desarrollo de herramientas de precisión para gerencia.",
-          skills: ["ERP Modular de flujo optimizado", "Webservices de alta disponibilidad", "Sistemas escalables en la nube", "Gobierno de datos multinivel"]
+          desc: "Aplicaciones empresariales, plataformas de gestión y sistemas internos.",
+          features: ["Aplicaciones a medida", "Plataformas de gestión", "Sistemas operativos internos"]
         },
         {
-          title: "High-End Connectivity",
-          desc: "Omnicanalidad robusta para operaciones de alto volumen.",
-          skills: ["Telefonía VoIP de grado industrial", "Baja latencia en flujos masivos", "Bots multicanal de despliegue rápido", "Infraestructura en memoria"]
+          title: "Integración de Sistemas",
+          desc: "Integración CRM, ERP y desarrollo de APIs empresariales.",
+          features: ["Integración CRM", "Integración ERP", "APIs empresariales"]
+        },
+        {
+          title: "Automatización Empresarial",
+          desc: "RPA y flujos automatizados para integración de sistemas.",
+          features: ["RPA", "Flujos automatizados", "Integración de procesos"]
+        }
+      ]
+    },
+    {
+      id: "smart-systems",
+      title: "7. SMART SYSTEMS",
+      description: "Automatización de espacios y domótica inteligente.",
+      icon: <HomeIcon className="w-8 h-8" />,
+      items: [
+        {
+          title: "Smart Home",
+          desc: "Control de iluminación, clima y automatización doméstica.",
+          features: ["Iluminación", "Clima", "Domótica"]
+        },
+        {
+          title: "Smart Security",
+          desc: "Cámaras inteligentes, sensores e identificación facial.",
+          features: ["Cámaras inteligentes", "Sensores de movimiento", "Reconocimiento facial"]
+        },
+        {
+          title: "Smart Buildings",
+          desc: "Edificios inteligentes, sensores IoT y eficiencia energética.",
+          features: ["Edificios inteligentes", "Sensores IoT", "Eficiencia energética"]
         }
       ]
     }
@@ -151,168 +275,151 @@ export default function Home() {
       {/* Background System - Industrial Grid */}
       <div className="bg-grid-overlay" />
 
-      {/* --- Navbar --- */}
-      <nav className="fixed top-0 w-full z-50 border-b border-white/5 bg-obsidian/90 backdrop-blur-xl">
-        <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-          <div className="flex flex-col cursor-pointer">
-            <span className="font-tech text-2xl font-black tracking-tighter text-white leading-none">COLCONEXUS</span>
-            <span className="text-[10px] font-bold text-copper tracking-[0.4em] uppercase">Engineering Solutions</span>
-          </div>
-          <button 
-            onClick={() => handleWhatsAppRedirect()}
-            className="btn-copper px-8 py-3 text-[11px]"
-          >
-            Solicitar Auditoría de Rendimiento
-          </button>
+      {/* --- Mint Navbar --- */}
+      <nav className="navbar-mint">
+        <div className="flex items-center gap-4">
+          <span className="text-xl">COLCONEXUS</span>
         </div>
+        <div className="hidden md:flex gap-8">
+          <a href="#servicios" className="text-[#080315] font-tech font-black text-[10px] uppercase tracking-widest hover:opacity-60 transition-opacity">Servicios</a>
+          <a href="#diagnostico" className="text-[#080315] font-tech font-black text-[10px] uppercase tracking-widest hover:opacity-60 transition-opacity">Diagnóstico</a>
+          <a href="#" onClick={() => handleWhatsAppRedirect()} className="text-[#080315] font-tech font-black text-[10px] uppercase tracking-widest hover:opacity-60 transition-opacity">Contacto</a>
+        </div>
+        <button
+          onClick={() => handleWhatsAppRedirect("Solicitud de Ingeniería")}
+          className="bg-[#080315] text-neon px-4 py-1 text-[9px] font-tech font-black uppercase tracking-tighter"
+        >
+          Iniciar Proyecto
+        </button>
       </nav>
 
-      <main className="pt-24 pb-20 px-6">
-        {/* --- Hero Section: Neon & Ice --- */}
-        <section className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-12 mb-32 mt-20 px-6">
-          <div className="flex-1 text-center md:text-left">
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-sm border border-neon/30 bg-neon/5 text-[9px] font-black text-neon tracking-[0.4em] uppercase mb-8"
-            >
-              <ShieldCheck className="w-3.5 h-3.5" /> Industrial AI Engineering 2026
-            </motion.div>
-
-            <motion.h1 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="font-tech text-4xl md:text-6xl font-black mb-8 leading-[1] tracking-tighter uppercase italic text-ice"
-            >
-              Mide tu Nivel de <br /> <span className="neon-glow italic">Automatización.</span>
-            </motion.h1>
-
-            <motion.p 
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              className="text-slate-400 text-base md:text-lg mb-10 max-w-xl font-medium tracking-tight leading-relaxed"
-            >
-              No dejes la rentabilidad al azar. Nuestra ingeniería de precisión audita tus procesos y despliega robots autónomos que eliminan la inercia operativa de inmediato.
-            </motion.p>
-            
-            <div className="flex flex-wrap gap-4 justify-center md:justify-start">
-              <button 
-                onClick={() => handleWhatsAppRedirect()}
-                className="btn-neon px-10 py-4 text-xs"
-              >
-                Mide tu Nivel Ahora
-              </button>
-              <a 
-                href="#diagnostico"
-                className="btn-outline px-10 py-4 text-xs"
-              >
-                Ver Demo Técnica
-              </a>
+      <main className="pt-20">
+        {/* --- Hero Section Refined --- */}
+        <section className="max-w-7xl mx-auto px-6 mb-12">
+          <div className="grid md:grid-cols-12 gap-6 items-center bg-purple-deep/20 border border-white/5 rounded-sm overflow-hidden">
+            <div className="md:col-span-7 p-8 md:p-14 flex flex-col gap-6">
+              <div className="flex items-center gap-3 px-3 py-1 bg-neon/10 border border-neon/30 w-fit">
+                 <div className="w-2 h-2 bg-neon rounded-full animate-pulse shadow-[0_0_10px_#00ffcc]" />
+                 <span className="text-neon font-tech text-[10px] uppercase font-black tracking-[0.3em]">Industrial AI Engineering 2026</span>
+              </div>
+              
+              <h1 className="font-tech text-4xl md:text-5xl lg:text-6xl font-black text-ice leading-[1.1] uppercase italic tracking-tighter">
+                MIDE TU NIVEL DE <br /> <span className="neon-glow">AUTOMATIZACIÓN.</span>
+              </h1>
+              
+              <p className="text-slate-400 text-sm md:text-base font-medium leading-relaxed max-w-lg">
+                No dejes la rentabilidad al azar. Nuestra ingeniería de precisión audita tus procesos y despliega robots autónomos que eliminan la inercia operativa de inmediato.
+              </p>
+              
+              <div className="flex flex-wrap gap-4 pt-2">
+                <button 
+                  onClick={() => {
+                    const el = document.getElementById('diagnostico');
+                    el?.scrollIntoView({ behavior: 'smooth' });
+                  }}
+                  className="btn-neon text-xs"
+                >
+                  Mide tu Nivel Ahora
+                </button>
+                <button 
+                  onClick={() => handleWhatsAppRedirect("Demo Técnica")}
+                  className="btn-outline text-xs"
+                >
+                  Ver Demo Técnica
+                </button>
+              </div>
             </div>
-          </div>
-          
-          <motion.div 
-            initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
-            className="flex-1 relative group"
-          >
-            <div className="absolute -inset-4 bg-neon/10 blur-3xl opacity-20 group-hover:opacity-40 transition-opacity" />
-            <div className="relative z-10 p-1 border border-white/10 rounded-sm bg-obsidian">
+            
+            <div className="md:col-span-5 h-[300px] md:h-full relative overflow-hidden">
               <img 
                 src="/assets/hero-ai.jpg" 
-                alt="AI Strategic Hub" 
-                className="w-full rounded-sm grayscale hover:grayscale-0 transition-all duration-1000 shadow-2xl"
+                alt="Industrial Intelligence Hub" 
+                className="w-full h-full object-cover group-hover:scale-105 transition-all duration-700"
               />
+              <div className="absolute inset-0 bg-gradient-to-l from-transparent via-transparent to-purple-deep/40" />
             </div>
-          </motion.div>
+          </div>
         </section>
 
-        {/* --- Comparison Section: Talento vs Inercia (Neon Fix) --- */}
-        <section className="max-w-7xl mx-auto mb-32 px-6">
-          <div className="glass-card overflow-hidden rounded-sm flex flex-col md:flex-row items-stretch border-neon/10">
-            <div className="flex-1 p-12 md:p-16 flex flex-col justify-center bg-obsidian/60 relative overflow-hidden">
+        {/* --- Comparison Section Refined --- */}
+        <section className="max-w-7xl mx-auto mb-16 px-6">
+          <div className="glass-card overflow-hidden rounded-sm flex flex-col md:flex-row items-stretch border-neon/10 h-auto md:h-[400px]">
+            <div className="flex-1 p-10 md:p-12 flex flex-col justify-center bg-purple-deep/40 relative overflow-hidden">
               <div className="absolute top-0 right-0 w-32 h-32 bg-neon/5 blur-3xl" />
-              <h2 className="font-tech text-3xl md:text-5xl font-black text-ice mb-8 leading-[1.1] uppercase italic tracking-tighter">
-                ¿Pagas por el <br /> <span className="neon-glow">Talento</span> o por la <span className="text-slate-600">Inercia</span>?
+              <h2 className="font-tech text-2xl md:text-4xl font-black text-ice mb-6 leading-[1.1] uppercase italic tracking-tighter">
+                ¿Pagas por el <br /> <span className="neon-glow">Talento</span> o por la <span className="text-slate-700">Inercia</span>?
               </h2>
-              <p className="electric-glow font-tech text-lg font-bold mb-8 uppercase tracking-tight">
+              <p className="electric-glow font-tech text-base font-bold mb-6 uppercase tracking-tight">
                 La IA es inversión única, el ejecutivo senior es gasto perpetuo.
               </p>
-              <div className="space-y-5 mb-12">
-                <div className="flex items-center gap-4 text-[11px] uppercase tracking-[0.2em] font-black text-slate-400">
-                  <div className="w-1.5 h-1.5 bg-neon rounded-full shadow-[0_0_10px_#ccff00]" /> Automatiza el rol, no el salario.
+              <div className="space-y-4 mb-8">
+                <div className="flex items-center gap-4 text-[10px] uppercase tracking-[0.2em] font-black text-slate-400">
+                  <div className="w-1.5 h-1.5 bg-neon rounded-full" /> Automatiza el rol, no el salario.
                 </div>
-                <div className="flex items-center gap-4 text-[11px] uppercase tracking-[0.2em] font-black text-slate-400">
-                  <div className="w-1.5 h-1.5 bg-neon rounded-full shadow-[0_0_10px_#ccff00]" /> Blindaje operativo 24/7 sin errores.
+                <div className="flex items-center gap-4 text-[10px] uppercase tracking-[0.2em] font-black text-slate-400">
+                  <div className="w-1.5 h-1.5 bg-neon rounded-full" /> Blindaje operativo 24/7 sin errores.
                 </div>
               </div>
-              <button 
+              <button
                 onClick={() => handleWhatsAppRedirect("Comparativa Rentabilidad")}
-                className="btn-neon w-fit px-12 py-4"
+                className="btn-neon w-fit px-8 py-3 text-xs"
               >
                 Solicitar Business Case
               </button>
             </div>
-            <div className="flex-1 min-h-[450px] relative border-l border-white/5">
-              <img 
-                src="/assets/comparison-ai.jpg" 
-                alt="Talento vs Inercia" 
-                className="w-full h-full object-cover"
+            <div className="flex-1 relative border-l border-white/5 overflow-hidden">
+              <img
+                src="/assets/comparison-ai.jpg"
+                alt="Talento vs Inercia"
+                className="w-full h-full object-cover grayscale-0 hover:scale-105 transition-all duration-700"
               />
-              <div className="absolute inset-0 bg-gradient-to-r from-obsidian via-transparent to-transparent opacity-40 md:opacity-20" />
+              <div className="absolute inset-0 bg-gradient-to-r from-obsidian/40 via-transparent to-transparent" />
             </div>
           </div>
         </section>
 
-        {/* --- Impact Solutions Grid (Standardized) --- */}
-        <section className="max-w-7xl mx-auto mb-32 px-6">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            {IMPACT_SOLUTIONS.map((item, idx) => (
-              <motion.div 
-                key={item.title}
+        {/* --- Services Header --- */}
+        <section id="servicios" className="max-w-7xl mx-auto mb-12 px-6">
+           <div className="flex flex-col gap-2">
+              <h2 className="font-tech text-4xl font-black text-ice uppercase italic tracking-tighter">Portafolio de Servicios</h2>
+              <div className="flex items-center gap-4 text-neon font-bold text-[9px] uppercase tracking-[0.5em]">
+                <span>DATA</span> <span className="opacity-30">•</span> <span>AI</span> <span className="opacity-30">•</span> <span>CONTACT CENTER</span> <span className="opacity-30">•</span> <span>BPO</span> <span className="opacity-30">•</span> <span>SMART SYSTEMS</span>
+              </div>
+           </div>
+        </section>
+
+        {/* --- Business Units Expansion --- */}
+        <section className="max-w-7xl mx-auto mb-16 px-6">
+          <div className="grid md:grid-cols-2 gap-6">
+            {BUSINESS_UNITS.map((unit, idx) => (
+              <motion.div
+                key={unit.id}
                 initial={{ opacity: 0, y: 10 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: idx * 0.1 }}
-                className="flex flex-col p-8 bg-graphite/40 border border-white/5 rounded-sm hover:border-electric/40 transition-all group"
+                className="glass-card p-10 border border-white/5 hover:border-neon/30 transition-all group"
               >
-                <div className="text-electric group-hover:text-neon mb-6 transition-colors group-hover:scale-110 duration-300">{item.icon}</div>
-                <h4 className="font-tech text-base font-black text-ice uppercase tracking-tighter mb-2">{item.title}</h4>
-                <p className="text-[9px] text-slate-500 font-bold uppercase tracking-widest leading-relaxed">{item.desc}</p>
-              </motion.div>
-            ))}
-          </div>
-        </section>
-
-        {/* --- Services Grid --- */}
-        <section id="servicios" className="max-w-7xl mx-auto mb-32 px-4">
-          <div className="grid md:grid-cols-2 gap-8">
-            {BUSINESS_UNITS.map((unit, idx) => (
-              <motion.div 
-                key={unit.id}
-                initial={{ opacity: 0, x: idx % 2 === 0 ? -20 : 20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                className="p-12 md:p-16 border border-white/5 rounded-sm bg-obsidian/40 relative group overflow-hidden"
-              >
-                <div className="flex items-center gap-6 mb-12">
-                  <div className="p-4 bg-neon/5 rounded-sm border border-neon/20 group-hover:border-neon transition-colors">{unit.icon}</div>
-                  <h2 className="font-tech text-4xl font-black uppercase tracking-tighter text-ice">{unit.title}</h2>
+                <div className="flex items-center gap-6 mb-8">
+                  <div className="p-3 bg-neon/10 rounded-sm border border-neon/20 group-hover:border-neon transition-colors text-neon">{unit.icon}</div>
+                  <h3 className="font-tech text-2xl font-black uppercase italic tracking-tight text-ice">{unit.title}</h3>
                 </div>
-                <p className="text-slate-500 text-[10px] mb-12 font-black uppercase tracking-[0.2em] leading-relaxed border-l-2 border-neon pl-6">{unit.description}</p>
-                
-                <div className="grid gap-3">
+                <p className="text-slate-500 text-[10px] mb-8 font-black uppercase tracking-widest leading-relaxed border-l-2 border-neon pl-4">{unit.description}</p>
+
+                <div className="grid gap-4">
                   {unit.items.map((item) => (
-                    <div 
+                    <div
                       key={item.title}
-                      onClick={() => setSelectedRole(item)}
-                      className="group/item flex items-center justify-between p-8 rounded-sm bg-obsidian border border-white/5 hover:border-electric/50 transition-all cursor-pointer"
+                      className="p-6 rounded-sm bg-obsidian/60 border border-white/5 hover:border-electric/30 transition-all"
                     >
-                      <div className="pr-4">
-                        <h4 className="font-tech font-black text-ice group-hover/item:text-neon transition-colors uppercase tracking-tight text-xl">{item.title}</h4>
-                        <p className="text-[11px] text-slate-600 mt-2 font-bold uppercase tracking-wider">{item.desc}</p>
+                      <h4 className="font-tech font-black text-ice uppercase tracking-tight text-lg mb-2">{item.title}</h4>
+                      <p className="text-[10px] text-slate-500 mb-4 font-bold uppercase tracking-wider">{item.desc}</p>
+                      <div className="flex flex-wrap gap-2">
+                        {item.features.map(f => (
+                          <span key={f} className="text-[8px] bg-electric/10 text-electric border border-electric/20 px-2 py-0.5 rounded-full uppercase font-black tracking-tighter">
+                            {f}
+                          </span>
+                        ))}
                       </div>
-                      <ChevronRight className="text-slate-800 group-hover/item:text-neon transition-all w-6 h-6" />
                     </div>
                   ))}
                 </div>
@@ -321,180 +428,170 @@ export default function Home() {
           </div>
         </section>
 
+
         {/* --- Data Master Technical Specs Summary --- */}
-        <section className="max-w-7xl mx-auto py-24 px-4 grid md:grid-cols-4 gap-8 border-y border-white/5 my-32">
+        <section className="max-w-7xl mx-auto py-16 px-4 grid md:grid-cols-4 gap-8 border-y border-white/5 my-16">
           <div className="text-center">
-            <div className="font-tech text-4xl font-black text-white mb-2 uppercase tracking-tighter">Medallion</div>
-            <h5 className="text-mint font-bold uppercase text-[10px] tracking-[0.4em] mb-4">Architecture</h5>
-            <p className="text-slate-600 text-[10px] font-black uppercase">Industrial Precision</p>
+            <div className="font-tech text-3xl font-black text-white mb-2 uppercase tracking-tighter italic">Medallion</div>
+            <h5 className="text-neon font-bold uppercase text-[9px] tracking-[0.4em] mb-4">Architecture</h5>
+            <p className="text-slate-600 text-[9px] font-black uppercase tracking-widest">Industrial Precision</p>
           </div>
           <div className="text-center border-l border-white/5">
-             <div className="font-tech text-4xl font-black text-white mb-2 uppercase tracking-tighter">Delta Lake</div>
-            <h5 className="text-copper font-bold uppercase text-[10px] tracking-[0.4em] mb-4">Core Storage</h5>
-            <p className="text-slate-600 text-[10px] font-black uppercase">High-Availability</p>
+             <div className="font-tech text-3xl font-black text-white mb-2 uppercase tracking-tighter italic">Delta Lake</div>
+            <h5 className="text-electric font-bold uppercase text-[9px] tracking-[0.4em] mb-4">Core Storage</h5>
+            <p className="text-slate-600 text-[9px] font-black uppercase tracking-widest">High-Availability</p>
           </div>
           <div className="text-center border-l border-white/5">
-            <div className="font-tech text-4xl font-black text-white mb-2 uppercase tracking-tighter">Efficiency</div>
-            <h5 className="text-mint font-bold uppercase text-[10px] tracking-[0.4em] mb-4">Cost Reduction</h5>
-            <p className="text-slate-600 text-[10px] font-black uppercase">Data Science Pro</p>
+            <div className="font-tech text-3xl font-black text-white mb-2 uppercase tracking-tighter italic">Efficiency</div>
+            <h5 className="text-neon font-bold uppercase text-[9px] tracking-[0.4em] mb-4">Cost Reduction</h5>
+            <p className="text-slate-600 text-[9px] font-black uppercase tracking-widest">Data Science Pro</p>
           </div>
           <div className="text-center border-l border-white/5">
-            <div className="font-tech text-4xl font-black text-white mb-2 uppercase tracking-tighter">Scalability</div>
-            <h5 className="text-copper font-bold uppercase text-[10px] tracking-[0.4em] mb-4">Global Reach</h5>
-            <p className="text-slate-600 text-[10px] font-black uppercase">Cloud Native</p>
+            <div className="font-tech text-3xl font-black text-white mb-2 uppercase tracking-tighter italic">Scalability</div>
+            <h5 className="text-electric font-bold uppercase text-[9px] tracking-[0.4em] mb-4">Global Reach</h5>
+            <p className="text-slate-600 text-[9px] font-black uppercase tracking-widest">Cloud Native</p>
           </div>
         </section>
 
-        {/* --- AI Industrial Demo: Neon Terminal --- */}
-        <section className="max-w-7xl mx-auto mb-32 px-6">
-          <div className="grid md:grid-cols-2 gap-16 items-center">
+        {/* --- AI Industrial Demo: Terminal --- */}
+        <section className="max-w-7xl mx-auto mb-16 px-6">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="order-2 md:order-1">
-              <div className="bg-[#0a0c10] border border-electric/20 rounded-sm p-8 shadow-[0_0_60px_rgba(0,240,255,0.03)] relative group">
-                <div className="absolute top-0 right-10 w-px h-full bg-gradient-to-b from-transparent via-electric/10 to-transparent" />
+              <div className="bg-[#050210] border border-neon/10 rounded-sm p-8 shadow-2xl relative">
                 <div className="flex items-center justify-between mb-6 border-b border-white/5 pb-4">
                   <div className="flex gap-2">
                     <div className="w-2.5 h-2.5 rounded-full bg-red-500/30" />
-                    <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/30" />
-                    <div className="w-2.5 h-2.5 rounded-full bg-neon/80 shadow-[0_0_10px_#ccff00]" />
+                    <div className="w-2.5 h-2.5 rounded-full bg-neon/80" />
                   </div>
-                  <span className="text-[9px] font-tech text-electric/40 uppercase tracking-[0.3em]">Colconexus IA - Diagnostic_Engine.sh</span>
+                  <span className="text-[7px] font-tech text-neon/30 uppercase tracking-[0.4em]">Audit_Engine_2.7.sh</span>
                 </div>
-                <div className="terminal-code space-y-3 font-mono">
-                   <p className="opacity-40 text-[10px]">[SYSTEM] Initializing Neural Audit v2.6...</p>
-                   <p className="text-white/80">[AUTH] Engineering_Admin_01 Verified.</p>
-                   <p className="text-ice">&gt; audit --deep --target manufacturing_ops</p>
-                   <p className="text-electric"> [PROCESSING] Analyzing Data Pipelines... 100%</p>
-                   <p className="text-neon font-black"> [SUCCESS] 08 Fatal Inefficiencies Eliminated.</p>
-                   <p className="text-ice"> [ROI] Performance Increase: +42.8% Est.</p>
-                   <div className="flex items-center gap-2">
-                     <span className="text-ice">&gt; Status: </span>
-                     <span className="terminal-cursor" />
+                <div className="terminal-code space-y-2 font-mono text-[10px]">
+                   <p className="text-electric opacity-60">[BOOT] Engineering_Kernel_v2.7_Loaded</p>
+                   <p className="text-ice">&gt; analyze --depth exhaustive --target global_ops</p>
+                   <p className="text-neon"> [OK] 12 Inefficiencies Remapped.</p>
+                   <p className="text-electric"> [DATA] Medallion Pipeline Sync: 100%</p>
+                   <div className="flex items-center gap-1">
+                     <span className="text-ice">&gt; </span>
+                     <span className="terminal-cursor w-2 h-4 bg-neon animate-pulse" />
                    </div>
                 </div>
               </div>
             </div>
             <div className="order-1 md:order-2">
-              <h2 className="font-tech text-4xl md:text-5xl font-black text-ice mb-8 leading-none uppercase italic tracking-tighter">
-                Auditoría Autónoma <br /> <span className="neon-glow">Grado Industrial</span>
+              <h2 className="font-tech text-3xl md:text-5xl font-black text-ice mb-6 leading-none uppercase italic tracking-tighter">
+                Auditoría <span className="neon-glow">Autónoma</span>
               </h2>
-              <p className="text-slate-400 text-lg mb-10 leading-relaxed font-medium">
-                Nuestros agentes de ingeniería no solo observan, ejecutan. Blindamos la rentabilidad mediante una capa de inteligencia que recalcula la eficiencia operativa en milisegundos.
+              <p className="text-slate-500 text-sm mb-8 leading-relaxed font-medium">
+                Nuestros agentes de ingeniería ejecutan. Blindamos la rentabilidad mediante inteligencia que recalcula la eficiencia operativa en tiempo real.
               </p>
-              <div className="flex gap-12">
+              <div className="flex gap-8">
                 <div>
-                  <div className="font-tech text-3xl font-black text-neon mb-1 tracking-tighter">0.8ms</div>
-                  <div className="text-[10px] text-electric font-black uppercase tracking-widest">Latencia de Red</div>
+                  <div className="font-tech text-2xl font-black text-neon mb-1 tracking-tighter">0.8ms</div>
+                  <div className="text-[8px] text-electric font-black uppercase tracking-widest">Latencia</div>
                 </div>
                 <div>
-                  <div className="font-tech text-3xl font-black text-neon mb-1 tracking-tighter">99.9%</div>
-                  <div className="text-[10px] text-electric font-black uppercase tracking-widest">Uptime Operativo</div>
+                  <div className="font-tech text-2xl font-black text-neon mb-1 tracking-tighter">99.9%</div>
+                  <div className="text-[8px] text-electric font-black uppercase tracking-widest">Uptime</div>
                 </div>
               </div>
             </div>
           </div>
         </section>
 
-        {/* --- Media Hub: YouTube Integration --- */}
-        <section className="max-w-7xl mx-auto mb-32 px-6">
-          <div className="grid md:grid-cols-12 gap-10">
-            <div className="md:col-span-8">
-              <div className="relative aspect-video rounded-sm overflow-hidden border border-white/5 bg-obsidian group">
-                <iframe 
-                  className="w-full h-full grayscale opacity-70 group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-1000"
-                  src="https://www.youtube.com/embed/aW-6Zbc-Lyw?autoplay=0&mute=1" 
-                  title="Colconexus Engineering Deep Dive"
-                  allowFullScreen
-                />
-                <div className="absolute inset-x-0 bottom-0 h-1/4 bg-gradient-to-t from-obsidian to-transparent pointer-events-none" />
-              </div>
+        {/* --- Media Hub --- */}
+        <section className="max-w-7xl mx-auto mb-16 px-6">
+          <div className="grid md:grid-cols-3 gap-6">
+            <div className="md:col-span-2 relative aspect-video rounded-sm overflow-hidden border border-white/5 group">
+              <iframe
+                className="w-full h-full opacity-90 group-hover:opacity-100 transition-all duration-700"
+                src="https://www.youtube.com/embed/aW-6Zbc-Lyw?autoplay=0&mute=1"
+                title="Deep Dive"
+                allowFullScreen
+              />
             </div>
-            <div className="md:col-span-4 flex flex-col gap-10">
-              <div className="relative aspect-[9/16] rounded-sm overflow-hidden border border-neon/20 bg-obsidian group">
-                <iframe 
-                  className="w-full h-full"
-                  src="https://www.youtube.com/embed/ROrzZBpJUag" 
-                  title="Colconexus Insights Reel"
-                  allowFullScreen
-                />
-              </div>
+            <div className="relative aspect-[9/16] rounded-sm overflow-hidden border border-neon/20 group hidden md:block">
+              <iframe
+                className="w-full h-full"
+                src="https://www.youtube.com/embed/ROrzZBpJUag"
+                title="Shorts"
+                allowFullScreen
+              />
             </div>
           </div>
         </section>
 
-        {/* --- Orquestación Section (Neon Fix) --- */}
-        <section className="max-w-7xl mx-auto mb-32 px-6">
-           <div className="relative rounded-sm overflow-hidden border border-white/5 bg-obsidian group glass-card">
-              <div className="grid md:grid-cols-2">
-                <div className="p-12 md:p-20 flex flex-col justify-center gap-8 relative z-10">
-                  <h3 className="font-tech text-4xl md:text-5xl font-black text-ice uppercase italic tracking-tighter">
+        {/* --- Orquestación Refined --- */}
+        <section className="max-w-7xl mx-auto mb-16 px-6">
+           <div className="relative rounded-sm overflow-hidden border border-white/5 bg-purple-deep/20 group">
+              <div className="grid md:grid-cols-12 h-full items-stretch">
+                <div className="md:col-span-7 p-10 md:p-14 flex flex-col justify-center gap-6 relative z-10">
+                  <h3 className="font-tech text-3xl md:text-4xl font-black text-ice uppercase italic tracking-tighter">
                     La IA no es Código, <br /> es <span className="neon-glow">Orquestación</span>.
                   </h3>
-                  <p className="text-slate-400 text-base font-medium tracking-tight">
-                    Entiende las herramientas, nosotros las unimos por ti para crear un sistema de inteligencia cohesionado.
+                  <p className="text-slate-500 text-sm font-medium tracking-tight max-w-md">
+                    Entiende las herramientas, nosotros las unimos por ti para crear un sistema cohesionado y escalable que responda a su demanda industrial.
                   </p>
-                  <button onClick={() => handleWhatsAppRedirect("Engine Orchestra")} className="btn-neon w-fit px-12 py-5">Ver Arquitectura</button>
+                  <button onClick={() => handleWhatsAppRedirect("Engine Orchestra")} className="btn-neon w-fit px-10 py-4 text-xs">Ver Arquitectura</button>
                 </div>
-                <div className="relative min-h-[450px] border-l border-white/5">
+                <div className="md:col-span-5 relative min-h-[300px] border-l border-white/5">
                    <img 
                     src="/assets/orchestra-ai.jpg" 
-                    alt="AI Orchestration Hub" 
-                    className="absolute inset-0 w-full h-full object-cover grayscale opacity-40 group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-1000"
+                    alt="Orchestration" 
+                    className="w-full h-full object-cover group-hover:scale-105 transition-all duration-1000"
                    />
-                   <div className="absolute inset-0 bg-gradient-to-l from-obsidian/40 to-transparent" />
                 </div>
               </div>
            </div>
         </section>
 
-        <section id="diagnostico" className="max-w-7xl mx-auto mb-32 relative px-4 text-center">
+        <section id="diagnostico" className="max-w-7xl mx-auto mb-16 relative px-4 text-center">
           <div className="absolute inset-0 bg-neon/5 blur-[120px] -z-10" />
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="glass-card p-12 md:p-24 rounded-sm border-neon/20 bg-obsidian/40"
+            className="glass-card p-12 md:p-20 rounded-sm border-neon/10 bg-purple-deep/30"
           >
-            <h2 className="font-tech text-3xl md:text-5xl font-black mb-6 leading-tight tracking-[0.05em] text-ice uppercase italic">
+            <h2 className="font-tech text-2xl md:text-4xl font-black mb-4 leading-tight tracking-[0.05em] text-ice uppercase italic">
               ¿Tu empresa tiene herramientas del
             </h2>
-            <div className="xxi-glow mb-6">XXI</div>
-            <h2 className="font-tech text-3xl md:text-5xl font-black mb-12 leading-tight tracking-[0.05em] text-slate-700 uppercase italic">
+            <div className="xxi-glow mb-4 text-6xl md:text-8xl">XXI</div>
+            <h2 className="font-tech text-2xl md:text-4xl font-black mb-10 leading-tight tracking-[0.05em] text-slate-700 uppercase italic">
               o trabaja con herramientas del siglo XIX?
             </h2>
-            <p className="text-neon/60 text-[10px] md:text-[12px] font-black mb-16 max-w-2xl mx-auto uppercase tracking-[0.6em] leading-relaxed">
+            <p className="text-neon/60 text-[9px] md:text-[11px] font-black mb-12 max-w-2xl mx-auto uppercase tracking-[0.5em] leading-relaxed">
               DESCÚBRELO CON NUESTRO TEST DE DIAGNÓSTICO DIGITAL PRO.
             </p>
-            <a 
-              href="https://forms.gle/6mRAKsnYVZowXiAD6" 
-              target="_blank" 
+            <a
+              href="https://forms.gle/6mRAKsnYVZowXiAD6"
+              target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-8 px-16 py-8 btn-neon text-base md:text-xl group"
+              className="inline-flex items-center gap-6 px-12 py-6 btn-neon text-sm md:text-lg group"
             >
               REALIZAR TEST DE DIAGNÓSTICO
-              <ArrowRight className="w-6 h-6 group-hover:translate-x-3 transition-transform" />
+              <ArrowRight className="w-5 h-5 group-hover:translate-x-3 transition-transform" />
             </a>
           </motion.div>
         </section>
 
-        {/* --- Final CTA Section: Engineering Hub --- */}
-        <section className="max-w-7xl mx-auto p-16 md:p-32 rounded-sm bg-obsidian border border-white/5 text-center relative overflow-hidden group">
-          <div className="absolute inset-0 bg-grid-overlay opacity-20" />
-          <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-electric/20 to-transparent" />
-          
-          <h2 className="font-tech text-5xl md:text-[9rem] font-black mb-10 leading-[0.8] tracking-tighter italic uppercase text-ice relative z-10">
+        {/* --- Final CTA Section --- */}
+        <section className="max-w-7xl mx-auto p-12 md:p-24 rounded-sm bg-obsidian border border-white/5 text-center relative overflow-hidden group mb-16">
+          <div className="absolute inset-0 bg-grid-overlay opacity-10" />
+
+          <h2 className="font-tech text-4xl md:text-[6rem] font-black mb-8 leading-[0.8] tracking-tighter italic uppercase text-ice relative z-10">
             COLCONEXUS <br /> <span className="electric-glow">TECH HUB</span>
           </h2>
-          <p className="text-slate-500 mb-16 text-sm md:text-xl font-bold max-w-3xl mx-auto relative z-10 uppercase tracking-[0.3em] leading-relaxed">
+          <p className="text-slate-500 mb-12 text-xs md:text-base font-bold max-w-3xl mx-auto relative z-10 uppercase tracking-[0.3em] leading-relaxed">
             Eliminamos el techo de su productividad. <br />
             Auditoría estratégica y despliegue masivo de automatización.
           </p>
-          
-          <button 
-            onClick={() => handleWhatsAppRedirect("Tech Hub Final Access")}
-            className="px-16 py-8 btn-neon text-base md:text-xl mx-auto relative z-10 group"
+
+          <button
+            onClick={() => handleWhatsAppRedirect("Tech Hub Finish")}
+            className="px-12 py-6 btn-neon text-sm md:text-base mx-auto relative z-10 group"
           >
             SOLICITAR AUDITORÍA DE RENDIMIENTO
-            <ArrowRight className="w-8 h-8 group-hover:translate-x-3 transition-transform" />
+            <ArrowRight className="w-6 h-6 group-hover:translate-x-3 transition-transform" />
           </button>
         </section>
       </main>
@@ -502,7 +599,7 @@ export default function Home() {
       {/* --- Footer Lux (Neon Refresh) --- */}
       <footer className="max-w-7xl mx-auto px-6 py-40 border-t border-white/5 flex flex-col gap-24 relative overflow-hidden">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-neon/20 to-transparent" />
-        
+
         <div className="grid md:grid-cols-2 items-center gap-32">
           <div className="flex flex-col gap-6">
             <span className="font-tech text-ice text-4xl font-black tracking-tighter uppercase italic">COLCONEXUS</span>
@@ -510,7 +607,7 @@ export default function Home() {
             <p className="max-w-md text-slate-600 text-[11px] font-black uppercase tracking-[0.15em] leading-[1.8] mt-4">
               Blindando la rentabilidad corporativa mediante orquestación de datos e inteligencia artificial de grado industrial.
             </p>
-            <button 
+            <button
               onClick={() => handleWhatsAppRedirect("Audit 2026")}
               className="btn-neon w-fit px-12 py-5 text-xs mt-4"
             >
