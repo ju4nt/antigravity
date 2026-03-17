@@ -40,226 +40,192 @@ export default function Home() {
   
   const handleWhatsAppRedirect = (service = "") => {
     const text = service 
-      ? `Hola equipo de Colconexus. Me interesa el servicio: *${service}*. ¿Podrían darme más información?`
-      : "Hola Colconexus. Quisiera solicitar una asesoría técnica profesional.";
+      ? `Hola equipo de Colconexus. Me interesa el servicio institucional: *${service}*. ¿Podrían darme más información técnica?`
+      : "Hola Colconexus. Quisiera solicitar una auditoría de rendimiento técnica.";
     window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`, '_blank');
   };
 
   const IMPACT_SOLUTIONS = [
-    { title: "Robot Personalizado", desc: "Automatización de tareas en tiempo récord.", icon: <Bot className="w-5 h-5" /> },
-    { title: "Analistas Profesionales", desc: "Talento experto y Copilots de negocio.", icon: <Users className="w-5 h-5" /> },
-    { title: "Speech Analytics", desc: "Análisis vocal y sentimientos en tiempo real.", icon: <Mic2 className="w-5 h-5" /> },
-    { title: "Auditores IA", desc: "Calidad automática en llamadas y mensajes.", icon: <ShieldCheck className="w-5 h-5" /> }
+    { title: "Robot Industrial", desc: "Automatización de procesos en tiempo real.", icon: <Bot className="w-5 h-5" /> },
+    { title: "Ingeniería Experta", desc: "Talento de alto nivel y Copilots de negocio.", icon: <Users className="w-5 h-5" /> },
+    { title: "Speech Analytics", desc: "Análisis vocal industrial de alta precisión.", icon: <Mic2 className="w-5 h-5" /> },
+    { title: "Auditores de Flujo", desc: "Calidad autónoma bajo estándares B2B.", icon: <ShieldCheck className="w-5 h-5" /> }
   ];
 
   const BUSINESS_UNITS = [
     {
       id: "ia_agency",
       title: "Agencia de IA",
-      description: "Robots profesionales diseñados a su medida para ejecución autónoma sin error humano.",
-      icon: <Bot className="w-8 h-8 text-cyan-400" />,
+      description: "Blindaje de procesos mediante ejecución autónoma sin margen de error.",
+      icon: <Bot className="w-8 h-8 text-copper" strokeWidth={1.5} />,
       items: [
         {
-          title: "Intelligent Analysts & Copilots",
-          desc: "Asistencia experta para optimización de flujo de trabajo.",
-          skills: ["Speech Analytics en tiempo real", "Auditores IA de calidad (Voz y Texto)", "Copilots personalizados por industria", "Automatización de tareas diarias en récord"]
+          title: "Intelligent Analysts Pro",
+          desc: "Optimización de flujo mediante asistencia experta aumentada.",
+          skills: ["Speech Analytics industrial", "Auditores IA de flujo masivo", "Copilots de blindaje operativo", "Automatización de tareas críticas"]
         },
         {
-          title: "Financial Officer IA",
-          desc: "Modelos predictivos de utilidad y gestión estratégica.",
-          skills: ["Tendencias Early Warning con ML", "Recálculo automático de KPIs financieros", "Alertas de impacto en indicadores de factura", "Estrategias de optimización de rentabilidad"]
-        },
-        {
-          title: "Analista de Nómina Pro",
-          desc: "ERP Nómina y Prenómina en tiempo real sin discrepancias.",
-          skills: ["Liquidación automática de nómina", "Gestión de novedades de pago 24/7", "Integración con ERPs contables", "Seguimiento de costos laborales en vivo"]
+          title: "Financial AI Architect",
+          desc: "Escalabilidad rentable mediante ML predictivo.",
+          skills: ["Modelos Early Warning de rentabilidad", "Recálculo automático de KPIs críticos", "Alertas de impacto financiero proactivo", "Estrategias de optimización de márgenes"]
         }
       ]
     },
     {
       id: "data_master",
-      title: "Data Master Business",
-      description: "Arquitectura de datos avanzada: de la ingesta masiva a la utilidad real.",
-      icon: <BarChart3 className="w-8 h-8 text-purple-400" />,
+      title: "Data Precision Hub",
+      description: "Ingeniería de datos avanzada para la toma de decisiones basada en rentabilidad.",
+      icon: <BarChart3 className="w-8 h-8 text-copper" strokeWidth={1.5} />,
       items: [
         {
-          title: "Pipelines & Reportes 48h (Automáticos)",
-          desc: "Arquitectura Medallón y Lakehousing en tiempo récord.",
-          skills: ["Arquitectura Oro/Plata/Bronce & Delta Lake", "Diseño de Entidad Relación (Dimm & Fact)", "Lectura de APIs, JSON, Parquet, CSV y SQL", "Consumo de hojas online y bases NoSQL", "Reportes en Tiempo Real e Históricos"]
+          title: "Industrial Data Pipelines",
+          desc: "Estructura Medallón para consistencia absoluta de datos.",
+          skills: ["Arquitectura Delta Lake de alta fidelidad", "Diseño Entidad Relación industrial", "Integración de flujos SQL y NoSQL", "Reportes de precisión milimétrica"]
         },
         {
-          title: "Data Science & Predictivo",
-          desc: "Ciclo completo de ciencia de datos aplicada al negocio.",
-          skills: ["Perfilamiento poblacional inteligente", "Análisis Exploratorio (EDA) & Feature Engineering", "Entrenamiento y Testing de alta precisión", "Modelos de Eficiencia de Recursos"]
+          title: "Predictive Engineering",
+          desc: "Modelado matemático de alta precisión para eficiencia de recursos.",
+          skills: ["Perfilamiento avanzado de eficiencia", "Feature Engineering industrial", "Testing de modelos bajo carga crítica", "Modelos de optimización de capital"]
         }
       ]
     },
     {
       id: "wfm_strategic",
-      title: "WFM Planning & Scheduler",
-      description: "Ingeniería de personal con visión financiera y operativa en vivo.",
-      icon: <Clock className="w-8 h-8 text-orange-400" />,
+      title: "WFM Operations",
+      description: "Ingeniería de staff con enfoque en blindaje operativo y financiero.",
+      icon: <Clock className="w-8 h-8 text-copper" strokeWidth={1.5} />,
       items: [
         {
-          title: "Scheduler & Dimensionamiento IA",
-          desc: "El staff gestiona novedades, la IA hace el resto.",
-          skills: ["Pronóstico (Forecast) de tráfico exacto", "Alertas Over/Under de personal en tiempo real", "Gestión de mallas de turno automatizada", "Rostering inteligente por novedades de staff"]
+          title: "Strategic Scheduler",
+          desc: "Mallas de turno optimizadas para rentabilidad inmediata.",
+          skills: ["Forecast de tráfico de alta precisión", "Alertas Over/Under de impacto directo", "Mallas de turno automatizadas", "Gestión de novedades en tiempo real"]
         },
         {
-          title: "Insights Operativos & Factura",
-          desc: "Seguimiento de KPIs correlacionados a la utilidad.",
-          skills: ["Sugerencias estratégicas de gestión en KPIs", "Reportes periódicos con análisis de negocio", "Correlación KPI operativo vs Indicador Factura", "Alertas financieras proactivas"]
+          title: "Financial Intelligence",
+          desc: "Correlación de KPIs operativos con el P&L corporativo.",
+          skills: ["Análisis de impacto en factura", "Sugerencias tácticas de gestión de costos", "Modelado de rentabilidad operativa", "Monitoreo de KPIs de alta criticidad"]
         }
       ]
     },
     {
       id: "erp_modular",
-      title: "ERP Modular & Omnicanalidad",
-      description: "Infraestructura robusta y aplicaciones con gobierno de datos total.",
-      icon: <Cloud className="w-8 h-8 text-blue-400" />,
+      title: "Enterprise Solutions",
+      description: "Estructuras modulares escalables con gobierno corporativo de datos.",
+      icon: <Cloud className="w-8 h-8 text-copper" strokeWidth={1.5} />,
       items: [
         {
-          title: "Aplicaciones Modulares Pro",
-          desc: "Gobernanza de información y roles definidos.",
-          skills: ["ERP diseñado a medida de la operación", "Webservices y automatizaciones de flujo", "Estructura modular escalable", "Gobierno de datos corporativo"]
+          title: "Custom Functional Apps",
+          desc: "Desarrollo de herramientas de precisión para gerencia.",
+          skills: ["ERP Modular de flujo optimizado", "Webservices de alta disponibilidad", "Sistemas escalables en la nube", "Gobierno de datos multinivel"]
         },
         {
-          title: "Omnicanalidad Cloud",
-          desc: "Voz, WhatsApp, FB, Instagram y Video Bots.",
-          skills: ["Plantas Telefónicas VoIP High-End", "Infraestructura en memoria para baja latencia", "Voicebots & Chatbots multicanal", "Despliegue rápido de servicios cloud"]
+          title: "High-End Connectivity",
+          desc: "Omnicanalidad robusta para operaciones de alto volumen.",
+          skills: ["Telefonía VoIP de grado industrial", "Baja latencia en flujos masivos", "Bots multicanal de despliegue rápido", "Infraestructura en memoria"]
         }
       ]
     }
   ];
 
   return (
-    <div className="min-h-screen relative text-slate-200 bg-[#020617] overflow-x-hidden">
-      {/* Background System - Pure CSS */}
+    <div className="min-h-screen relative text-slate-200 bg-obsidian overflow-x-hidden">
+      {/* Background System - Industrial Grid */}
       <div className="bg-grid-overlay" />
-      <div className="bg-grid-animate" />
-      <div className="bg-orb -top-20 -left-20 bg-cyan-600/5 pulsate" />
-      <div className="bg-orb -bottom-20 -right-20 bg-purple-600/5 pulsate" />
 
       {/* --- Navbar --- */}
-      <nav className="fixed top-0 w-full z-50 border-b border-white/5 bg-[#020617]/90 backdrop-blur-xl">
-        <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-          <div className="flex items-center gap-2 group cursor-pointer">
-            <div className="w-10 h-10 bg-gradient-to-br from-cyan-500 to-purple-600 rounded-lg flex items-center justify-center p-1 group-hover:rotate-6 transition-transform">
-              <img src="/logo.png" alt="Colconexus Logo" className="w-full h-full object-contain brightness-0 invert" />
-            </div>
-            <div className="flex flex-col">
-              <span className="font-black tracking-tighter text-white leading-none">COLCONEXUS</span>
-              <span className="text-[8px] font-bold text-cyan-500 tracking-[0.2em] uppercase">Data Center SAS</span>
-            </div>
+      <nav className="fixed top-0 w-full z-50 border-b border-white/5 bg-obsidian/90 backdrop-blur-xl">
+        <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+          <div className="flex flex-col cursor-pointer">
+            <span className="font-tech text-2xl font-black tracking-tighter text-white leading-none">COLCONEXUS</span>
+            <span className="text-[10px] font-bold text-copper tracking-[0.4em] uppercase">Engineering Solutions</span>
           </div>
           <button 
             onClick={() => handleWhatsAppRedirect()}
-            className="text-[10px] font-black uppercase tracking-widest text-[#020617] bg-cyan-400 px-6 py-2.5 rounded-full hover:bg-white transition-all shadow-[0_0_20px_rgba(34,211,238,0.3)]"
+            className="btn-copper px-8 py-3 text-[11px]"
           >
-            Hablar con un Experto
+            Solicitar Auditoría de Rendimiento
           </button>
         </div>
       </nav>
 
       <main className="pt-24 pb-20 px-6">
         {/* --- Hero Section (Optimized Position) --- */}
-        <section className="max-w-6xl mx-auto text-center mb-16 mt-8">
+        <section className="max-w-6xl mx-auto text-center mb-24 mt-20">
           <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="flex flex-col items-center mb-12"
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            className="inline-flex items-center gap-2 px-6 py-2 rounded-sm border border-mint/30 bg-mint/5 text-[10px] font-black text-mint tracking-[0.3em] uppercase mb-12"
           >
-            <div className="w-32 h-32 md:w-48 md:h-48 mb-8 relative">
-              <div className="absolute inset-0 bg-cyan-500/20 blur-[50px] rounded-full animate-pulse" />
-              <img 
-                src="/logo.png" 
-                alt="Colconexus Logo" 
-                className="w-full h-full object-contain relative z-10 drop-shadow-[0_0_20px_rgba(34,211,238,0.5)]" 
-              />
-            </div>
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              className="inline-flex items-center gap-2 px-6 py-2 rounded-full border border-cyan-500/30 bg-cyan-500/10 text-[10px] font-black text-cyan-400 tracking-[0.3em] uppercase animate-pulse"
-            >
-              <Rocket className="w-3.5 h-3.5" /> Innovación Tecnológica B2B
-            </motion.div>
+            <ShieldCheck className="w-3.5 h-3.5" /> High-Performance Infrastructure
           </motion.div>
           
           <motion.h1 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-6xl md:text-[7.5rem] font-black mb-8 leading-[0.85] tracking-tighter"
+            className="font-tech text-6xl md:text-[8rem] font-black mb-12 leading-[0.85] tracking-tighter uppercase italic"
           >
-            Impulsa tu compañía <br /> a la era del <span className="text-gradient">futuro digital</span>
+            Optimizar. Escalar. <br /> <span className="text-mint-glow italic">Blindar.</span>
           </motion.h1>
 
           <motion.p 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            className="text-slate-400 text-xl md:text-3xl mb-12 max-w-4xl mx-auto font-bold tracking-tight leading-tight"
+            className="text-slate-400 text-xl md:text-2xl mb-16 max-w-4xl mx-auto font-medium tracking-tight leading-snug"
           >
-            <strong>Colconexus</strong>: Expertos en Arquitecturas de Datos, WFM y Automatización IA. 
-            Soluciones reales para la era de la precisión.
+            Ingeniería de precisión aplicada a la rentabilidad corporativa. 
+            Soluciones de arquitectura de datos y automatización para operaciones de alto nivel.
           </motion.p>
         </section>
 
         {/* --- NEW: IMPACT SOLUTIONS PANEL --- */}
-        <section className="max-w-7xl mx-auto mb-20 relative px-4">
-          <div className="absolute -inset-1 bg-gradient-to-r from-cyan-600 to-purple-600 rounded-[3rem] blur opacity-20" />
-          <div className="relative grid grid-cols-1 md:grid-cols-4 gap-1 p-1 bg-white/5 rounded-[3rem] backdrop-blur-2xl border border-white/10">
+        <section className="max-w-7xl mx-auto mb-32 px-4">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
             {IMPACT_SOLUTIONS.map((item, idx) => (
               <motion.div 
                 key={item.title}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: idx * 0.1 }}
-                className="flex items-center gap-4 p-8 hover:bg-white/5 transition-all cursor-default first:rounded-l-[2.8rem] last:rounded-r-[2.8rem]"
+                className="flex flex-col p-8 bg-graphite/40 border border-copper/10 rounded-sm hover:border-mint/40 transition-all group"
               >
-                <div className="p-3 bg-cyan-500/20 rounded-xl text-cyan-400">{item.icon}</div>
-                <div>
-                  <h4 className="text-sm font-black text-white uppercase tracking-tighter">{item.title}</h4>
-                  <p className="text-[10px] text-slate-500 font-bold uppercase">{item.desc}</p>
-                </div>
+                <div className="text-copper group-hover:text-mint mb-6 transition-colors">{item.icon}</div>
+                <h4 className="font-tech text-lg font-black text-white uppercase tracking-tighter mb-2">{item.title}</h4>
+                <p className="text-[10px] text-slate-500 font-bold uppercase tracking-widest">{item.desc}</p>
               </motion.div>
             ))}
           </div>
         </section>
 
         {/* --- Services Grid --- */}
-        <section id="servicios" className="max-w-7xl mx-auto mb-32">
-          <div className="grid md:grid-cols-2 gap-10">
+        <section id="servicios" className="max-w-7xl mx-auto mb-32 px-4">
+          <div className="grid md:grid-cols-2 gap-8">
             {BUSINESS_UNITS.map((unit, idx) => (
               <motion.div 
                 key={unit.id}
-                initial={{ opacity: 0, y: 30 }}
+                initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: idx * 0.1 }}
-                className="glass-card p-12 rounded-[4rem] border-white/5 hover:border-cyan-500/30 transition-all duration-700 relative overflow-hidden group"
+                className="glass-card p-12 rounded-sm border-white/5 hover:border-copper/40 transition-all duration-500 relative overflow-hidden group"
               >
-                <div className="absolute top-0 right-0 p-12 opacity-[0.03] group-hover:opacity-10 transition-opacity">
-                  {unit.icon}
+                <div className="flex items-center gap-6 mb-12">
+                  <div className="p-4 bg-copper/5 rounded-sm border border-copper/20">{unit.icon}</div>
+                  <h2 className="font-tech text-4xl font-black uppercase tracking-tighter text-white">{unit.title}</h2>
                 </div>
+                <p className="text-slate-400 text-[10px] mb-12 font-black uppercase tracking-[0.2em] leading-relaxed border-l border-copper pl-6">{unit.description}</p>
                 
-                <div className="flex items-center gap-6 mb-10">
-                  <div className="p-4 bg-white/5 rounded-3xl shadow-inner group-hover:shadow-cyan-500/20 transition-all">{unit.icon}</div>
-                  <h2 className="text-4xl font-black uppercase italic tracking-tighter leading-none text-white">{unit.title}</h2>
-                </div>
-                <p className="text-slate-500 text-xs mb-12 font-black uppercase tracking-widest leading-relaxed border-l-2 border-cyan-500/30 pl-6">{unit.description}</p>
-                
-                <div className="grid gap-4">
+                <div className="grid gap-3">
                   {unit.items.map((item) => (
                     <div 
                       key={item.title}
                       onClick={() => setSelectedRole(item)}
-                      className="group/item flex items-center justify-between p-8 rounded-[2.5rem] bg-[#0a1120]/60 border border-white/5 hover:border-purple-500/40 hover:bg-white/5 cursor-pointer transition-all shadow-xl"
+                      className="group/item flex items-center justify-between p-8 rounded-sm bg-obsidian border border-white/5 hover:border-mint/50 transition-all cursor-pointer"
                     >
                       <div className="pr-4">
-                        <h4 className="font-black text-white group-hover/item:text-cyan-400 transition-colors uppercase tracking-tight text-xl">{item.title}</h4>
-                        <p className="text-sm text-slate-500 mt-2 font-bold leading-snug">{item.desc}</p>
+                        <h4 className="font-tech font-black text-white group-hover/item:text-mint transition-colors uppercase tracking-tight text-xl">{item.title}</h4>
+                        <p className="text-[11px] text-slate-500 mt-2 font-bold uppercase tracking-wider">{item.desc}</p>
                       </div>
-                      <ChevronRight className="text-slate-700 group-hover/item:text-cyan-400 group-hover/item:translate-x-2 transition-all w-8 h-8" />
+                      <ChevronRight className="text-slate-800 group-hover/item:text-mint transition-all w-6 h-6" />
                     </div>
                   ))}
                 </div>
@@ -269,108 +235,110 @@ export default function Home() {
         </section>
 
         {/* --- Data Master Technical Specs Summary --- */}
-        <section className="max-w-7xl mx-auto py-24 grid md:grid-cols-4 gap-8 border-y border-white/5 my-32">
+        <section className="max-w-7xl mx-auto py-24 px-4 grid md:grid-cols-4 gap-8 border-y border-white/5 my-32">
           <div className="text-center">
-            <div className="text-4xl font-black text-white mb-2 uppercase italic tracking-tighter">Medallion</div>
-            <h5 className="text-cyan-500 font-bold uppercase text-[10px] tracking-[0.4em] mb-4">Architecture</h5>
-            <p className="text-slate-600 text-[10px] font-black uppercase">Oro · Plata · Bronce</p>
+            <div className="font-tech text-4xl font-black text-white mb-2 uppercase tracking-tighter">Medallion</div>
+            <h5 className="text-mint font-bold uppercase text-[10px] tracking-[0.4em] mb-4">Architecture</h5>
+            <p className="text-slate-600 text-[10px] font-black uppercase">Industrial Precision</p>
           </div>
           <div className="text-center border-l border-white/5">
-             <div className="text-4xl font-black text-white mb-2 uppercase italic tracking-tighter">Delta Lake</div>
-            <h5 className="text-purple-500 font-bold uppercase text-[10px] tracking-[0.4em] mb-4">Storage</h5>
-            <p className="text-slate-600 text-[10px] font-black uppercase">Lakehousing Pro</p>
+             <div className="font-tech text-4xl font-black text-white mb-2 uppercase tracking-tighter">Delta Lake</div>
+            <h5 className="text-copper font-bold uppercase text-[10px] tracking-[0.4em] mb-4">Core Storage</h5>
+            <p className="text-slate-600 text-[10px] font-black uppercase">High-Availability</p>
           </div>
           <div className="text-center border-l border-white/5">
-            <div className="text-4xl font-black text-white mb-2 uppercase italic tracking-tighter">Over/Under</div>
-            <h5 className="text-orange-500 font-bold uppercase text-[10px] tracking-[0.4em] mb-4">WFM Alertas</h5>
-            <p className="text-slate-600 text-[10px] font-black uppercase">Staff Real-Time</p>
+            <div className="font-tech text-4xl font-black text-white mb-2 uppercase tracking-tighter">Efficiency</div>
+            <h5 className="text-mint font-bold uppercase text-[10px] tracking-[0.4em] mb-4">Cost Reduction</h5>
+            <p className="text-slate-600 text-[10px] font-black uppercase">Data Science Pro</p>
           </div>
           <div className="text-center border-l border-white/5">
-            <div className="text-4xl font-black text-white mb-2 uppercase italic tracking-tighter">Financial</div>
-            <h5 className="text-blue-500 font-bold uppercase text-[10px] tracking-[0.4em] mb-4">Correlation</h5>
-            <p className="text-slate-600 text-[10px] font-black uppercase">KPI vs Factura</p>
+            <div className="font-tech text-4xl font-black text-white mb-2 uppercase tracking-tighter">Scalability</div>
+            <h5 className="text-copper font-bold uppercase text-[10px] tracking-[0.4em] mb-4">Global Reach</h5>
+            <p className="text-slate-600 text-[10px] font-black uppercase">Cloud Native</p>
           </div>
         </section>
 
         {/* --- Video Section --- */}
-        <section className="max-w-6xl mx-auto mb-32 relative">
-          <div className="absolute -top-10 -left-10 w-40 h-40 bg-cyan-500/10 blur-[100px]" />
-          <div className="aspect-video w-full rounded-[4.5rem] overflow-hidden border border-white/10 bg-black shadow-2xl">
+        <section className="max-w-6xl mx-auto mb-32 relative px-4 text-center">
+          <div className="absolute inset-0 bg-copper/5 blur-[120px] -z-10" />
+          <div className="aspect-video w-full rounded-sm overflow-hidden border border-white/10 bg-black shadow-2xl">
              <iframe 
-              className="w-full h-full"
+              className="w-full h-full grayscale opacity-80 hover:grayscale-0 transition-all duration-700"
               src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
-              title="Colconexus Tech Hub - Video Presidencial"
+              title="Colconexus Tech Hub - Ingeniería de Precisión"
               allowFullScreen
             />
           </div>
         </section>
 
-        {/* --- Diagnostic Form Section (Siglo XXI vs XIX) --- */}
         <section className="max-w-7xl mx-auto mb-32 relative px-4 text-center">
-          <div className="absolute inset-0 bg-cyan-500/5 blur-[120px] -z-10" />
+          <div className="absolute inset-0 bg-mint/5 blur-[120px] -z-10" />
           <motion.div 
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="glass-card p-16 rounded-[4rem] border-cyan-500/20"
+            className="glass-card p-20 rounded-sm border-mint/20"
           >
-            <h2 className="text-4xl md:text-6xl font-black mb-8 leading-tight tracking-tighter text-white">
-              ¿Tu empresa tiene herramientas del <span className="text-cyan-400">siglo XXI</span> <br />
-              o trabaja con herramientas del <span className="text-slate-500">siglo XIX</span>?
+            <h2 className="font-tech text-4xl md:text-5xl font-black mb-4 leading-tight tracking-[0.1em] text-white uppercase italic">
+              ¿Tu empresa tiene herramientas del
             </h2>
-            <p className="text-slate-400 text-xl font-bold mb-12 max-w-2xl mx-auto uppercase tracking-wide">
-              Descúbrelo con nuestro Test de Diagnóstico Digital Pro.
+            <div className="xxi-glow siglo-title mb-4">XXI</div>
+            <h2 className="font-tech text-4xl md:text-5xl font-black mb-12 leading-tight tracking-[0.1em] text-slate-800 uppercase italic">
+              o trabaja con herramientas del siglo XIX?
+            </h2>
+            <p className="text-slate-500 text-[11px] font-black mb-16 max-w-2xl mx-auto uppercase tracking-[0.5em]">
+              DESCÚBRELO CON NUESTRO TEST DE DIAGNÓSTICO DIGITAL PRO.
             </p>
             <a 
               href="https://forms.gle/6mRAKsnYVZowXiAD6" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-4 px-12 py-6 bg-gradient-to-r from-cyan-500 to-purple-600 text-white rounded-full font-black text-lg hover:scale-105 transition-all shadow-[0_0_40px_rgba(34,211,238,0.3)] group"
+              className="inline-flex items-center gap-6 px-16 py-8 btn-copper text-lg group"
             >
               REALIZAR TEST DE DIAGNÓSTICO
-              <Zap className="w-6 h-6 group-hover:rotate-12 transition-transform" />
+              <ArrowRight className="w-6 h-6 group-hover:translate-x-2 transition-transform" />
             </a>
           </motion.div>
         </section>
 
         {/* --- Final CTA Section --- */}
-        <section className="max-w-6xl mx-auto p-24 rounded-[5rem] bg-gradient-to-br from-[#0c1a33] via-[#020617] to-[#1a0c33] border border-white/10 text-center relative overflow-hidden">
-          <div className="absolute inset-0 bg-grid-overlay opacity-30 animate-pulse" />
-          <h2 className="text-7xl md:text-[8rem] font-black mb-10 leading-[0.8] tracking-tighter italic uppercase text-white relative z-10">
-            COLCONEXUS <br /> <span className="text-cyan-500">TECH HUB</span>
+        <section className="max-w-6xl mx-auto p-24 rounded-sm bg-obsidian border border-copper/20 text-center relative overflow-hidden">
+          <div className="absolute inset-0 bg-grid-overlay opacity-30" />
+          <h2 className="font-tech text-7xl md:text-[8rem] font-black mb-10 leading-[0.8] tracking-tighter italic uppercase text-white relative z-10">
+            COLCONEXUS <br /> <span className="text-mint">TECH HUB</span>
           </h2>
-          <p className="text-slate-400 mb-16 text-2xl font-bold max-w-3xl mx-auto relative z-10">Asesoría tecnológica, optimización de recursos y despliegue masivo de datos para su rentabilidad.</p>
+          <p className="text-slate-400 mb-16 text-xl font-bold max-w-3xl mx-auto relative z-10 uppercase tracking-widest">
+            Eliminamos el techo de su productividad. <br />
+            Auditoría estratégica y despliegue masivo de rentabilidad.
+          </p>
           
           <button 
             onClick={() => handleWhatsAppRedirect()}
-            className="px-16 py-8 bg-white text-black rounded-full font-black text-xl shadow-[0_0_60px_rgba(255,255,255,0.1)] hover:scale-105 transition-all flex items-center justify-center gap-6 mx-auto relative z-10 group"
+            className="px-16 py-8 btn-copper text-xl mx-auto relative z-10 group"
           >
-            AGENDAR CONSULTORÍA ELITE
+            SOLICITAR AUDITORÍA DE RENDIMIENTO
             <ArrowRight className="w-8 h-8 group-hover:translate-x-2 transition-transform" />
           </button>
         </section>
       </main>
 
       {/* --- Footer Lux --- */}
-      <footer className="max-w-7xl mx-auto px-6 py-20 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-10 text-[10px] text-slate-500 uppercase tracking-widest font-black">
-        <div className="flex items-center gap-5">
-           <img src="/logo.png" alt="Logo" className="h-8 opacity-40 brightness-0 invert" />
-           <div className="flex flex-col">
-             <span>COLCONEXUS DATA CENTER SAS</span>
-             <span className="text-cyan-600 italic">Global Tech Innovation</span>
-           </div>
+      <footer className="max-w-7xl mx-auto px-6 py-20 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-10 text-[10px] text-slate-600 uppercase tracking-widest font-black">
+        <div className="flex flex-col">
+          <span className="font-tech text-white text-lg">COLCONEXUS</span>
+          <span className="text-copper italic">Global Engineering Hub</span>
         </div>
         <div className="flex gap-16 font-black uppercase text-[10px]">
-          <a href="https://www.linkedin.com/company/colconexus-datacenter-sas/" target="_blank" rel="noopener noreferrer" className="hover:text-cyan-400 transition-colors flex items-center gap-2">
-            <Share2 className="w-3 h-3" /> LinkedIn
+          <a href="https://www.linkedin.com/company/colconexus-datacenter-sas/" target="_blank" rel="noopener noreferrer" className="hover:text-mint transition-colors flex items-center gap-2">
+            LinkedIn
           </a>
-          <a href="https://tiktok.com/@colconexus" target="_blank" rel="noopener noreferrer" className="hover:text-cyan-400 transition-colors flex items-center gap-2">
-            <svg className="w-3 h-3 fill-current" viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.17-2.89-.6-4.09-1.47-.13-.09-.26-.18-.38-.28v6.49c.01 1.62-.35 3.26-1.14 4.67-.81 1.48-2.07 2.74-3.56 3.53-1.52.83-3.26 1.25-4.99 1.18-1.74-.06-3.46-.61-4.9-1.59-1.44-.98-2.58-2.37-3.22-3.95-.67-1.63-.78-3.43-.33-5.12.39-1.57 1.26-3.04 2.47-4.08 1.25-1.07 2.87-1.75 4.51-1.92.17-.02.34-.03.51-.03v4.11a5.123 5.123 0 0 0-1.89.47c-1.07.49-1.97 1.34-2.43 2.43-.46 1.08-.49 2.32-.08 3.42.36 1 1.05 1.86 1.94 2.43.91.59 2.01.88 3.09.84a5.1 5.1 0 0 0 3.39-1.47c.88-1.01 1.27-2.34 1.23-3.66V0l.02.02z"/></svg> TikTok
+          <a href="https://tiktok.com/@colconexus" target="_blank" rel="noopener noreferrer" className="hover:text-mint transition-colors flex items-center gap-2">
+            TikTok
           </a>
-          <a href="https://instagram.com/colconexusdatacenter" target="_blank" rel="noopener noreferrer" className="hover:text-cyan-400 transition-colors flex items-center gap-2">
-            <Instagram className="w-3 h-3" /> Instagram
+          <a href="https://instagram.com/colconexusdatacenter" target="_blank" rel="noopener noreferrer" className="hover:text-mint transition-colors flex items-center gap-2">
+            Instagram
           </a>
-          <a href="#" className="hover:text-cyan-400 transition-colors">Status: Online</a>
+          <span className="text-slate-800">Status: Terminal Active</span>
         </div>
       </footer>
 
@@ -389,9 +357,9 @@ export default function Home() {
               initial={{ opacity: 0, scale: 0.95, y: 50 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 50 }}
-              className="relative w-full max-w-3xl bg-[#0a1120] border border-white/10 rounded-[5rem] p-20 shadow-[0_0_150px_rgba(34,211,238,0.2)] overflow-hidden"
+              className="relative w-full max-w-3xl bg-obsidian border border-copper/30 rounded-sm p-20 shadow-[0_0_150px_rgba(184,115,51,0.1)] overflow-hidden"
             >
-              <div className="absolute top-0 right-0 w-64 h-64 bg-cyan-600/10 blur-[80px] -z-10" />
+              <div className="absolute top-0 right-0 w-64 h-64 bg-copper/10 blur-[80px] -z-10" />
               <button 
                 onClick={() => setSelectedRole(null)}
                 className="absolute top-12 right-12 p-4 rounded-full hover:bg-white/10 transition-all text-white/50 hover:text-white"
@@ -399,10 +367,10 @@ export default function Home() {
                 <X className="w-10 h-10" />
               </button>
 
-              <div className="text-[11px] font-black text-cyan-400 tracking-[0.6em] uppercase mb-6 flex items-center gap-3">
-                <div className="w-8 h-px bg-cyan-400/30" /> Hub Technical Specs
+              <div className="text-[11px] font-tech font-black text-mint tracking-[0.6em] uppercase mb-6 flex items-center gap-3">
+                <div className="w-8 h-px bg-mint/30" /> Technical Payload
               </div>
-              <h3 className="text-6xl font-black mb-10 leading-[0.9] text-white uppercase italic tracking-tighter">{selectedRole.title}</h3>
+              <h3 className="font-tech text-6xl font-black mb-10 leading-[0.9] text-white uppercase italic tracking-tighter">{selectedRole.title}</h3>
               
               <div className="grid gap-6 mb-16 max-h-[40vh] overflow-y-auto pr-6 custom-scrollbar">
                 {selectedRole.skills.map((skill: string, index: number) => (
@@ -413,19 +381,19 @@ export default function Home() {
                     key={skill} 
                     className="flex items-start gap-8 group/skill"
                   >
-                    <div className="mt-1.5 min-w-[32px] h-32px p-2 rounded-xl bg-cyan-500/10 flex items-center justify-center border border-cyan-500/20 group-hover/skill:border-cyan-400 transition-all">
-                      <Zap className="w-4 h-4 text-cyan-400" />
+                    <div className="mt-1.5 min-w-[32px] h-[32px] p-2 rounded-sm bg-mint/5 flex items-center justify-center border border-mint/20 group-hover/skill:border-mint transition-all">
+                      <Zap className="w-4 h-4 text-mint" />
                     </div>
-                    <span className="text-xl text-slate-100 font-bold tracking-tight leading-snug">{skill}</span>
+                    <span className="text-xl text-slate-100 font-tech font-black uppercase tracking-tight leading-snug">{skill}</span>
                   </motion.div>
                 ))}
               </div>
 
               <button 
-                onClick={() => handleWhatsAppRedirect(`Servicio Elite: ${selectedRole.title}`)}
-                className="w-full py-8 bg-white text-[#020617] font-black uppercase tracking-widest text-sm rounded-[2rem] hover:bg-cyan-400 transition-all flex items-center justify-center gap-4 group"
+                onClick={() => handleWhatsAppRedirect(`Industrial Audit: ${selectedRole.title}`)}
+                className="w-full py-8 btn-copper group"
               >
-                CONSULTAR DISPONIBILIDAD TÉCNICA <ArrowRight className="w-6 h-6 group-hover:translate-x-2 transition-transform" />
+                AUTORIZAR DESPLIEGUE TÉCNICO <ArrowRight className="w-6 h-6 group-hover:translate-x-2 transition-transform" />
               </button>
             </motion.div>
           </div>

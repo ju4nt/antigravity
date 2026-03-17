@@ -1,18 +1,22 @@
 import type { Metadata } from "next";
-import { Geist } from "next/font/google";
+import { Inter, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const inter = Inter({
+  variable: "--font-inter",
+  subsets: ["latin"],
+});
+
+const spaceGrotesk = Space_Grotesk({
+  variable: "--font-space-grotesk",
   subsets: ["latin"],
 });
 
 export const metadata: Metadata = {
-  title: "Colconexus Data Center SAS | Agencia de IA Profesionales",
-  description: "Especialistas en Data Business con Agentes IA, Plantas Telefónicas VoIP, Desarrollo de Apps y Automatizaciones Empresariales a medida.",
+  title: "Colconexus Data Center SAS | Ingeniería de Precisión & IA",
+  description: "Optimización industrial, escalabilidad masiva y blindaje de procesos con IA. Soluciones de alta fidelidad para el sector B2B.",
   icons: {
-    icon: "/logo.png",
-    apple: "/logo.png",
+    icon: "/favicon.ico", // Updated as logos are removed
   },
   openGraph: {
     title: "Colconexus Data Center SAS | Agencia de IA Profesionales",
@@ -30,7 +34,7 @@ export default function RootLayout({
     <html lang="es" suppressHydrationWarning>
       <body
         suppressHydrationWarning
-        className={`${geistSans.variable} antialiased`}
+        className={`${inter.variable} ${spaceGrotesk.variable} antialiased`}
       >
         {children}
       </body>

@@ -1,13 +1,13 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary: #06B6D4; /* Cyan */
-  --color-secondary: #8B5CF6; /* Purple */
-  --color-background: #020617; 
-  --color-foreground: #F8FAFC;
+  --color-obsidian: #05070a;
+  --color-mint: #2ee59d;
+  --color-copper: #b87333;
+  --color-graphite: #1c1f26;
   
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: 'Inter', sans-serif;
+  --font-tech: 'Space Grotesk', sans-serif;
 }
 
 :root {
@@ -15,76 +15,82 @@
 }
 
 body {
-  background-color: var(--color-background);
-  color: var(--color-foreground);
+  background: linear-gradient(135deg, #05070a 0%, #0d1117 100%);
+  color: #F8FAFC;
   font-family: var(--font-sans);
   overflow-x: hidden;
   @apply antialiased;
 }
 
-/* Base Grid Pattern */
+/* Industrial Grid Pattern */
 .bg-grid-overlay {
   position: fixed;
   inset: 0;
   background-image: 
-    linear-gradient(rgba(59, 130, 246, 0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(59, 130, 246, 0.05) 1px, transparent 1px);
-  background-size: 50px 50px;
+    linear-gradient(rgba(184, 115, 51, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(184, 115, 51, 0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
   z-index: -1;
 }
 
-/* Animated Grid (The "Cyberpunk" look) */
-.bg-grid-animate {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 200%;
-  background-image: 
-    linear-gradient(rgba(6, 182, 212, 0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(6, 182, 212, 0.04) 1px, transparent 1px);
-  background-size: 40px 40px;
-  transform: perspective(600px) rotateX(45deg);
-  transform-origin: top;
-  animation: grid-scroll 30s linear infinite;
-  z-index: -2;
-  opacity: 0.5;
+/* Tech Titles */
+.font-tech {
+  font-family: var(--font-tech);
 }
 
-@keyframes grid-scroll {
-  from { transform: perspective(600px) rotateX(45deg) translateY(0); }
-  to { transform: perspective(600px) rotateX(45deg) translateY(40px); }
-}
-
-/* Soft Orbs for depth */
-.bg-orb {
-  position: fixed;
-  width: 600px;
-  height: 600px;
-  border-radius: 50%;
-  filter: blur(140px);
-  z-index: -3;
-  opacity: 0.12;
-  pointer-events: none;
-}
-
-.text-gradient {
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-image: linear-gradient(to right, #06B6D4, #8B5CF6);
-}
-
+/* Glassmorphism Industrial */
 .glass-card {
-  background: rgba(15, 23, 42, 0.4);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  transition: all 0.3s ease;
+  background: rgba(28, 31, 38, 0.7);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(184, 115, 51, 0.2);
+  transition: all 0.4s ease-out;
 }
 
 .glass-card:hover {
-  border-color: rgba(6, 182, 212, 0.4);
-  background: rgba(15, 23, 42, 0.6);
-  transform: translateY(-4px);
+  border-color: #2ee59d;
+  box-shadow: 0 0 30px rgba(46, 229, 157, 0.05);
+  transform: translateY(-2px);
+}
+
+/* Accent Buttons */
+.btn-copper {
+  background: #b87333;
+  color: #fff;
+  border-radius: 4px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  transition: all 0.4s ease;
+}
+
+.btn-copper:hover {
+  background: #d48a47;
+  box-shadow: 0 4px 20px rgba(184, 115, 51, 0.3);
+}
+
+/* Glow Mint */
+.text-mint-glow {
+  color: #2ee59d;
+  text-shadow: 0 0 20px rgba(46, 229, 157, 0.4);
+}
+
+/* Counter/Status Styles */
+.status-mint {
+  color: #2ee59d;
+  font-family: var(--font-tech);
+  font-weight: 800;
+}
+
+/* Diagnostic Section Hierarchy */
+.siglo-title {
+  font-family: var(--font-tech);
+  line-height: 0.9;
+  letter-spacing: -0.05em;
+}
+
+.xxi-glow {
+  font-size: clamp(5rem, 15vw, 12rem);
+  color: #2ee59d;
+  text-shadow: 0 0 50px rgba(46, 229, 157, 0.3);
+  font-weight: 900;
 }
