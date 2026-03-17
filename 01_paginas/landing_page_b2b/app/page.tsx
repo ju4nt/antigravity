@@ -67,6 +67,11 @@ export default function Home() {
           title: "Financial Officer IA",
           desc: "Modelos predictivos de utilidad y gestión estratégica.",
           skills: ["Tendencias Early Warning con ML", "Recálculo automático de KPIs financieros", "Alertas de impacto en indicadores de factura", "Estrategias de optimización de rentabilidad"]
+        },
+        {
+          title: "Analista de Nómina Pro",
+          desc: "ERP Nómina y Prenómina en tiempo real sin discrepancias.",
+          skills: ["Liquidación automática de nómina", "Gestión de novedades de pago 24/7", "Integración con ERPs contables", "Seguimiento de costos laborales en vivo"]
         }
       ]
     },
@@ -293,7 +298,7 @@ export default function Home() {
              <iframe 
               className="w-full h-full"
               src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
-              title="Colconexus Center Video"
+              title="Colconexus Tech Hub - Video Presidencial"
               allowFullScreen
             />
           </div>
