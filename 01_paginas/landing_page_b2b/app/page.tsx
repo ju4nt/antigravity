@@ -17,6 +17,7 @@ import {
   Zap,
   TrendingUp,
   Clock,
+  Instagram,
   Settings,
   Users,
   PieChart,
@@ -304,6 +305,34 @@ export default function Home() {
           </div>
         </section>
 
+        {/* --- Diagnostic Form Section (Siglo XXI vs XIX) --- */}
+        <section className="max-w-7xl mx-auto mb-32 relative px-4 text-center">
+          <div className="absolute inset-0 bg-cyan-500/5 blur-[120px] -z-10" />
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="glass-card p-16 rounded-[4rem] border-cyan-500/20"
+          >
+            <h2 className="text-4xl md:text-6xl font-black mb-8 leading-tight tracking-tighter text-white">
+              ¿Tu empresa tiene herramientas del <span className="text-cyan-400">siglo XXI</span> <br />
+              o trabaja con herramientas del <span className="text-slate-500">siglo XIX</span>?
+            </h2>
+            <p className="text-slate-400 text-xl font-bold mb-12 max-w-2xl mx-auto uppercase tracking-wide">
+              Descúbrelo con nuestro Test de Diagnóstico Digital Pro.
+            </p>
+            <a 
+              href="https://forms.gle/6mRAKsnYVZowXiAD6" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-4 px-12 py-6 bg-gradient-to-r from-cyan-500 to-purple-600 text-white rounded-full font-black text-lg hover:scale-105 transition-all shadow-[0_0_40px_rgba(34,211,238,0.3)] group"
+            >
+              REALIZAR TEST DE DIAGNÓSTICO
+              <Zap className="w-6 h-6 group-hover:rotate-12 transition-transform" />
+            </a>
+          </motion.div>
+        </section>
+
         {/* --- Final CTA Section --- */}
         <section className="max-w-6xl mx-auto p-24 rounded-[5rem] bg-gradient-to-br from-[#0c1a33] via-[#020617] to-[#1a0c33] border border-white/10 text-center relative overflow-hidden">
           <div className="absolute inset-0 bg-grid-overlay opacity-30 animate-pulse" />
@@ -331,9 +360,16 @@ export default function Home() {
              <span className="text-cyan-600 italic">Global Tech Innovation</span>
            </div>
         </div>
-        <div className="flex gap-16 font-black">
-          <a href="#" className="hover:text-cyan-400 transition-colors">LinkedIn</a>
-          <a href="#" className="hover:text-cyan-400 transition-colors">WhatsApp Portal</a>
+        <div className="flex gap-16 font-black uppercase text-[10px]">
+          <a href="https://www.linkedin.com/company/colconexus-datacenter-sas/" target="_blank" rel="noopener noreferrer" className="hover:text-cyan-400 transition-colors flex items-center gap-2">
+            <Share2 className="w-3 h-3" /> LinkedIn
+          </a>
+          <a href="https://tiktok.com/@colconexus" target="_blank" rel="noopener noreferrer" className="hover:text-cyan-400 transition-colors flex items-center gap-2">
+            <svg className="w-3 h-3 fill-current" viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.17-2.89-.6-4.09-1.47-.13-.09-.26-.18-.38-.28v6.49c.01 1.62-.35 3.26-1.14 4.67-.81 1.48-2.07 2.74-3.56 3.53-1.52.83-3.26 1.25-4.99 1.18-1.74-.06-3.46-.61-4.9-1.59-1.44-.98-2.58-2.37-3.22-3.95-.67-1.63-.78-3.43-.33-5.12.39-1.57 1.26-3.04 2.47-4.08 1.25-1.07 2.87-1.75 4.51-1.92.17-.02.34-.03.51-.03v4.11a5.123 5.123 0 0 0-1.89.47c-1.07.49-1.97 1.34-2.43 2.43-.46 1.08-.49 2.32-.08 3.42.36 1 1.05 1.86 1.94 2.43.91.59 2.01.88 3.09.84a5.1 5.1 0 0 0 3.39-1.47c.88-1.01 1.27-2.34 1.23-3.66V0l.02.02z"/></svg> TikTok
+          </a>
+          <a href="https://instagram.com/colconexusdatacenter" target="_blank" rel="noopener noreferrer" className="hover:text-cyan-400 transition-colors flex items-center gap-2">
+            <Instagram className="w-3 h-3" /> Instagram
+          </a>
           <a href="#" className="hover:text-cyan-400 transition-colors">Status: Online</a>
         </div>
       </footer>
