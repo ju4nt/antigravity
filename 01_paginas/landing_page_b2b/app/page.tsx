@@ -38,12 +38,30 @@ export default function Home() {
   const WHATSAPP_NUMBER = "573214378318";
   const [selectedRole, setSelectedRole] = useState<null | any>(null);
   const [isChatOpen, setIsChatOpen] = useState(false);
+  const [chatMessages, setChatMessages] = useState([
+    { role: 'bot', text: 'SISTEMA INICIADO. Soy Colconexus Engineering Bot. ¿Deseas medir tu nivel de automatización hoy?' }
+  ]);
+  const [isTyping, setIsTyping] = useState(false);
   
   const handleWhatsAppRedirect = (service = "") => {
     const text = service 
-      ? `Hola equipo de Colconexus. Me interesa el servicio institucional: *${service}*. ¿Podrían darme más información técnica?`
-      : "Hola Colconexus. Quisiera solicitar una auditoría de rendimiento técnica.";
+      ? `Hola equipo de Colconexus. He usado su herramienta de diagnóstico y me interesa: *${service}*. ¿Podemos agendar una sesión de ingeniería?`
+      : "Hola Colconexus. Quisiera medir mi nivel de automatización y solicitar una auditoría técnica.";
     window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`, '_blank');
+  };
+
+  const simulateBotResponse = (userText: string) => {
+    setIsTyping(true);
+    setTimeout(() => {
+      let response = "Entendido. Procesando requerimiento técnico...";
+      if (userText.toLowerCase().includes("automatización")) {
+        response = "La automatización B2B es nuestro fuerte. Podemos reducir costos operativos hasta un 40% mediante orquestación de datos.";
+      } else if (userText.toLowerCase().includes("costo") || userText.toLowerCase().includes("ahorro")) {
+        response = "Nuestras soluciones de WFM Strategic y AI Agency están diseñadas para blindar tu rentabilidad eliminando gastos perpetuos.";
+      }
+      setChatMessages(prev => [...prev, { role: 'bot', text: response }]);
+      setIsTyping(false);
+    }, 1500);
   };
 
   const IMPACT_SOLUTIONS = [
@@ -150,32 +168,47 @@ export default function Home() {
       </nav>
 
       <main className="pt-24 pb-20 px-6">
-        {/* --- Hero Section (Optimized Position) --- */}
-        <section className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-12 mb-24 mt-20 px-6">
+        {/* --- Hero Section: Neon & Ice --- */}
+        <section className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-12 mb-32 mt-20 px-6">
           <div className="flex-1 text-center md:text-left">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-sm border border-neon/30 bg-neon/5 text-[9px] font-black text-neon tracking-[0.4em] uppercase mb-8"
+            >
+              <ShieldCheck className="w-3.5 h-3.5" /> Industrial AI Engineering 2026
+            </motion.div>
+
             <motion.h1 
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              className="font-tech text-5xl md:text-7xl font-black mb-10 leading-[0.9] tracking-tighter uppercase italic"
+              className="font-tech text-4xl md:text-6xl font-black mb-8 leading-[1] tracking-tighter uppercase italic text-ice"
             >
-              Optimizar. Escalar. <br /> <span className="text-mint-glow italic">Blindar.</span>
+              Mide tu Nivel de <br /> <span className="neon-glow italic">Automatización.</span>
             </motion.h1>
 
             <motion.p 
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              className="text-slate-400 text-lg md:text-xl mb-12 max-w-2xl font-medium tracking-tight leading-relaxed"
+              className="text-slate-400 text-base md:text-lg mb-10 max-w-xl font-medium tracking-tight leading-relaxed"
             >
-              Ingeniería de precisión aplicada a la rentabilidad corporativa. <br />
-              Soluciones de arquitectura de datos y automatización para operaciones de alto nivel.
+              No dejes la rentabilidad al azar. Nuestra ingeniería de precisión audita tus procesos y despliega robots autónomos que eliminan la inercia operativa de inmediato.
             </motion.p>
             
-            <button 
-              onClick={() => handleWhatsAppRedirect()}
-              className="btn-copper px-12 py-5 text-sm"
-            >
-              Iniciar Auditoría Técnica
-            </button>
+            <div className="flex flex-wrap gap-4 justify-center md:justify-start">
+              <button 
+                onClick={() => handleWhatsAppRedirect()}
+                className="btn-neon px-10 py-4 text-xs"
+              >
+                Mide tu Nivel Ahora
+              </button>
+              <a 
+                href="#diagnostico"
+                className="btn-outline px-10 py-4 text-xs"
+              >
+                Ver Demo Técnica
+              </a>
+            </div>
           </div>
           
           <motion.div 
@@ -183,58 +216,69 @@ export default function Home() {
             animate={{ opacity: 1, x: 0 }}
             className="flex-1 relative group"
           >
-            <div className="absolute -inset-4 bg-mint/10 blur-3xl opacity-30 group-hover:opacity-50 transition-opacity" />
-            <img 
-              src="file:///C:/Users/ElkinT/.gemini/antigravity/brain/e83d6572-be87-4c99-af26-f208e8550752/media__1773772390709.jpg" 
-              alt="IA Strategic Leap" 
-              className="rounded-sm border border-white/10 grayscale hover:grayscale-0 transition-all duration-700 shadow-2xl relative z-10"
-            />
+            <div className="absolute -inset-4 bg-neon/10 blur-3xl opacity-20 group-hover:opacity-40 transition-opacity" />
+            <div className="relative z-10 p-1 border border-white/10 rounded-sm bg-obsidian">
+              <img 
+                src="/assets/hero-ai.jpg" 
+                alt="AI Strategic Hub" 
+                className="w-full rounded-sm grayscale hover:grayscale-0 transition-all duration-1000 shadow-2xl"
+              />
+            </div>
           </motion.div>
         </section>
 
-        {/* --- Comparison Section: Talento vs Inercia --- */}
+        {/* --- Comparison Section: Talento vs Inercia (Neon Fix) --- */}
         <section className="max-w-7xl mx-auto mb-32 px-6">
-          <div className="glass-card overflow-hidden rounded-sm flex flex-col md:flex-row items-stretch border-copper/10">
-            <div className="flex-1 p-16 flex flex-col justify-center bg-obsidian/50">
-              <h2 className="font-tech text-4xl md:text-5xl font-black text-white mb-8 leading-none uppercase italic tracking-tighter">
-                ¿Estás pagando por el <br /> <span className="text-copper">Talento</span> o por la <span className="text-slate-600">Inercia</span>?
+          <div className="glass-card overflow-hidden rounded-sm flex flex-col md:flex-row items-stretch border-neon/10">
+            <div className="flex-1 p-12 md:p-16 flex flex-col justify-center bg-obsidian/60 relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-neon/5 blur-3xl" />
+              <h2 className="font-tech text-3xl md:text-5xl font-black text-ice mb-8 leading-[1.1] uppercase italic tracking-tighter">
+                ¿Pagas por el <br /> <span className="neon-glow">Talento</span> o por la <span className="text-slate-600">Inercia</span>?
               </h2>
-              <p className="text-mint-glow font-tech text-xl font-bold mb-8 uppercase tracking-tight">
+              <p className="electric-glow font-tech text-lg font-bold mb-8 uppercase tracking-tight">
                 La IA es inversión única, el ejecutivo senior es gasto perpetuo.
               </p>
-              <div className="space-y-4 mb-12">
-                <div className="flex items-center gap-4 text-[10px] uppercase tracking-widest font-black text-slate-500">
-                  <span className="w-2 h-2 bg-copper rounded-full" /> Automatiza el rol, no el salario.
+              <div className="space-y-5 mb-12">
+                <div className="flex items-center gap-4 text-[11px] uppercase tracking-[0.2em] font-black text-slate-400">
+                  <div className="w-1.5 h-1.5 bg-neon rounded-full shadow-[0_0_10px_#ccff00]" /> Automatiza el rol, no el salario.
                 </div>
-                <div className="flex items-center gap-4 text-[10px] uppercase tracking-widest font-black text-slate-500">
-                  <span className="w-2 h-2 bg-copper rounded-full" /> Elimina riesgos operativos de inmediato.
+                <div className="flex items-center gap-4 text-[11px] uppercase tracking-[0.2em] font-black text-slate-400">
+                  <div className="w-1.5 h-1.5 bg-neon rounded-full shadow-[0_0_10px_#ccff00]" /> Blindaje operativo 24/7 sin errores.
                 </div>
               </div>
+              <button 
+                onClick={() => handleWhatsAppRedirect("Comparativa Rentabilidad")}
+                className="btn-neon w-fit px-12 py-4"
+              >
+                Solicitar Business Case
+              </button>
             </div>
-            <div className="flex-1 min-h-[400px]">
+            <div className="flex-1 min-h-[450px] relative border-l border-white/5">
               <img 
-                src="file:///C:/Users/ElkinT/.gemini/antigravity/brain/e83d6572-be87-4c99-af26-f208e8550752/media__1773772390787.jpg" 
-                alt="Talento vs Inercia Comparison" 
+                src="/assets/comparison-ai.jpg" 
+                alt="Talento vs Inercia" 
                 className="w-full h-full object-cover"
               />
+              <div className="absolute inset-0 bg-gradient-to-r from-obsidian via-transparent to-transparent opacity-40 md:opacity-20" />
             </div>
           </div>
         </section>
 
-        {/* --- NEW: IMPACT SOLUTIONS PANEL --- */}
-        <section className="max-w-7xl mx-auto mb-32 px-4">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+        {/* --- Impact Solutions Grid (Standardized) --- */}
+        <section className="max-w-7xl mx-auto mb-32 px-6">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {IMPACT_SOLUTIONS.map((item, idx) => (
               <motion.div 
                 key={item.title}
                 initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
                 transition={{ delay: idx * 0.1 }}
-                className="flex flex-col p-8 bg-graphite/40 border border-copper/10 rounded-sm hover:border-mint/40 transition-all group"
+                className="flex flex-col p-8 bg-graphite/40 border border-white/5 rounded-sm hover:border-electric/40 transition-all group"
               >
-                <div className="text-copper group-hover:text-mint mb-6 transition-colors">{item.icon}</div>
-                <h4 className="font-tech text-lg font-black text-white uppercase tracking-tighter mb-2">{item.title}</h4>
-                <p className="text-[10px] text-slate-500 font-bold uppercase tracking-widest">{item.desc}</p>
+                <div className="text-electric group-hover:text-neon mb-6 transition-colors group-hover:scale-110 duration-300">{item.icon}</div>
+                <h4 className="font-tech text-base font-black text-ice uppercase tracking-tighter mb-2">{item.title}</h4>
+                <p className="text-[9px] text-slate-500 font-bold uppercase tracking-widest leading-relaxed">{item.desc}</p>
               </motion.div>
             ))}
           </div>
@@ -246,30 +290,29 @@ export default function Home() {
             {BUSINESS_UNITS.map((unit, idx) => (
               <motion.div 
                 key={unit.id}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0, x: idx % 2 === 0 ? -20 : 20 }}
+                whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: idx * 0.1 }}
-                className="glass-card p-12 rounded-sm border-white/5 hover:border-copper/40 transition-all duration-500 relative overflow-hidden group"
+                className="p-12 md:p-16 border border-white/5 rounded-sm bg-obsidian/40 relative group overflow-hidden"
               >
                 <div className="flex items-center gap-6 mb-12">
-                  <div className="p-4 bg-copper/5 rounded-sm border border-copper/20">{unit.icon}</div>
-                  <h2 className="font-tech text-4xl font-black uppercase tracking-tighter text-white">{unit.title}</h2>
+                  <div className="p-4 bg-neon/5 rounded-sm border border-neon/20 group-hover:border-neon transition-colors">{unit.icon}</div>
+                  <h2 className="font-tech text-4xl font-black uppercase tracking-tighter text-ice">{unit.title}</h2>
                 </div>
-                <p className="text-slate-400 text-[10px] mb-12 font-black uppercase tracking-[0.2em] leading-relaxed border-l border-copper pl-6">{unit.description}</p>
+                <p className="text-slate-500 text-[10px] mb-12 font-black uppercase tracking-[0.2em] leading-relaxed border-l-2 border-neon pl-6">{unit.description}</p>
                 
                 <div className="grid gap-3">
                   {unit.items.map((item) => (
                     <div 
                       key={item.title}
                       onClick={() => setSelectedRole(item)}
-                      className="group/item flex items-center justify-between p-8 rounded-sm bg-obsidian border border-white/5 hover:border-mint/50 transition-all cursor-pointer"
+                      className="group/item flex items-center justify-between p-8 rounded-sm bg-obsidian border border-white/5 hover:border-electric/50 transition-all cursor-pointer"
                     >
                       <div className="pr-4">
-                        <h4 className="font-tech font-black text-white group-hover/item:text-mint transition-colors uppercase tracking-tight text-xl">{item.title}</h4>
-                        <p className="text-[11px] text-slate-500 mt-2 font-bold uppercase tracking-wider">{item.desc}</p>
+                        <h4 className="font-tech font-black text-ice group-hover/item:text-neon transition-colors uppercase tracking-tight text-xl">{item.title}</h4>
+                        <p className="text-[11px] text-slate-600 mt-2 font-bold uppercase tracking-wider">{item.desc}</p>
                       </div>
-                      <ChevronRight className="text-slate-800 group-hover/item:text-mint transition-all w-6 h-6" />
+                      <ChevronRight className="text-slate-800 group-hover/item:text-neon transition-all w-6 h-6" />
                     </div>
                   ))}
                 </div>
@@ -302,45 +345,49 @@ export default function Home() {
           </div>
         </section>
 
-        {/* --- AI Industrial Demo: Terminal Simulation --- */}
+        {/* --- AI Industrial Demo: Neon Terminal --- */}
         <section className="max-w-7xl mx-auto mb-32 px-6">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
+          <div className="grid md:grid-cols-2 gap-16 items-center">
             <div className="order-2 md:order-1">
-              <div className="bg-[#0a0c10] border border-mint/20 rounded-sm p-6 shadow-[0_0_50px_rgba(46,229,157,0.05)]">
-                <div className="flex items-center justify-between mb-4 border-b border-white/5 pb-4">
+              <div className="bg-[#0a0c10] border border-electric/20 rounded-sm p-8 shadow-[0_0_60px_rgba(0,240,255,0.03)] relative group">
+                <div className="absolute top-0 right-10 w-px h-full bg-gradient-to-b from-transparent via-electric/10 to-transparent" />
+                <div className="flex items-center justify-between mb-6 border-b border-white/5 pb-4">
                   <div className="flex gap-2">
-                    <div className="w-2 h-2 rounded-full bg-red-500/50" />
-                    <div className="w-2 h-2 rounded-full bg-yellow-500/50" />
-                    <div className="w-2 h-2 rounded-full bg-mint" />
+                    <div className="w-2.5 h-2.5 rounded-full bg-red-500/30" />
+                    <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/30" />
+                    <div className="w-2.5 h-2.5 rounded-full bg-neon/80 shadow-[0_0_10px_#ccff00]" />
                   </div>
-                  <span className="text-[9px] font-tech text-mint/50 uppercase tracking-widest">Colconexus IA - Agent_Audit.sh</span>
+                  <span className="text-[9px] font-tech text-electric/40 uppercase tracking-[0.3em]">Colconexus IA - Diagnostic_Engine.sh</span>
                 </div>
-                <div className="terminal-code space-y-2">
-                   <p className="opacity-50">[SYSTEM] Initializing Neural Audit Engine...</p>
-                   <p>[AUTH] Identity: Engineering_Admin_01</p>
-                   <p className="text-white">&gt; Run audit --deep --target global_ops</p>
-                   <p className="text-mint"> [PROCESSING] Analyzing Data Pipelines... 98%</p>
-                   <p className="text-mint"> [SUCCESS] 42 Potential Inefficiencies Fixed.</p>
-                   <p className="text-copper"> [ROI] Efficiency Gain: +34.2% Estimated.</p>
-                   <p className="text-white">&gt; Status: <span className="terminal-cursor"></span></p>
+                <div className="terminal-code space-y-3 font-mono">
+                   <p className="opacity-40 text-[10px]">[SYSTEM] Initializing Neural Audit v2.6...</p>
+                   <p className="text-white/80">[AUTH] Engineering_Admin_01 Verified.</p>
+                   <p className="text-ice">&gt; audit --deep --target manufacturing_ops</p>
+                   <p className="text-electric"> [PROCESSING] Analyzing Data Pipelines... 100%</p>
+                   <p className="text-neon font-black"> [SUCCESS] 08 Fatal Inefficiencies Eliminated.</p>
+                   <p className="text-ice"> [ROI] Performance Increase: +42.8% Est.</p>
+                   <div className="flex items-center gap-2">
+                     <span className="text-ice">&gt; Status: </span>
+                     <span className="terminal-cursor" />
+                   </div>
                 </div>
               </div>
             </div>
             <div className="order-1 md:order-2">
-              <h2 className="font-tech text-4xl md:text-5xl font-black text-white mb-8 leading-none uppercase italic tracking-tighter">
-                Auditoría Autónoma <br /> en <span className="text-mint">Tiempo Real</span>
+              <h2 className="font-tech text-4xl md:text-5xl font-black text-ice mb-8 leading-none uppercase italic tracking-tighter">
+                Auditoría Autónoma <br /> <span className="neon-glow">Grado Industrial</span>
               </h2>
-              <p className="text-slate-400 text-lg mb-8 leading-relaxed">
-                Nuestros agentes de ingeniería no solo observan, ejecutan. Blindamos sus operaciones mediante una capa de inteligencia que recalcula la rentabilidad cada segundo.
+              <p className="text-slate-400 text-lg mb-10 leading-relaxed font-medium">
+                Nuestros agentes de ingeniería no solo observan, ejecutan. Blindamos la rentabilidad mediante una capa de inteligencia que recalcula la eficiencia operativa en milisegundos.
               </p>
-              <div className="flex gap-8">
+              <div className="flex gap-12">
                 <div>
-                  <div className="font-tech text-3xl font-black text-white mb-1 tracking-tighter">1.2ms</div>
-                  <div className="text-[9px] text-copper font-black uppercase tracking-widest">Latencia de Decisión</div>
+                  <div className="font-tech text-3xl font-black text-neon mb-1 tracking-tighter">0.8ms</div>
+                  <div className="text-[10px] text-electric font-black uppercase tracking-widest">Latencia de Red</div>
                 </div>
                 <div>
-                  <div className="font-tech text-3xl font-black text-white mb-1 tracking-tighter">100%</div>
-                  <div className="text-[9px] text-mint font-black uppercase tracking-widest">Ejecución sin Error</div>
+                  <div className="font-tech text-3xl font-black text-neon mb-1 tracking-tighter">99.9%</div>
+                  <div className="text-[10px] text-electric font-black uppercase tracking-widest">Uptime Operativo</div>
                 </div>
               </div>
             </div>
@@ -349,19 +396,20 @@ export default function Home() {
 
         {/* --- Media Hub: YouTube Integration --- */}
         <section className="max-w-7xl mx-auto mb-32 px-6">
-          <div className="grid md:grid-cols-12 gap-8">
+          <div className="grid md:grid-cols-12 gap-10">
             <div className="md:col-span-8">
-              <div className="relative aspect-video rounded-sm overflow-hidden border border-white/10 shadow-2xl group">
+              <div className="relative aspect-video rounded-sm overflow-hidden border border-white/5 bg-obsidian group">
                 <iframe 
-                  className="w-full h-full grayscale hover:grayscale-0 transition-all duration-700"
-                  src="https://www.youtube.com/embed/aW-6Zbc-Lyw" 
-                  title="Colconexus Technical Overview"
+                  className="w-full h-full grayscale opacity-70 group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-1000"
+                  src="https://www.youtube.com/embed/aW-6Zbc-Lyw?autoplay=0&mute=1" 
+                  title="Colconexus Engineering Deep Dive"
                   allowFullScreen
                 />
+                <div className="absolute inset-x-0 bottom-0 h-1/4 bg-gradient-to-t from-obsidian to-transparent pointer-events-none" />
               </div>
             </div>
-            <div className="md:col-span-4 flex flex-col gap-8">
-              <div className="relative aspect-[9/16] rounded-sm overflow-hidden border border-mint/20 shadow-2xl group">
+            <div className="md:col-span-4 flex flex-col gap-10">
+              <div className="relative aspect-[9/16] rounded-sm overflow-hidden border border-neon/20 bg-obsidian group">
                 <iframe 
                   className="w-full h-full"
                   src="https://www.youtube.com/embed/ROrzZBpJUag" 
@@ -373,113 +421,127 @@ export default function Home() {
           </div>
         </section>
 
-        {/* --- Orquestación Section --- */}
+        {/* --- Orquestación Section (Neon Fix) --- */}
         <section className="max-w-7xl mx-auto mb-32 px-6">
-           <div className="relative rounded-sm overflow-hidden border border-white/5 bg-obsidian group">
+           <div className="relative rounded-sm overflow-hidden border border-white/5 bg-obsidian group glass-card">
               <div className="grid md:grid-cols-2">
-                <div className="p-16 flex flex-col justify-center gap-6">
-                  <h3 className="font-tech text-4xl font-black text-white uppercase italic tracking-tighter">
-                    La IA no es Código, <br /> es <span className="text-mint">Orquestación</span>.
+                <div className="p-12 md:p-20 flex flex-col justify-center gap-8 relative z-10">
+                  <h3 className="font-tech text-4xl md:text-5xl font-black text-ice uppercase italic tracking-tighter">
+                    La IA no es Código, <br /> es <span className="neon-glow">Orquestación</span>.
                   </h3>
-                  <p className="text-slate-500 text-sm uppercase tracking-widest font-bold">
-                    Entiende las herramientas, nosotros las unimos por ti.
+                  <p className="text-slate-400 text-base font-medium tracking-tight">
+                    Entiende las herramientas, nosotros las unimos por ti para crear un sistema de inteligencia cohesionado.
                   </p>
-                  <button onClick={() => handleWhatsAppRedirect("Engine Orchestra")} className="btn-copper w-fit px-12 py-4">Saber Más</button>
+                  <button onClick={() => handleWhatsAppRedirect("Engine Orchestra")} className="btn-neon w-fit px-12 py-5">Ver Arquitectura</button>
                 </div>
-                <div className="relative min-h-[400px]">
+                <div className="relative min-h-[450px] border-l border-white/5">
                    <img 
-                    src="file:///C:/Users/ElkinT/.gemini/antigravity/brain/e83d6572-be87-4c99-af26-f208e8550752/media__1773772390708.jpg" 
-                    alt="AI Orchestration" 
-                    className="absolute inset-0 w-full h-full object-cover opacity-80"
+                    src="/assets/orchestra-ai.jpg" 
+                    alt="AI Orchestration Hub" 
+                    className="absolute inset-0 w-full h-full object-cover grayscale opacity-40 group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-1000"
                    />
+                   <div className="absolute inset-0 bg-gradient-to-l from-obsidian/40 to-transparent" />
                 </div>
               </div>
            </div>
         </section>
 
-        <section className="max-w-7xl mx-auto mb-32 relative px-4 text-center">
-          <div className="absolute inset-0 bg-mint/5 blur-[120px] -z-10" />
+        <section id="diagnostico" className="max-w-7xl mx-auto mb-32 relative px-4 text-center">
+          <div className="absolute inset-0 bg-neon/5 blur-[120px] -z-10" />
           <motion.div 
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="glass-card p-20 rounded-sm border-mint/20"
+            className="glass-card p-12 md:p-24 rounded-sm border-neon/20 bg-obsidian/40"
           >
-            <h2 className="font-tech text-4xl md:text-5xl font-black mb-4 leading-tight tracking-[0.1em] text-white uppercase italic">
+            <h2 className="font-tech text-3xl md:text-5xl font-black mb-6 leading-tight tracking-[0.05em] text-ice uppercase italic">
               ¿Tu empresa tiene herramientas del
             </h2>
-            <div className="xxi-glow siglo-title mb-4">XXI</div>
-            <h2 className="font-tech text-4xl md:text-5xl font-black mb-12 leading-tight tracking-[0.1em] text-slate-800 uppercase italic">
+            <div className="xxi-glow mb-6">XXI</div>
+            <h2 className="font-tech text-3xl md:text-5xl font-black mb-12 leading-tight tracking-[0.05em] text-slate-700 uppercase italic">
               o trabaja con herramientas del siglo XIX?
             </h2>
-            <p className="text-slate-500 text-[11px] font-black mb-16 max-w-2xl mx-auto uppercase tracking-[0.5em]">
+            <p className="text-neon/60 text-[10px] md:text-[12px] font-black mb-16 max-w-2xl mx-auto uppercase tracking-[0.6em] leading-relaxed">
               DESCÚBRELO CON NUESTRO TEST DE DIAGNÓSTICO DIGITAL PRO.
             </p>
             <a 
               href="https://forms.gle/6mRAKsnYVZowXiAD6" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-6 px-16 py-8 btn-copper text-lg group"
+              className="inline-flex items-center gap-8 px-16 py-8 btn-neon text-base md:text-xl group"
             >
               REALIZAR TEST DE DIAGNÓSTICO
-              <ArrowRight className="w-6 h-6 group-hover:translate-x-2 transition-transform" />
+              <ArrowRight className="w-6 h-6 group-hover:translate-x-3 transition-transform" />
             </a>
           </motion.div>
         </section>
 
-        {/* --- Final CTA Section --- */}
-        <section className="max-w-6xl mx-auto p-24 rounded-sm bg-obsidian border border-copper/20 text-center relative overflow-hidden">
-          <div className="absolute inset-0 bg-grid-overlay opacity-30" />
-          <h2 className="font-tech text-7xl md:text-[8rem] font-black mb-10 leading-[0.8] tracking-tighter italic uppercase text-white relative z-10">
-            COLCONEXUS <br /> <span className="text-mint">TECH HUB</span>
+        {/* --- Final CTA Section: Engineering Hub --- */}
+        <section className="max-w-7xl mx-auto p-16 md:p-32 rounded-sm bg-obsidian border border-white/5 text-center relative overflow-hidden group">
+          <div className="absolute inset-0 bg-grid-overlay opacity-20" />
+          <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-electric/20 to-transparent" />
+          
+          <h2 className="font-tech text-5xl md:text-[9rem] font-black mb-10 leading-[0.8] tracking-tighter italic uppercase text-ice relative z-10">
+            COLCONEXUS <br /> <span className="electric-glow">TECH HUB</span>
           </h2>
-          <p className="text-slate-400 mb-16 text-xl font-bold max-w-3xl mx-auto relative z-10 uppercase tracking-widest">
+          <p className="text-slate-500 mb-16 text-sm md:text-xl font-bold max-w-3xl mx-auto relative z-10 uppercase tracking-[0.3em] leading-relaxed">
             Eliminamos el techo de su productividad. <br />
-            Auditoría estratégica y despliegue masivo de rentabilidad.
+            Auditoría estratégica y despliegue masivo de automatización.
           </p>
           
           <button 
-            onClick={() => handleWhatsAppRedirect()}
-            className="px-16 py-8 btn-copper text-xl mx-auto relative z-10 group"
+            onClick={() => handleWhatsAppRedirect("Tech Hub Final Access")}
+            className="px-16 py-8 btn-neon text-base md:text-xl mx-auto relative z-10 group"
           >
             SOLICITAR AUDITORÍA DE RENDIMIENTO
-            <ArrowRight className="w-8 h-8 group-hover:translate-x-2 transition-transform" />
+            <ArrowRight className="w-8 h-8 group-hover:translate-x-3 transition-transform" />
           </button>
         </section>
       </main>
 
-      {/* --- Footer Lux --- */}
-      <footer className="max-w-7xl mx-auto px-6 py-32 border-t border-white/5 flex flex-col gap-20">
-        <div className="grid md:grid-cols-2 items-center gap-20">
-          <div className="flex flex-col gap-3">
-            <span className="font-tech text-white text-3xl font-black tracking-tighter uppercase italic">COLCONEXUS</span>
-            <span className="text-copper italic font-black text-[11px] uppercase tracking-[0.4em]">Global Engineering Hub</span>
-            <p className="max-w-md text-slate-600 text-[10px] font-black uppercase tracking-widest leading-relaxed mt-4">
+      {/* --- Footer Lux (Neon Refresh) --- */}
+      <footer className="max-w-7xl mx-auto px-6 py-40 border-t border-white/5 flex flex-col gap-24 relative overflow-hidden">
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-neon/20 to-transparent" />
+        
+        <div className="grid md:grid-cols-2 items-center gap-32">
+          <div className="flex flex-col gap-6">
+            <span className="font-tech text-ice text-4xl font-black tracking-tighter uppercase italic">COLCONEXUS</span>
+            <span className="text-neon italic font-black text-[12px] uppercase tracking-[0.5em] neon-glow">Global Engineering Hub</span>
+            <p className="max-w-md text-slate-600 text-[11px] font-black uppercase tracking-[0.15em] leading-[1.8] mt-4">
               Blindando la rentabilidad corporativa mediante orquestación de datos e inteligencia artificial de grado industrial.
             </p>
+            <button 
+              onClick={() => handleWhatsAppRedirect("Audit 2026")}
+              className="btn-neon w-fit px-12 py-5 text-xs mt-4"
+            >
+              Iniciar Auditoría de Procesos
+            </button>
           </div>
-          <div className="rounded-sm overflow-hidden border border-white/5">
+          <div className="rounded-sm overflow-hidden border border-white/10 bg-graphite/20 p-2">
              <img 
-              src="file:///C:/Users/ElkinT/.gemini/antigravity/brain/e83d6572-be87-4c99-af26-f208e8550752/media__1773772390738.png" 
-              alt="Colconexus Brand" 
-              className="w-full grayscale opacity-40 hover:opacity-100 transition-all duration-700"
+              src="/assets/footer-brand.png" 
+              alt="Colconexus Brand Official" 
+              className="w-full grayscale opacity-30 hover:opacity-100 hover:grayscale-0 transition-all duration-1000 cursor-crosshair"
              />
           </div>
         </div>
         
-        <div className="flex flex-col md:flex-row justify-between items-center gap-10 text-[10px] text-slate-600 uppercase tracking-widest font-black pt-10 border-t border-white/5">
-          <div className="flex gap-16">
-            <a href="https://www.linkedin.com/company/colconexus-datacenter-sas/" target="_blank" rel="noopener noreferrer" className="hover:text-mint transition-colors">
-              LinkedIn
+        <div className="flex flex-col md:flex-row justify-between items-center gap-12 text-[10px] text-slate-700 uppercase tracking-[0.3em] font-black pt-12 border-t border-white/5">
+          <div className="flex gap-20">
+            <a href="https://www.linkedin.com/company/colconexus-datacenter-sas/" target="_blank" rel="noopener noreferrer" className="hover:text-neon transition-colors duration-300">
+              LinkedIn // Network
             </a>
-            <a href="https://tiktok.com/@colconexus" target="_blank" rel="noopener noreferrer" className="hover:text-mint transition-colors">
-              TikTok
+            <a href="https://tiktok.com/@colconexus" target="_blank" rel="noopener noreferrer" className="hover:text-neon transition-colors duration-300">
+              TikTok // Lab
             </a>
-            <a href="https://instagram.com/colconexusdatacenter" target="_blank" rel="noopener noreferrer" className="hover:text-mint transition-colors">
-              Instagram
+            <a href="https://instagram.com/colconexusdatacenter" target="_blank" rel="noopener noreferrer" className="hover:text-neon transition-colors duration-300">
+              Instagram // Visuals
             </a>
           </div>
-          <span className="text-slate-800">Status: Terminal Active // session_id: b2b_2026</span>
+          <div className="flex items-center gap-3">
+             <div className="w-1.5 h-1.5 rounded-full bg-neon animate-pulse" />
+             <span className="text-slate-800">System Status: Operative // v2.6.0-stable</span>
+          </div>
         </div>
       </footer>
 
@@ -522,26 +584,26 @@ export default function Home() {
                     key={skill} 
                     className="flex items-start gap-8 group/skill"
                   >
-                    <div className="mt-1.5 min-w-[32px] h-[32px] p-2 rounded-sm bg-mint/5 flex items-center justify-center border border-mint/20 group-hover/skill:border-mint transition-all">
-                      <Zap className="w-4 h-4 text-mint" />
+                    <div className="mt-1.5 min-w-[32px] h-[32px] p-2 rounded-sm bg-electric/5 flex items-center justify-center border border-electric/20 group-hover/skill:border-neon transition-all">
+                      <Zap className="w-4 h-4 text-electric group-hover:text-neon" />
                     </div>
-                    <span className="text-xl text-slate-100 font-tech font-black uppercase tracking-tight leading-snug">{skill}</span>
+                    <span className="text-xl text-ice font-tech font-black uppercase tracking-tight leading-snug">{skill}</span>
                   </motion.div>
                 ))}
               </div>
 
               <button 
                 onClick={() => handleWhatsAppRedirect(`Industrial Audit: ${selectedRole.title}`)}
-                className="w-full py-8 btn-copper group"
+                className="w-full py-8 btn-neon group"
               >
-                AUTORIZAR DESPLIEGUE TÉCNICO <ArrowRight className="w-6 h-6 group-hover:translate-x-2 transition-transform" />
+                AUTORIZAR DESPLIEGUE TÉCNICO <ArrowRight className="w-6 h-6 group-hover:translate-x-3 transition-transform" />
               </button>
             </motion.div>
           </div>
         )}
       </AnimatePresence>
 
-      {/* --- Floating AI Chat Widget --- */}
+      {/* --- Floating AI Chat Widget: Smarter Flow --- */}
       <div className="chat-widget">
         <AnimatePresence>
           {isChatOpen && (
@@ -549,44 +611,69 @@ export default function Home() {
               initial={{ opacity: 0, scale: 0.9, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.9, y: 20 }}
-              className="chat-bubble mb-6 p-8 rounded-sm"
+              className="chat-bubble mb-6 p-8 rounded-sm relative overflow-hidden"
             >
-              <div className="flex justify-between items-center mb-6">
-                <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 rounded-sm bg-mint/10 flex items-center justify-center border border-mint/30">
-                    <Bot className="w-5 h-5 text-mint" strokeWidth={1.5} />
+              <div className="absolute top-0 left-0 w-2 h-full bg-neon" />
+              
+              <div className="flex justify-between items-center mb-8">
+                <div className="flex items-center gap-4">
+                  <div className="w-10 h-10 rounded-sm bg-neon/10 flex items-center justify-center border border-neon/30">
+                    <Bot className="w-6 h-6 text-neon shadow-[0_0_10px_#ccff00]" strokeWidth={1.5} />
                   </div>
                   <div>
-                    <h5 className="font-tech text-white text-[11px] font-black uppercase tracking-tighter">Colconexus BOT</h5>
-                    <div className="flex items-center gap-1.5">
-                      <div className="w-1.5 h-1.5 rounded-full bg-mint animate-pulse" />
-                      <span className="text-[9px] text-mint/50 font-bold uppercase tracking-widest">Active System</span>
+                    <h5 className="font-tech text-ice text-[12px] font-black uppercase tracking-tighter">Colconexus BOT v2.6</h5>
+                    <div className="flex items-center gap-2">
+                      <div className="w-2 h-2 rounded-full bg-neon animate-pulse" />
+                      <span className="text-[9px] text-neon/60 font-black uppercase tracking-widest">Neural Link Active</span>
                     </div>
                   </div>
                 </div>
-                <button onClick={() => setIsChatOpen(false)} className="text-white/30 hover:text-white transition-colors">
+                <button onClick={() => setIsChatOpen(false)} className="text-white/20 hover:text-white transition-colors">
                   <X className="w-6 h-6" />
                 </button>
               </div>
               
-              <div className="space-y-6 text-[10px] text-slate-400 font-bold uppercase tracking-widest leading-relaxed">
-                <p className="bg-white/5 p-4 rounded-sm border-l-2 border-mint">
-                  Saludos. Soy el asistente de ingeniería de Colconexus. ¿Desea optimizar su flujo de datos o automatizar procesos críticos?
-                </p>
-                <div className="grid gap-3">
-                  <button 
-                    onClick={() => handleWhatsAppRedirect("Consultoría IA")}
-                    className="w-full py-4 bg-copper/10 border border-copper/30 text-copper hover:bg-copper hover:text-white transition-all rounded-sm uppercase tracking-widest"
+              <div className="space-y-6 max-h-[300px] overflow-y-auto mb-8 pr-2 scrollbar-hide">
+                {chatMessages.map((msg, i) => (
+                  <motion.div 
+                    key={i}
+                    initial={{ opacity: 0, x: msg.role === 'bot' ? -10 : 10 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    className={`p-4 rounded-sm text-[11px] font-bold uppercase tracking-widest leading-relaxed border ${
+                      msg.role === 'bot' 
+                        ? 'bg-white/5 border-white/5 text-slate-400' 
+                        : 'bg-neon/10 border-neon/30 text-neon ml-8'
+                    }`}
                   >
-                    Hablar con un Humano
-                  </button>
-                  <button 
-                    onClick={() => setIsChatOpen(false)}
-                    className="w-full py-4 border border-white/5 hover:border-mint/50 transition-all rounded-sm uppercase tracking-widest"
-                  >
-                    Seguir Navegando
-                  </button>
-                </div>
+                    {msg.text}
+                  </motion.div>
+                ))}
+                {isTyping && (
+                  <div className="flex gap-2 p-4 bg-white/5 border border-white/5 rounded-sm w-fit">
+                    <div className="w-1.5 h-1.5 bg-neon rounded-full animate-bounce" />
+                    <div className="w-1.5 h-1.5 bg-neon rounded-full animate-bounce [animation-delay:0.2s]" />
+                    <div className="w-1.5 h-1.5 bg-neon rounded-full animate-bounce [animation-delay:0.4s]" />
+                  </div>
+                )}
+              </div>
+              
+              <div className="grid gap-3">
+                <button 
+                  onClick={() => {
+                    const txt = "¿Cómo mido mi nivel de automatización?";
+                    setChatMessages(prev => [...prev, { role: 'user', text: txt }]);
+                    simulateBotResponse(txt);
+                  }}
+                  className="w-full py-4 border border-white/10 hover:border-neon/50 text-slate-500 hover:text-neon transition-all rounded-sm text-[10px] font-black uppercase tracking-widest"
+                >
+                  ¿Cómo medir mi automatización?
+                </button>
+                <button 
+                  onClick={() => handleWhatsAppRedirect("Consultoría IA")}
+                  className="btn-neon w-full py-4 text-[10px]"
+                >
+                  Hablar con un Ingeniero
+                </button>
               </div>
             </motion.div>
           )}
@@ -594,10 +681,10 @@ export default function Home() {
 
         <button 
           onClick={() => setIsChatOpen(!isChatOpen)}
-          className="ml-auto w-20 h-20 rounded-sm bg-obsidian border border-copper/40 flex items-center justify-center text-copper shadow-2xl hover:border-mint hover:text-mint transition-all relative group overflow-hidden"
+          className="ml-auto w-24 h-24 rounded-sm bg-obsidian border border-neon/40 flex items-center justify-center text-neon shadow-[0_0_50px_rgba(204,255,0,0.1)] hover:border-neon hover:scale-105 transition-all relative group overflow-hidden"
         >
-          <div className="absolute inset-0 bg-gradient-to-tr from-copper/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-          <MessageSquare className="w-10 h-10 relative z-10" strokeWidth={1.5} />
+          <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-neon/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+          <MessageSquare className="w-12 h-12 relative z-10" strokeWidth={1.5} />
         </button>
       </div>
     </div>

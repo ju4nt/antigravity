@@ -11,79 +11,115 @@
 }
 
 :root {
+  --font-inter: 'Inter', sans-serif;
+  --font-space-grotesk: 'Space Grotesk', sans-serif;
   color-scheme: dark;
 }
 
+@theme {
+  --color-obsidian: var(--color-obsidian);
+  --color-neon: var(--color-neon);
+  --color-electric: var(--color-electric);
+  --color-ice: var(--color-ice);
+  --color-graphite: var(--color-graphite);
+}
+
 body {
-  background: linear-gradient(135deg, #05070a 0%, #0d1117 100%);
-  color: #F8FAFC;
-  font-family: var(--font-sans);
+  background-color: var(--color-obsidian);
+  color: var(--color-ice);
+  font-family: var(--font-inter), sans-serif;
+  -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
   @apply antialiased;
 }
 
 /* Industrial Grid Pattern */
 .bg-grid-overlay {
-  position: fixed;
+  position: absolute;
   inset: 0;
-  background-image: 
-    linear-gradient(rgba(184, 115, 51, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(184, 115, 51, 0.03) 1px, transparent 1px);
-  background-size: 60px 60px;
+  background-image: linear-gradient(rgba(0, 240, 255, 0.03) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(0, 240, 255, 0.03) 1px, transparent 1px);
+  background-size: 50px 50px;
   z-index: -1;
 }
 
 /* Tech Titles */
 .font-tech {
-  font-family: var(--font-tech);
+  font-family: var(--font-space-grotesk), monospace;
 }
 
 /* Glassmorphism Industrial */
 .glass-card {
-  background: rgba(28, 31, 38, 0.7);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(184, 115, 51, 0.2);
-  transition: all 0.4s ease-out;
+  background: rgba(28, 31, 38, 0.4);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(0, 240, 255, 0.1);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .glass-card:hover {
-  border-color: #2ee59d;
-  box-shadow: 0 0 30px rgba(46, 229, 157, 0.05);
-  transform: translateY(-2px);
+  border-color: rgba(204, 255, 0, 0.4);
+  box-shadow: 0 0 40px rgba(204, 255, 0, 0.05);
+  transform: translateY(-4px);
 }
 
 /* Accent Buttons */
-.btn-copper {
-  background: #b87333;
-  color: #fff;
-  border-radius: 4px;
+.btn-neon {
+  background: var(--color-neon);
+  color: var(--color-obsidian);
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 1rem 2rem;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+  font-family: var(--font-space-grotesk);
+}
+
+.btn-neon:hover {
+  filter: brightness(1.1);
+  box-shadow: 0 0 30px rgba(204, 255, 0, 0.4);
+  transform: scale(1.02);
+}
+
+.btn-outline {
+  border: 1px solid rgba(0, 240, 255, 0.3);
+  color: var(--color-electric);
+  background: transparent;
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  transition: all 0.4s ease;
+  padding: 1rem 2rem;
+  border-radius: 2px;
+  transition: all 0.3s ease;
 }
 
-.btn-copper:hover {
-  background: #d48a47;
-  box-shadow: 0 4px 20px rgba(184, 115, 51, 0.3);
+.btn-outline:hover {
+  background: rgba(0, 240, 255, 0.05);
+  border-color: var(--color-electric);
+  box-shadow: 0 0 20px rgba(0, 240, 255, 0.2);
 }
 
 /* Glow Mint */
-.text-mint-glow {
-  color: #2ee59d;
-  text-shadow: 0 0 20px rgba(46, 229, 157, 0.4);
+.neon-glow {
+  color: var(--color-neon);
+  text-shadow: 0 0 20px rgba(204, 255, 0, 0.5);
+}
+
+.electric-glow {
+  color: var(--color-electric);
+  text-shadow: 0 0 20px rgba(0, 240, 255, 0.5);
 }
 
 /* Counter/Status Styles */
 .status-mint {
-  color: #2ee59d;
-  font-family: var(--font-tech);
+  color: var(--color-electric);
+  font-family: var(--font-space-grotesk);
   font-weight: 800;
 }
 
 /* Diagnostic Section Hierarchy */
 .siglo-title {
-  font-family: var(--font-tech);
+  font-family: var(--font-space-grotesk);
   line-height: 0.9;
   letter-spacing: -0.05em;
 }
@@ -91,7 +127,7 @@ body {
 /* AI Industrial Demo Terminal */
 .terminal-code {
   font-family: 'JetBrains Mono', monospace;
-  color: #2ee59d;
+  color: var(--color-electric);
   font-size: 0.8rem;
   line-height: 1.4;
 }
@@ -100,7 +136,7 @@ body {
   display: inline-block;
   width: 8px;
   height: 15px;
-  background: #2ee59d;
+  background: var(--color-neon);
   animation: blink 1s step-end infinite;
   vertical-align: middle;
 }
@@ -115,15 +151,15 @@ body {
   bottom: 2rem;
   right: 2rem;
   z-index: 1000;
-  width: 350px;
+  width: 380px;
   max-width: calc(100vw - 4rem);
 }
 
 .chat-bubble {
-  background: rgba(28, 31, 38, 0.95);
-  backdrop-filter: blur(15px);
-  border: 1px solid rgba(184, 115, 51, 0.4);
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+  background: rgba(10, 12, 16, 0.98);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(0, 240, 255, 0.2);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
 }
 
 /* Float Animations */
@@ -139,8 +175,8 @@ body {
 
 /* Efficiency Counter */
 .counter-glow {
-  color: #b87333;
-  text-shadow: 0 0 15px rgba(184, 115, 51, 0.5);
+  color: var(--color-neon);
+  text-shadow: 0 0 15px rgba(204, 255, 0, 0.5);
 }
 
 /* New Parallax Layers */
@@ -149,4 +185,22 @@ body {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+}
+
+.xxi-glow {
+  font-size: clamp(4rem, 12vw, 10rem);
+  color: var(--color-neon);
+  text-shadow: 0 0 60px rgba(204, 255, 0, 0.4);
+  font-weight: 950;
+  font-style: italic;
+  line-height: 0.8;
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse-slow {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.8; transform: scale(0.98); }
 }
