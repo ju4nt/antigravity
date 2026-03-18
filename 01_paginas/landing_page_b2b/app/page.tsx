@@ -48,6 +48,7 @@ export default function Home() {
   ]);
   const [isTyping, setIsTyping] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [activeUnit, setActiveUnit] = useState(0);
   
   const handleWhatsAppRedirect = (service = "") => {
     const text = service 
@@ -305,8 +306,13 @@ export default function Home() {
 
   return (
     <div className="min-h-screen relative text-slate-200 bg-obsidian overflow-x-hidden">
-      {/* Background System - Industrial Grid */}
+      {/* Background System - Industrial Grid & Watermark */}
       <div className="bg-grid-overlay" />
+      <div className="bg-watermark">COLCONEXUS DATACENTER</div>
+      
+      {/* Background Glows */}
+      <div className="glow-blob w-[500px] h-[500px] bg-neon top-[-10%] right-[-10%] opacity-10" />
+      <div className="glow-blob w-[600px] h-[600px] bg-electric bottom-[20%] left-[-10%] opacity-10" />
 
       {/* --- Mint Navbar --- */}
       <nav className="navbar-mint">
@@ -383,10 +389,10 @@ export default function Home() {
             <div className="md:col-span-7 p-8 md:p-14 flex flex-col gap-6">
               <div className="flex items-center gap-3 px-3 py-1 bg-neon/10 border border-neon/30 w-fit">
                  <div className="w-2 h-2 bg-neon rounded-full animate-pulse shadow-[0_0_10px_#00ffcc]" />
-                 <span className="text-neon font-tech text-[10px] uppercase font-black tracking-[0.3em]">Industrial AI Engineering 2026</span>
+                 <span className="text-neon font-tech text-[10px] uppercase font-black tracking-[0.3em]">COLCONEXUS DATACENTER SAS</span>
               </div>
               
-              <h1 className="font-tech text-4xl md:text-5xl lg:text-6xl font-black text-ice leading-[1.1] uppercase italic tracking-tighter">
+              <h1 className="font-tech text-4xl md:text-5xl lg:text-7xl font-black text-ice leading-[1.1] uppercase italic tracking-tighter">
                 MIDE TU NIVEL DE <br /> <span className="neon-glow">AUTOMATIZACIÓN.</span>
               </h1>
               
@@ -406,7 +412,7 @@ export default function Home() {
                 </button>
                 <button 
                   onClick={() => handleWhatsAppRedirect("Demo Técnica")}
-                  className="btn-outline text-xs"
+                  className="btn-purple text-xs"
                 >
                   Ver Demo Técnica
                 </button>
@@ -471,61 +477,96 @@ export default function Home() {
            </div>
         </section>
 
-        {/* --- Business Units Expansion --- */}
-        <section className="max-w-7xl mx-auto mb-24 px-6 overflow-hidden">
-          <div className="grid md:grid-cols-2 gap-8">
+        {/* --- Business Units Slider --- */}
+        <section className="max-w-7xl mx-auto mb-20 px-6 overflow-hidden">
+          {/* Unit Selector */}
+          <div className="flex overflow-x-auto gap-4 mb-12 pb-4 no-scrollbar">
             {BUSINESS_UNITS.map((unit, idx) => (
-              <motion.div
+              <button
                 key={unit.id}
-                id={unit.id}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                className="glass-card p-10 md:p-12 border border-white/5 hover:border-neon/40 transition-all group relative"
+                onClick={() => setActiveUnit(idx)}
+                className={`flex-shrink-0 px-8 py-4 font-tech font-black uppercase text-[10px] tracking-widest border transition-all duration-300 ${
+                  activeUnit === idx 
+                  ? "bg-neon text-obsidian border-neon shadow-[0_0_15px_#00ffcc]" 
+                  : "bg-purple-deep/40 text-ice/40 border-white/5 hover:border-neon/40 hover:text-neon"
+                }`}
               >
-                <div className="absolute -top-10 -right-10 w-40 h-40 bg-neon/5 blur-[80px] opacity-0 group-hover:opacity-100 transition-opacity" />
-                
-                <div className="flex items-center gap-6 mb-8 relative z-10">
-                  <div className="p-4 bg-neon/10 rounded-sm border border-neon/20 group-hover:border-neon transition-colors text-neon shadow-[0_0_15px_rgba(0,255,204,0.1)]">
-                    {unit.icon}
-                  </div>
-                  <h3 className="font-tech text-3xl font-black uppercase italic tracking-tighter text-ice leading-none group-hover:neon-glow transition-all">
-                    {unit.title}
-                  </h3>
-                </div>
-                
-                <p className="text-slate-500 text-[11px] mb-10 font-bold uppercase tracking-widest leading-relaxed border-l-2 border-neon pl-6 py-1 italic relative z-10">
-                  {unit.description}
-                </p>
-
-                <div className="grid gap-6 relative z-10">
-                  {unit.items.map((item) => (
-                    <div
-                      key={item.title}
-                      className="p-8 rounded-sm bg-[#0a0518]/60 border border-white/5 hover:border-electric/40 transition-all hover:bg-[#0a0518]/80 cursor-default"
-                    >
-                      <h4 className="font-tech font-black text-ice uppercase tracking-tight text-xl mb-4 flex items-center gap-3">
-                        <div className="w-1.5 h-1.5 bg-electric rounded-full" />
-                        {item.title}
-                      </h4>
-                      
-                      <p className="text-[10px] text-slate-400 mb-6 font-medium uppercase tracking-wider leading-relaxed">
-                        {item.desc}
-                      </p>
-                      
-                      <div className="flex flex-wrap gap-2">
-                        {item.features.map(f => (
-                          <span key={f} className="text-[9px] bg-white/5 text-slate-300 border border-white/10 px-3 py-1 rounded-sm uppercase font-black tracking-tighter hover:border-neon/50 hover:text-neon transition-colors">
-                            • {f}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </motion.div>
+                {unit.title.split('. ')[1]}
+              </button>
             ))}
           </div>
+
+          {/* Active Unit Display */}
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={BUSINESS_UNITS[activeUnit].id}
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -20 }}
+              transition={{ duration: 0.4 }}
+              className="glass-card p-12 md:p-16 border border-white/5 relative bg-purple-deep/30"
+            >
+              <div className="absolute -top-10 -right-10 w-48 h-48 bg-neon/10 blur-[100px] pointer-events-none" />
+              
+              <div className="flex flex-col md:flex-row md:items-center gap-8 mb-12">
+                <div className="p-6 bg-neon/10 rounded-sm border border-neon/30 text-neon shadow-[0_0_20px_rgba(0,255,204,0.1)] w-fit">
+                  {BUSINESS_UNITS[activeUnit].icon}
+                </div>
+                <div>
+                  <h3 className="font-tech text-4xl md:text-5xl font-black uppercase italic tracking-tighter text-neon leading-none mb-4">
+                    {BUSINESS_UNITS[activeUnit].title}
+                  </h3>
+                  <p className="text-slate-400 text-xs md:text-sm font-bold uppercase tracking-[0.2em] leading-relaxed max-w-2xl border-l-2 border-neon/50 pl-6">
+                    {BUSINESS_UNITS[activeUnit].description}
+                  </p>
+                </div>
+              </div>
+
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {BUSINESS_UNITS[activeUnit].items.map((item) => (
+                  <div
+                    key={item.title}
+                    className="p-8 rounded-sm bg-[#0a0518]/60 border border-white/5 hover:border-neon/40 transition-all hover:bg-[#0a0518]/90 group"
+                  >
+                    <h4 className="font-tech font-black text-ice uppercase tracking-tight text-xl mb-4 flex items-center gap-3">
+                      <div className="w-1.5 h-1.5 bg-electric rounded-full group-hover:bg-neon transition-colors" />
+                      {item.title}
+                    </h4>
+                    
+                    <p className="text-[10px] text-slate-500 mb-6 font-medium uppercase tracking-wider leading-relaxed">
+                      {item.desc}
+                    </p>
+                    
+                    <div className="flex flex-wrap gap-2">
+                      {item.features.map(f => (
+                        <span key={f} className="text-[8px] bg-white/5 text-slate-400 border border-white/10 px-3 py-1 rounded-sm uppercase font-black tracking-tighter hover:border-neon/50 hover:text-neon transition-colors">
+                          • {f}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <div className="mt-12 pt-8 border-t border-white/5 flex flex-wrap gap-4">
+                 <button 
+                  onClick={() => handleWhatsAppRedirect(BUSINESS_UNITS[activeUnit].title)}
+                  className="btn-neon text-[10px] py-4"
+                 >
+                   Consultoría en {BUSINESS_UNITS[activeUnit].title.split('. ')[1]}
+                 </button>
+                 <button 
+                  className="px-8 py-4 border border-white/10 text-ice/40 font-tech font-black uppercase text-[10px] tracking-widest hover:text-ice hover:border-white/30 transition-all"
+                  onClick={() => {
+                    const next = (activeUnit + 1) % BUSINESS_UNITS.length;
+                    setActiveUnit(next);
+                  }}
+                 >
+                   Siguiente Unidad →
+                 </button>
+              </div>
+            </motion.div>
+          </AnimatePresence>
         </section>
 
 
@@ -640,6 +681,22 @@ export default function Home() {
                     className="w-full h-full object-cover group-hover:scale-105 transition-all duration-1000"
                    />
                 </div>
+              </div>
+           </div>
+        </section>
+
+        {/* --- Diagnostic Refined --- */}
+        <section id="diagnostico" className="max-w-7xl mx-auto mb-20 px-6">
+           <div className="glass-card p-12 md:p-20 border-neon/20 relative overflow-hidden bg-purple-deep/40">
+              <div className="absolute top-0 right-0 w-64 h-64 bg-neon/10 blur-[120px]" />
+              <div className="max-w-3xl flex flex-col gap-6 relative z-10">
+                <h2 className="font-tech text-4xl md:text-5xl font-black text-ice uppercase italic tracking-tighter leading-none">
+                  Auditoría <span className="neon-glow text-neon">Final</span>.
+                </h2>
+                <p className="text-slate-400 text-sm md:text-base font-medium leading-relaxed uppercase tracking-wide">
+                  ¿Tu operación está blindada o es un colador de dólares? Diagnóstico Colconexus Datacenter.
+                </p>
+                <button onClick={() => handleWhatsAppRedirect("Auditoría Final")} className="btn-neon w-fit mt-4">Iniciar Diagnóstico de Ingeniería</button>
               </div>
            </div>
         </section>

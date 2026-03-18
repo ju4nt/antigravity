@@ -11,8 +11,8 @@
   --font-sans: 'Inter', sans-serif;
   --font-tech: 'Space Grotesk', sans-serif;
 
-  --color-glass-bg: rgba(26, 10, 44, 0.4);
-  --section-gap: 5rem; /* Reduced from 8rem */
+  --color-glass-bg: rgba(26, 10, 44, 0.6); /* Slightly darker for contrast */
+  --section-gap: 4rem;
 }
 
 :root {
@@ -40,7 +40,7 @@ body {
   @apply antialiased;
 }
 
-/* Industrial Grid Pattern */
+/* Industrial Grid & Watermark */
 .bg-grid-overlay {
   position: absolute;
   inset: 0;
@@ -48,6 +48,24 @@ body {
                     linear-gradient(90deg, rgba(0, 240, 255, 0.03) 1px, transparent 1px);
   background-size: 50px 50px;
   z-index: -1;
+}
+
+.bg-watermark {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -2;
+  opacity: 0.03;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-tech);
+  font-weight: 900;
+  font-size: 15vw;
+  white-space: nowrap;
+  text-transform: uppercase;
+  color: var(--color-neon);
+  transform: rotate(-15deg);
 }
 
 /* Tech Titles */
@@ -76,26 +94,42 @@ body {
   @apply text-[#080315] font-tech font-black uppercase tracking-tighter;
 }
 
-/* Accent Buttons */
+/* Accent Buttons - Purple & Green (Mint) */
 .btn-neon {
-  @apply bg-neon text-[#080315] font-tech font-black uppercase tracking-widest px-10 py-4 rounded-sm
-         hover:bg-white hover:scale-[1.02] transition-all duration-300 shadow-[0_0_20px_rgba(0,255,204,0.3)];
+  @apply bg-purple-deep border border-neon/50 text-neon font-tech font-black uppercase tracking-widest px-10 py-4 rounded-sm
+         hover:bg-neon hover:text-obsidian hover:scale-[1.05] transition-all duration-300 
+         active:scale-95 active:bg-white active:text-obsidian shadow-[0_0_20px_rgba(131,56,236,0.2)];
+}
+
+.btn-purple {
+  @apply bg-purple-deep border border-electric/50 text-ice font-tech font-black uppercase tracking-widest px-10 py-4 rounded-sm
+          hover:bg-electric hover:text-white transition-all duration-300 shadow-[0_0_20px_rgba(0,136,255,0.2)];
 }
 
 .btn-outline {
   @apply border border-neon/40 text-neon font-tech font-black uppercase tracking-widest px-10 py-4 rounded-sm
-         hover:bg-neon/10 hover:border-neon transition-all duration-300;
+         hover:bg-neon/10 hover:border-neon transition-all duration-300 active:scale-95;
+}
+
+/* Decorative Color Blobs */
+.glow-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(120px);
+  z-index: -1;
+  opacity: 0.15;
+  pointer-events: none;
 }
 
 /* Glow Mint */
 .neon-glow {
   color: var(--color-neon);
-  text-shadow: 0 0 15px rgba(0, 255, 204, 0.5);
+  text-shadow: 0 0 20px rgba(0, 255, 204, 0.8), 0 0 40px rgba(0, 255, 204, 0.4);
 }
 
 .electric-glow {
   color: var(--color-electric);
-  text-shadow: 0 0 15px rgba(0, 136, 255, 0.4);
+  text-shadow: 0 0 20px rgba(0, 136, 255, 0.7), 0 0 40px rgba(0, 136, 255, 0.3);
 }
 
 /* Counter/Status Styles */
