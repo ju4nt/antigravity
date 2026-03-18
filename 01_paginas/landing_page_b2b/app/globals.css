@@ -11,7 +11,7 @@
   --font-sans: 'Inter', sans-serif;
   --font-tech: 'Space Grotesk', sans-serif;
 
-  --glass-bg: rgba(26, 10, 44, 0.4);
+  --color-glass-bg: rgba(26, 10, 44, 0.4);
   --section-gap: 5rem; /* Reduced from 8rem */
 }
 
