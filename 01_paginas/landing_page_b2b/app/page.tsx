@@ -386,46 +386,50 @@ export default function Home() {
         {/* --- Hero Section Refined --- */}
         <section className="max-w-7xl mx-auto px-6 mb-12">
           <div className="grid md:grid-cols-12 gap-6 items-center bg-purple-deep/20 border border-white/5 rounded-sm overflow-hidden">
-            <div className="md:col-span-7 p-8 md:p-14 flex flex-col gap-6">
+            <div className="md:col-span-8 p-6 md:p-8 flex flex-col justify-center gap-3">
               <div className="flex items-center gap-3 px-3 py-1 bg-neon/10 border border-neon/30 w-fit">
                  <div className="w-2 h-2 bg-neon rounded-full animate-pulse shadow-[0_0_10px_#00ffcc]" />
-                 <span className="text-neon font-tech text-[10px] uppercase font-black tracking-[0.3em]">COLCONEXUS DATACENTER SAS</span>
+                 <span className="text-neon font-tech text-[9px] uppercase font-black tracking-[0.3em]">COLCONEXUS DATACENTER SAS</span>
               </div>
               
-              <h1 className="font-tech text-4xl md:text-5xl lg:text-7xl font-black text-ice leading-[1.1] uppercase italic tracking-tighter">
+              <h1 className="font-tech text-3xl md:text-5xl lg:text-6xl font-black text-ice leading-[1.0] uppercase italic tracking-tighter">
                 MIDE TU NIVEL DE <br /> <span className="neon-glow">AUTOMATIZACIÓN.</span>
               </h1>
               
-              <p className="text-slate-400 text-sm md:text-base font-medium leading-relaxed max-w-lg">
+              <p className="text-slate-400 text-xs md:text-sm font-medium leading-relaxed max-w-lg">
                 No dejes la rentabilidad al azar. Nuestra ingeniería de precisión audita tus procesos y despliega robots autónomos que eliminan la inercia operativa de inmediato.
               </p>
               
-              <div className="flex flex-wrap gap-4 pt-2">
+              <div className="flex flex-wrap gap-4 pt-4">
                 <button 
                   onClick={() => {
                     const el = document.getElementById('diagnostico');
                     el?.scrollIntoView({ behavior: 'smooth' });
                   }}
-                  className="btn-neon text-xs"
+                  className="btn-neon text-[10px] py-3.5"
                 >
                   Mide tu Nivel Ahora
                 </button>
                 <button 
                   onClick={() => handleWhatsAppRedirect("Demo Técnica")}
-                  className="btn-purple text-xs"
+                  className="btn-purple text-[10px] py-3.5"
                 >
                   Ver Demo Técnica
                 </button>
               </div>
             </div>
             
-            <div className="md:col-span-5 h-[300px] md:h-full relative overflow-hidden">
-              <img 
-                src="/assets/hero-ai.jpg" 
-                alt="Industrial Intelligence Hub" 
-                className="w-full h-full object-cover group-hover:scale-105 transition-all duration-700"
-              />
-              <div className="absolute inset-0 bg-gradient-to-l from-transparent via-transparent to-purple-deep/40" />
+            <div className="md:col-span-4 p-4 flex items-center justify-center">
+              <div className="relative group/img w-full">
+                <div className="absolute -inset-1 bg-gradient-to-r from-neon/20 to-electric/20 blur opacity-25 group-hover/img:opacity-50 transition duration-1000" />
+                <div className="relative bg-obsidian border border-white/10 rounded-sm overflow-hidden">
+                  <img 
+                    src="/assets/hero-ai.jpg" 
+                    alt="Industrial Intelligence Hub" 
+                    className="w-full h-auto object-contain brightness-105 contrast-105 group-hover/img:scale-105 transition-all duration-700"
+                  />
+                </div>
+              </div>
             </div>
           </div>
         </section>
@@ -433,36 +437,40 @@ export default function Home() {
         {/* --- Comparison Section Refined --- */}
         <section className="max-w-7xl mx-auto mb-16 px-6">
           <div className="glass-card overflow-hidden rounded-sm flex flex-col md:flex-row items-stretch border-neon/10 h-auto md:h-[400px]">
-            <div className="flex-1 p-10 md:p-12 flex flex-col justify-center bg-purple-deep/40 relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-32 h-32 bg-neon/5 blur-3xl" />
-              <h2 className="font-tech text-2xl md:text-4xl font-black text-ice mb-6 leading-[1.1] uppercase italic tracking-tighter">
-                ¿Pagas por el <br /> <span className="neon-glow">Talento</span> o por la <span className="text-slate-700">Inercia</span>?
+            <div className="flex-[1.5] p-8 md:p-10 flex flex-col justify-center bg-purple-deep/60 relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-neon/10 blur-3xl opacity-20" />
+              <h2 className="font-tech text-2xl md:text-3xl font-black text-ice mb-2 leading-[1.0] uppercase italic tracking-tighter">
+                ¿Pagas por el <br /> <span className="neon-glow">Talento</span> o por la <span className="text-slate-700 font-extrabold text-shadow-sm">Inercia</span>?
               </h2>
-              <p className="electric-glow font-tech text-base font-bold mb-6 uppercase tracking-tight">
-                La IA es inversión única, el ejecutivo senior es gasto perpetuo.
+              <p className="electric-glow font-tech text-[10px] font-bold mb-4 uppercase tracking-tighter">
+                IA = Inversión Única // Humano = Gasto Perpetuo
               </p>
-              <div className="space-y-4 mb-8">
-                <div className="flex items-center gap-4 text-[10px] uppercase tracking-[0.2em] font-black text-slate-400">
+              <div className="space-y-1 mb-6 text-[9px] uppercase font-black text-slate-400">
+                <div className="flex items-center gap-3">
                   <div className="w-1.5 h-1.5 bg-neon rounded-full" /> Automatiza el rol, no el salario.
                 </div>
-                <div className="flex items-center gap-4 text-[10px] uppercase tracking-[0.2em] font-black text-slate-400">
+                <div className="flex items-center gap-3">
                   <div className="w-1.5 h-1.5 bg-neon rounded-full" /> Blindaje operativo 24/7 sin errores.
                 </div>
               </div>
               <button
                 onClick={() => handleWhatsAppRedirect("Comparativa Rentabilidad")}
-                className="btn-neon w-fit px-8 py-3 text-xs"
+                className="btn-neon w-fit px-8 py-3 text-[10px]"
               >
                 Solicitar Business Case
               </button>
             </div>
-            <div className="flex-1 relative border-l border-white/5 overflow-hidden">
-              <img
-                src="/assets/comparison-ai.jpg"
-                alt="Talento vs Inercia"
-                className="w-full h-full object-cover grayscale-0 hover:scale-105 transition-all duration-700"
-              />
-              <div className="absolute inset-0 bg-gradient-to-r from-obsidian/40 via-transparent to-transparent" />
+            <div className="flex-1 p-6 flex items-center justify-center border-l border-white/10">
+              <div className="relative group/img2 w-full max-w-[400px]">
+                <div className="absolute -inset-1 bg-gradient-to-r from-electric/20 to-purple-600/20 blur opacity-25 group-hover/img2:opacity-50 transition duration-1000" />
+                <div className="relative bg-obsidian border border-white/10 rounded-sm overflow-hidden">
+                  <img 
+                    src="/assets/comparison-ai.jpg" 
+                    alt="Talento vs Inercia" 
+                    className="w-full h-auto object-contain brightness-105 group-hover/img2:scale-105 transition-all duration-700"
+                  />
+                </div>
+              </div>
             </div>
           </div>
         </section>
@@ -665,20 +673,20 @@ export default function Home() {
         <section className="max-w-7xl mx-auto mb-16 px-6">
            <div className="relative rounded-sm overflow-hidden border border-white/5 bg-purple-deep/20 group">
               <div className="grid md:grid-cols-12 h-full items-stretch">
-                <div className="md:col-span-7 p-10 md:p-14 flex flex-col justify-center gap-6 relative z-10">
-                  <h3 className="font-tech text-3xl md:text-4xl font-black text-ice uppercase italic tracking-tighter">
+                <div className="md:col-span-7 p-8 md:p-10 flex flex-col justify-center gap-4 relative z-10">
+                  <h3 className="font-tech text-2xl md:text-4xl font-black text-ice uppercase italic tracking-tighter leading-[1.0]">
                     La IA no es Código, <br /> es <span className="neon-glow">Orquestación</span>.
                   </h3>
-                  <p className="text-slate-500 text-sm font-medium tracking-tight max-w-md">
+                  <p className="text-slate-500 text-xs md:text-sm font-medium tracking-tight max-w-md">
                     Entiende las herramientas, nosotros las unimos por ti para crear un sistema cohesionado y escalable que responda a su demanda industrial.
                   </p>
-                  <button onClick={() => handleWhatsAppRedirect("Engine Orchestra")} className="btn-neon w-fit px-10 py-4 text-xs">Ver Arquitectura</button>
+                  <button onClick={() => handleWhatsAppRedirect("Engine Orchestra")} className="btn-neon w-fit px-10 py-3 text-[10px]">Ver Arquitectura</button>
                 </div>
-                <div className="md:col-span-5 relative min-h-[300px] border-l border-white/5">
+                <div className="md:col-span-5 relative min-h-[300px] border-l border-white/10 bg-obsidian flex items-center justify-center p-4">
                    <img 
                     src="/assets/orchestra-ai.jpg" 
                     alt="Orchestration" 
-                    className="w-full h-full object-cover group-hover:scale-105 transition-all duration-1000"
+                    className="w-full h-full object-contain mix-blend-multiply brightness-110 group-hover:scale-105 transition-all duration-1000"
                    />
                 </div>
               </div>

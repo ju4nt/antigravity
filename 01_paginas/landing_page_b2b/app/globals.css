@@ -11,8 +11,8 @@
   --font-sans: 'Inter', sans-serif;
   --font-tech: 'Space Grotesk', sans-serif;
 
-  --color-glass-bg: rgba(26, 10, 44, 0.6); /* Slightly darker for contrast */
-  --section-gap: 4rem;
+  --color-glass-bg: rgba(26, 10, 44, 0.7); /* Slightly darker for contrast */
+  --section-gap: 3rem; /* Tighter layout */
 }
 
 :root {
@@ -124,7 +124,7 @@ body {
 /* Glow Mint */
 .neon-glow {
   color: var(--color-neon);
-  text-shadow: 0 0 20px rgba(0, 255, 204, 0.8), 0 0 40px rgba(0, 255, 204, 0.4);
+  text-shadow: 0 0 20px rgba(0, 255, 204, 0.9), 0 0 40px rgba(0, 255, 204, 0.6), 0 0 60px rgba(0, 255, 204, 0.3);
 }
 
 .electric-glow {
@@ -137,6 +137,10 @@ body {
   color: var(--color-electric);
   font-family: var(--font-space-grotesk);
   font-weight: 800;
+}
+
+.blend-multiply {
+  mix-blend-mode: multiply;
 }
 
 /* Diagnostic Section Hierarchy */
