@@ -488,14 +488,18 @@ export default function Home() {
         {/* --- Business Units Slider --- */}
         <section className="max-w-7xl mx-auto mb-20 px-6 overflow-hidden">
           {/* Unit Selector */}
-          <div className="flex overflow-x-auto gap-4 mb-12 pb-4 no-scrollbar">
+          <div className="flex overflow-x-auto gap-3 mb-10 pb-4 no-scrollbar border-b border-white/5">
             {BUSINESS_UNITS.map((unit, idx) => (
               <button
                 key={unit.id}
-                onClick={() => setActiveUnit(idx)}
-                className={`flex-shrink-0 px-8 py-4 font-tech font-black uppercase text-[10px] tracking-widest border transition-all duration-300 ${
+                onClick={() => {
+                  setActiveUnit(idx);
+                  // Optional: scroll the unit display into view if needed
+                  document.getElementById('servicios-display')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }}
+                className={`flex-shrink-0 px-6 py-4 font-tech font-black uppercase text-[10px] tracking-[0.2em] border-t border-x transition-all duration-300 rounded-t-sm outline-none ${
                   activeUnit === idx 
-                  ? "bg-neon text-obsidian border-neon shadow-[0_0_15px_#00ffcc]" 
+                  ? "bg-neon text-obsidian border-neon shadow-[0_-8px_20px_rgba(0,255,204,0.3)] z-10 translate-y-[-2px]" 
                   : "bg-purple-deep/40 text-ice/40 border-white/5 hover:border-neon/40 hover:text-neon"
                 }`}
               >
@@ -505,9 +509,10 @@ export default function Home() {
           </div>
 
           {/* Active Unit Display */}
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={BUSINESS_UNITS[activeUnit].id}
+          <div id="servicios-display">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={BUSINESS_UNITS[activeUnit].id}
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -20 }}
@@ -559,23 +564,15 @@ export default function Home() {
               <div className="mt-12 pt-8 border-t border-white/5 flex flex-wrap gap-4">
                  <button 
                   onClick={() => handleWhatsAppRedirect(BUSINESS_UNITS[activeUnit].title)}
-                  className="btn-neon text-[10px] py-4"
+                  className="btn-neon text-[10px] py-4 px-10"
                  >
                    Consultoría en {BUSINESS_UNITS[activeUnit].title.split('. ')[1]}
-                 </button>
-                 <button 
-                  className="px-8 py-4 border border-white/10 text-ice/40 font-tech font-black uppercase text-[10px] tracking-widest hover:text-ice hover:border-white/30 transition-all"
-                  onClick={() => {
-                    const next = (activeUnit + 1) % BUSINESS_UNITS.length;
-                    setActiveUnit(next);
-                  }}
-                 >
-                   Siguiente Unidad →
                  </button>
               </div>
             </motion.div>
           </AnimatePresence>
-        </section>
+        </div>
+      </section>
 
 
         {/* --- Data Master Technical Specs Summary --- */}
