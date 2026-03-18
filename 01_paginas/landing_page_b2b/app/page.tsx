@@ -44,7 +44,7 @@ export default function Home() {
   const [selectedRole, setSelectedRole] = useState<null | any>(null);
   const [isChatOpen, setIsChatOpen] = useState(false);
   const [chatMessages, setChatMessages] = useState([
-    { role: 'bot', text: 'SISTEMA INICIADO. Soy Colconexus Engineering Bot. ¿Deseas medir tu nivel de automatización hoy?' }
+    { role: 'bot', text: 'SYSTEM INITIALIZED. I am Colconexus Engineering Bot. Would you like to measure your automation level today?' }
   ]);
   const [isTyping, setIsTyping] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -52,19 +52,19 @@ export default function Home() {
   
   const handleWhatsAppRedirect = (service = "") => {
     const text = service 
-      ? `Hola equipo de Colconexus. He usado su herramienta de diagnóstico y me interesa: *${service}*. ¿Podemos agendar una sesión de ingeniería?`
-      : "Hola Colconexus. Quisiera medir mi nivel de automatización y solicitar una auditoría técnica.";
+      ? `Hello Colconexus Team. I've used your diagnostic tool and I'm interested in: *${service}*. Can we schedule an engineering session?`
+      : "Hello Colconexus. I would like to measure my automation level and request a technical audit.";
     window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`, '_blank');
   };
 
   const simulateBotResponse = (userText: string) => {
     setIsTyping(true);
     setTimeout(() => {
-      let response = "Entendido. Procesando requerimiento técnico...";
-      if (userText.toLowerCase().includes("automatización")) {
-        response = "La automatización B2B es nuestro fuerte. Podemos reducir costos operativos hasta un 40% mediante orquestación de datos.";
-      } else if (userText.toLowerCase().includes("costo") || userText.toLowerCase().includes("ahorro")) {
-        response = "Nuestras soluciones de WFM Strategic y AI Agency están diseñadas para blindar tu rentabilidad eliminando gastos perpetuos.";
+      let response = "Understood. Processing technical requirement...";
+      if (userText.toLowerCase().includes("automation") || userText.toLowerCase().includes("automatización")) {
+        response = "B2B automation is our core strength. We can reduce operational costs by up to 40% through data orchestration.";
+      } else if (userText.toLowerCase().includes("cost") || userText.toLowerCase().includes("saving")) {
+        response = "Our WFM Strategic and AI Agency solutions are designed to shield your profitability by eliminating perpetual expenses.";
       }
       setChatMessages(prev => [...prev, { role: 'bot', text: response }]);
       setIsTyping(false);
@@ -72,233 +72,233 @@ export default function Home() {
   };
 
   const IMPACT_SOLUTIONS = [
-    { title: "Robot Industrial", desc: "Automatización de procesos en tiempo real.", icon: <Bot className="w-5 h-5" /> },
-    { title: "Ingeniería Experta", desc: "Talento de alto nivel y Copilots de negocio.", icon: <Users className="w-5 h-5" /> },
-    { title: "Speech Analytics", desc: "Análisis vocal industrial de alta precisión.", icon: <Mic2 className="w-5 h-5" /> },
-    { title: "Auditores de Flujo", desc: "Calidad autónoma bajo estándares B2B.", icon: <ShieldCheck className="w-5 h-5" /> }
+    { title: "Industrial Robot", desc: "Real-time process automation.", icon: <Bot className="w-5 h-5" /> },
+    { title: "Expert Engineering", desc: "High-level talent and business Copilots.", icon: <Users className="w-5 h-5" /> },
+    { title: "Speech Analytics", desc: "High-precision industrial vocal analysis.", icon: <Mic2 className="w-5 h-5" /> },
+    { title: "Flow Auditors", desc: "Autonomous quality under B2B standards.", icon: <ShieldCheck className="w-5 h-5" /> }
   ];
 
   const BUSINESS_UNITS = [
     {
-      id: "agencia-ia",
-      title: "1. AGENCIA DE IA",
-      description: "Desarrollo de agentes inteligentes especializados que automatizan tareas empresariales.",
+      id: "ai-agency",
+      title: "1. AI AGENCY",
+      description: "Development of specialized intelligent agents that automate corporate workflows using Claude Gravity & Google ML context models.",
       icon: <Bot className="w-8 h-8" />,
       items: [
         {
-          title: "AI Voice Agents",
-          desc: "Agentes de voz capaces de atención al cliente, call center automatizado, encuestas, agendamiento y seguimiento.",
-          features: ["Atención al cliente", "Call center automatizado", "Encuestas automáticas", "Agendamiento de citas", "Seguimiento de clientes"]
+          title: "AI Voice Agents (Teams)",
+          desc: "Voice agents capable of customer service, automated call centers, scheduling, and follow-ups through Context Protocols.",
+          features: ["Customer Service Swarms", "Automated Call Center Teams", "Auto-Surveys", "Appointment Scheduling", "Client Follow-up Agents"]
         },
         {
-          title: "AI Chat Agents",
-          desc: "Asistentes inteligentes para canales digitales.",
-          features: ["Chatbots para Web", "Chatbots para WhatsApp", "Asistentes corporativos", "Automatización de soporte"]
+          title: "AI Chat & Skill Agents",
+          desc: "Intelligent assistants for digital channels with extensible Skills and Agent Registry.",
+          features: ["Web Chatbots", "WhatsApp Business Agents", "Corporate Assistants", "Support Automation Skills"]
         },
         {
           title: "OCR Intelligent Processing",
-          desc: "Procesamiento automático de documentos.",
-          features: ["Lectura de facturas", "Extracción de datos", "Digitalización documental", "Validación de formularios"]
+          desc: "Automated document processing and cognitive data extraction.",
+          features: ["Invoice Reading", "Data Extraction Protocols", "Document Digitalization", "Form Validation Agents"]
         },
         {
-          title: "AI Vision",
-          desc: "Sistemas de visión computacional avanzada.",
-          features: ["Reconocimiento facial", "Validación de identidad", "Análisis de imágenes", "Detección de objetos"]
+          title: "Computer Vision Agents",
+          desc: "Advanced visual intelligence systems for secure identification and tracking.",
+          features: ["Facial Recognition Teams", "Identity Validation", "Image Intelligence", "Object Detection Skills"]
         },
         {
-          title: "AI Security Systems",
-          desc: "Agentes de seguridad inteligente y vigilancia.",
-          features: ["Detección de movimiento", "Vigilancia automatizada", "Monitoreo de cámaras", "Alertas de seguridad"]
+          title: "AI Security Protocols",
+          desc: "Smart security agents and proactive infrastructure surveillance.",
+          features: ["Motion Detection Agents", "Automated Surveillance Teams", "Camera Monitoring Skills", "Security Alert Protocols"]
         }
       ]
     },
     {
       id: "data-hub",
       title: "2. DATA PRECISION HUB",
-      description: "Infraestructura para transformar datos en inteligencia de negocio.",
+      description: "Industrial-grade infrastructure to transform raw data into specialized Business Intelligence using Google ML Notebooks.",
       icon: <Database className="w-8 h-8" />,
       items: [
         {
           title: "Industrial Data Pipelines",
-          desc: "Flujos de datos automatizados en tiempo real.",
-          features: ["ETL / ELT", "Integración de datos", "Pipelines automatizados", "Ingestión en tiempo real"]
+          desc: "Real-time automated data flows using Medallion architecture.",
+          features: ["ETL / ELT Protocols", "Data Integration Agents", "Automated Pipelines", "Real-time Ingestion Skills"]
         },
         {
           title: "Data Warehouse & Lake",
-          desc: "Arquitecturas modernas de almacenamiento.",
-          features: ["Diseño de Data Warehouse", "Arquitectura Data Lake", "Arquitectura Lakehouse"]
+          desc: "Modern storage architectures for High-Availability context models.",
+          features: ["Data Warehouse Design", "Data Lake Architecture", "Lakehouse Optimization"]
         },
         {
           title: "Business Intelligence",
-          desc: "Dashboards y reportes automatizados.",
-          features: ["Dashboards ejecutivos", "Reportes automatizados", "Monitoreo de KPIs", "Análisis empresarial"]
+          desc: "Automated dashboards and executive operational reporting.",
+          features: ["Executive Dashboards", "Automated Reporting Teams", "KPI Monitoring Agents", "Enterprise Analytics"]
         },
         {
           title: "Advanced Data Analytics",
-          desc: "Analítica estadística y detección de anomalías.",
-          features: ["Análisis estadístico", "Correlaciones", "Análisis de comportamiento", "Detección de anomalías"]
+          desc: "Statistical analytics and industrial anomaly detection.",
+          features: ["Statistical Analysis Skills", "Correlation Models", "Behavioral Analytics", "Anomaly Detection Agents"]
         },
         {
           title: "Predictive Engineering",
-          desc: "Modelos de predicción y scoring.",
-          features: ["Predicción de demanda", "Predicción de ventas", "Scoring de clientes", "Detección de fraude"]
+          desc: "Demand prediction and scoring models based on Google ML Notebooks.",
+          features: ["Demand Prediction Agents", "Sales Forecasting Skills", "Client Scoring Systems", "Fraud Detection Protocols"]
         }
       ]
     },
     {
       id: "wfm-ops",
       title: "3. WFM OPERATIONS",
-      description: "Optimización de operaciones intensivas en personal (Workforce Management).",
+      description: "Optimization of personnel-intensive operations through Workforce Management and Strategic Scheduling.",
       icon: <BarChart className="w-8 h-8" />,
       items: [
         {
-          title: "Forecasting",
-          desc: "Predicción de demanda de contactos.",
-          features: ["Llamadas", "Chats", "Emails", "Redes sociales"]
+          title: "Forecasting Agents",
+          desc: "Predictive demand models for contact centers.",
+          features: ["Calls", "Chats", "Emails", "Social Media Teams"]
         },
         {
-          title: "Dimensionamiento",
-          desc: "Cálculo de personal requerido (Planificación).",
+          title: "Capacity Planning",
+          desc: "Personnel requirement calculation and scalable planning.",
           features: [
-            "Largo plazo: Planeación estratégica, Expansión de operaciones", 
-            "Mediano plazo: Planeación mensual, Ajustes de capacidad", 
-            "Corto plazo: Planeación semanal, Redistribución operativa"
+            "Long-term: Strategic Planning, Operation Expansion", 
+            "Mid-term: Monthly Planning, Capacity Adjustments", 
+            "Short-term: Weekly Tracking, Operational Redistribution"
           ]
         },
         {
-          title: "Rostering",
-          desc: "Generación automática de horarios de trabajo.",
-          features: ["Asignación de turnos", "Cumplimiento normativo", "Optimización de cobertura"]
+          title: "Automated Rostering",
+          desc: "Automatic shift generation and legal compliance.",
+          features: ["Shift Assignment Agents", "Regulatory Compliance Skills", "Coverage Optimization"]
         },
         {
           title: "Strategic Scheduler",
-          desc: "Optimización matemática de turnos.",
-          features: ["Mallas de turnos optimizadas", "Reducción de tiempos muertos", "Maximización de productividad"]
+          desc: "Mathematical optimization of shift patterns.",
+          features: ["Optimized Shift Grids", "Dead-time Reduction", "Productivity Maximization Protocols"]
         },
         {
           title: "Workforce Analytics",
-          desc: "Análisis de desempeño operativo.",
-          features: ["AHT", "Nivel de servicio", "Ocupación", "Productividad", "Abandono"]
+          desc: "Operational performance analysis and real-time tracking.",
+          features: ["AHT Agents", "Service Level Skills", "Occupancy Metrics", "Productivity Teams", "Abandonment Analysis"]
         },
         {
-          title: "Pricing Operativo",
-          desc: "Modelos financieros para operaciones.",
-          features: ["Costo por agente", "Costo por contacto", "Rentabilidad por campaña"]
+          title: "Operational Pricing",
+          desc: "Financial models for high-intensity operations.",
+          features: ["Cost per Agent", "Cost per Contact", "Campaign Profitability Protocols"]
         },
         {
-          title: "Gestión Outbound",
-          desc: "Optimización de campañas salientes.",
+          title: "Outbound Optimization",
+          desc: "Strategic outbound campaign management and dialer tuning.",
           features: [
-            "Diseño de campañas: Segmentación, Targets, Estrategias de contacto", 
-            "Marcación inteligente: Predictive dialing, Power dialing", 
-            "Optimización comercial: Análisis de conversión, Optimización de scripts"
+            "Campaign Design: Segmentation, Targets, Contact Strategies", 
+            "Intelligent Dialing: Predictive, Power, Preview dialing", 
+            "Conversion Optimization: Script Analysis, Closing Protocols"
           ]
         }
       ]
     },
     {
-      id: "consultoria",
-      title: "4. CONSULTORÍA OPERATIVA",
-      description: "Asesoría estratégica y auditoría de alto nivel.",
+      id: "consulting",
+      title: "4. OPERATIONAL CONSULTING",
+      description: "Strategic advisory and high-level operational auditing.",
       icon: <Briefcase className="w-8 h-8" />,
       items: [
         {
-          title: "Diagnóstico de Operaciones",
-          desc: "Evaluación integral de contact centers.",
-          features: ["Análisis de KPIs", "Análisis de procesos", "Análisis de eficiencia"]
+          title: "Operations Diagnosis",
+          desc: "Integral evaluation of contact center infrastructure.",
+          features: ["KPI Analysis", "Process Mapping Skills", "Efficiency Audits"]
         },
         {
-          title: "Diseño de Contact Center",
-          desc: "Creación de operaciones desde cero.",
-          features: ["Estructura organizacional", "Definición de procesos", "Arquitectura tecnológica"]
+          title: "Contact Center Design",
+          desc: "Creation of greenfield operations from scratch.",
+          features: ["Organizational Structure", "Process Definition Agents", "Technological Architecture Skills"]
         },
         {
-          title: "Optimización Operativa",
-          desc: "Rediseño para mejorar productividad.",
-          features: ["Productividad y eficiencia", "Reducción de costos"]
+          title: "Operational Optimization",
+          desc: "Redesign to improve high-impact productivity.",
+          features: ["Productivity & Efficiency Teams", "Structural Cost Reduction"]
         },
         {
-          title: "Auditoría Operativa",
-          desc: "Revisión independiente de desempeño.",
-          features: ["Auditoría de KPIs", "Auditoría financiera", "Auditoría de productividad"]
+          title: "Performance Auditing",
+          desc: "Independent performance reviews and compliance checks.",
+          features: ["KPI Auditing Agents", "Financial Correlation Skills", "Productivity Audits"]
         }
       ]
     },
     {
       id: "bpo-services",
-      title: "5. SERVICIOS BPO",
-      description: "Externalización completa de procesos empresariales.",
+      title: "5. BPO SERVICES",
+      description: "Full-scale Business Process Outsourcing using AI Teams.",
       icon: <Users className="w-8 h-8" />,
       items: [
         {
           title: "BPO Contact Center",
-          desc: "Operación completa de centros de contacto omnicanal.",
+          desc: "Omnichannel contact center operations managed by AI Teams.",
           features: [
-            "Customer Support: Atención al cliente, Soporte omnicanal, Gestión de reclamos", 
-            "Sales Operations: Ventas telefónicas, Telemarketing, Generación de leads", 
-            "Campaign Management: Campañas Inbound, Campañas Outbound, Gestión de bases de datos"
+            "Customer Support: Multichannel, Claims Management", 
+            "Sales Operations: Telemarketing, Lead Generation Agents", 
+            "Campaign Management: Inbound/Outbound, Database Protocols"
           ]
         },
         {
           title: "BPO Back Office",
-          desc: "Procesos administrativos y validación.",
-          features: ["Procesamiento de documentos", "Gestión de datos", "Digitación", "Validación documental"]
+          desc: "Administrative processes and specialized validation.",
+          features: ["Document Processing Agents", "Data Management Skills", "Digitalization", "Document Validation"]
         },
         {
           title: "BPO Data Operations",
-          desc: "Servicios de operación y limpieza de datos.",
-          features: ["Limpieza de datos", "Clasificación", "Etiquetado para IA"]
+          desc: "Data operation, cleaning, and labeling for Google ML.",
+          features: ["Data Cleaning Protocols", "Classification Agents", "AI Labeling Teams"]
         },
         {
-          title: "BPO Analítico",
-          desc: "Analítica operativa y reporting.",
-          features: ["Monitoreo de KPIs", "Análisis de desempeño", "Reporting operativo"]
+          title: "Analytical BPO",
+          desc: "Operational analytics and reporting services.",
+          features: ["KPI Monitoring", "Performance Analysis Agents", "Operational Reporting Skills"]
         }
       ]
     },
     {
       id: "enterprise-sol",
       title: "6. ENTERPRISE SOLUTIONS",
-      description: "Desarrollo tecnológico y software a medida.",
+      description: "Technological development and customized high-end software.",
       icon: <Cpu className="w-8 h-8" />,
       items: [
         {
           title: "Custom Functional Apps",
-          desc: "Aplicaciones y plataformas internas.",
-          features: ["Aplicaciones empresariales", "Plataformas de gestión", "Sistemas operativos internos"]
+          desc: "Internal applications and enterprise-grade platforms.",
+          features: ["Business Applications", "Management Platforms", "Internal Operating Systems"]
         },
         {
-          title: "Integración de Sistemas",
-          desc: "Integración de ecosistemas corporativos.",
-          features: ["Integración CRM", "Integración ERP", "APIs empresariales"]
+          title: "System Integration",
+          desc: "Corporate ecosystem integration and cloud sync.",
+          features: ["CRM Integration Protocols", "ERP Integration Skills", "Enterprise APIs"]
         },
         {
-          title: "Automatización Empresarial",
-          desc: "Flujos RPA y procesos automáticos.",
-          features: ["RPA", "Flujos automatizados", "Integración de sistemas"]
+          title: "Business Automation",
+          desc: "RPA flows and automated industrial processes.",
+          features: ["RPA Agents", "Automated Workflows", "System Orchestration Teams"]
         }
       ]
     },
     {
       id: "smart-systems",
       title: "7. SMART SYSTEMS",
-      description: "Automatización de espacios e infraestructura inteligente.",
+      description: "Advanced space automation and intelligent infrastructure (IoT).",
       icon: <HomeIcon className="w-8 h-8" />,
       items: [
         {
-          title: "Smart Home",
-          desc: "Automatización doméstica avanzada.",
-          features: ["Control de iluminación", "Control de clima", "Domótica"]
+          title: "Smart Commercial Spaces",
+          desc: "Advanced automation for industrial and commercial areas.",
+          features: ["Lighting Control Agents", "Climate Control Skills", "Industrial Domotics"]
         },
         {
-          title: "Smart Security",
-          desc: "Seguridad electrónica inteligente.",
-          features: ["Cámaras inteligentes", "Sensores de movimiento", "Reconocimiento facial"]
+          title: "Intelligent Security",
+          desc: "Smart electronic security and surveillance AI.",
+          features: ["Smart Cameras", "Motion Sensor Teams", "Facial Recognition Protocols"]
         },
         {
-          title: "Smart Buildings",
-          desc: "Eficiencia energética y gestión IoT.",
-          features: ["Edificios inteligentes", "Sensores IoT", "Eficiencia energética"]
+          title: "Smart Building Management",
+          desc: "Energy efficiency and IoT management protocols.",
+          features: ["Energy Auditing Agents", "Infrastructure Monitoring", "IoT Management Skills"]
         }
       ]
     }
@@ -335,10 +335,10 @@ export default function Home() {
 
         <div className="flex items-center gap-4">
           <button
-            onClick={() => handleWhatsAppRedirect("Solicitud de Ingeniería")}
+            onClick={() => handleWhatsAppRedirect("Engineering Inquiry")}
             className="hidden sm:block bg-[#080315] text-neon px-4 py-1 text-[9px] font-tech font-black uppercase tracking-tighter hover:scale-105 transition-transform"
           >
-            Iniciar Proyecto
+            Start Project
           </button>
           
           <button 
@@ -375,7 +375,7 @@ export default function Home() {
                 }}
                 className="bg-[#080315] text-neon p-4 text-xs font-tech font-black uppercase"
               >
-                Solicitar Ingeniería
+                Request Engineering
               </button>
             </motion.div>
           )}
@@ -393,11 +393,11 @@ export default function Home() {
               </div>
               
               <h1 className="font-tech text-3xl md:text-5xl lg:text-6xl font-black text-ice leading-[1.0] uppercase italic tracking-tighter">
-                MIDE TU NIVEL DE <br /> <span className="neon-glow">AUTOMATIZACIÓN.</span>
+                MEASURE YOUR <br /> <span className="neon-glow">AUTOMATION LEVEL.</span>
               </h1>
               
               <p className="text-slate-400 text-xs md:text-sm font-medium leading-relaxed max-w-lg">
-                No dejes la rentabilidad al azar. Nuestra ingeniería de precisión audita tus procesos y despliega robots autónomos que eliminan la inercia operativa de inmediato.
+                Don't leave profitability to chance. Our precision engineering audits your processes and deploys autonomous robots that eliminate operational inertia immediately.
               </p>
               
               <div className="flex flex-wrap gap-4 pt-4">
@@ -408,13 +408,13 @@ export default function Home() {
                   }}
                   className="btn-neon text-[10px] py-3.5"
                 >
-                  Mide tu Nivel Ahora
+                  Audit Your Level Now
                 </button>
                 <button 
-                  onClick={() => handleWhatsAppRedirect("Demo Técnica")}
+                  onClick={() => handleWhatsAppRedirect("Tech Demo")}
                   className="btn-purple text-[10px] py-3.5"
                 >
-                  Ver Demo Técnica
+                  Watch Tech Demo
                 </button>
               </div>
             </div>
@@ -440,24 +440,24 @@ export default function Home() {
             <div className="flex-[1.5] p-8 md:p-10 flex flex-col justify-center bg-purple-deep/60 relative overflow-hidden">
               <div className="absolute top-0 right-0 w-32 h-32 bg-neon/10 blur-3xl opacity-20" />
               <h2 className="font-tech text-2xl md:text-3xl font-black text-ice mb-2 leading-[1.0] uppercase italic tracking-tighter">
-                ¿Pagas por el <br /> <span className="neon-glow">Talento</span> o por la <span className="text-slate-700 font-extrabold text-shadow-sm">Inercia</span>?
+                Paying for <br /> <span className="neon-glow">Talent</span> or for <span className="text-slate-700 font-extrabold text-shadow-sm">Inertia</span>?
               </h2>
               <p className="electric-glow font-tech text-[10px] font-bold mb-4 uppercase tracking-tighter">
-                IA = Inversión Única // Humano = Gasto Perpetuo
+                AI = One-time Investment // Human = Perpetual Expense
               </p>
               <div className="space-y-1 mb-6 text-[9px] uppercase font-black text-slate-400">
                 <div className="flex items-center gap-3">
-                  <div className="w-1.5 h-1.5 bg-neon rounded-full" /> Automatiza el rol, no el salario.
+                  <div className="w-1.5 h-1.5 bg-neon rounded-full" /> Automate the role, not the salary.
                 </div>
                 <div className="flex items-center gap-3">
-                  <div className="w-1.5 h-1.5 bg-neon rounded-full" /> Blindaje operativo 24/7 sin errores.
+                  <div className="w-1.5 h-1.5 bg-neon rounded-full" /> 24/7 Operational shielding without errors.
                 </div>
               </div>
               <button
-                onClick={() => handleWhatsAppRedirect("Comparativa Rentabilidad")}
+                onClick={() => handleWhatsAppRedirect("Profitability Comparison")}
                 className="btn-neon w-fit px-8 py-3 text-[10px]"
               >
-                Solicitar Business Case
+                Request Business Case
               </button>
             </div>
             <div className="flex-1 p-6 flex items-center justify-center border-l border-white/10">
@@ -466,7 +466,7 @@ export default function Home() {
                 <div className="relative bg-obsidian border border-white/10 rounded-sm overflow-hidden">
                   <img 
                     src="/assets/comparison-ai.jpg" 
-                    alt="Talento vs Inercia" 
+                    alt="Talent vs Inertia" 
                     className="w-full h-auto object-contain brightness-105 group-hover/img2:scale-105 transition-all duration-700"
                   />
                 </div>
@@ -478,7 +478,7 @@ export default function Home() {
         {/* --- Services Header --- */}
         <section id="servicios" className="max-w-7xl mx-auto mb-12 px-6">
            <div className="flex flex-col gap-2">
-              <h2 className="font-tech text-4xl font-black text-ice uppercase italic tracking-tighter">Portafolio de Servicios</h2>
+              <h2 className="font-tech text-4xl font-black text-ice uppercase italic tracking-tighter">Service Portfolio</h2>
               <div className="flex items-center gap-4 text-neon font-bold text-[9px] uppercase tracking-[0.5em]">
                 <span>DATA</span> <span className="opacity-30">•</span> <span>AI</span> <span className="opacity-30">•</span> <span>CONTACT CENTER</span> <span className="opacity-30">•</span> <span>BPO</span> <span className="opacity-30">•</span> <span>SMART SYSTEMS</span>
               </div>
@@ -566,7 +566,7 @@ export default function Home() {
                   onClick={() => handleWhatsAppRedirect(BUSINESS_UNITS[activeUnit].title)}
                   className="btn-neon text-[10px] py-4 px-10"
                  >
-                   Consultoría en {BUSINESS_UNITS[activeUnit].title.split('. ')[1]}
+                   Consulting in {BUSINESS_UNITS[activeUnit].title.split('. ')[1]}
                  </button>
               </div>
             </motion.div>
@@ -625,15 +625,15 @@ export default function Home() {
             </div>
             <div className="order-1 md:order-2">
               <h2 className="font-tech text-3xl md:text-5xl font-black text-ice mb-6 leading-none uppercase italic tracking-tighter">
-                Auditoría <span className="neon-glow">Autónoma</span>
+                Autonomous <span className="neon-glow">Audit</span>
               </h2>
               <p className="text-slate-500 text-sm mb-8 leading-relaxed font-medium">
-                Nuestros agentes de ingeniería ejecutan. Blindamos la rentabilidad mediante inteligencia que recalcula la eficiencia operativa en tiempo real.
+                Our engineering agents execute. We shield profitability through intelligence that recalculates operational efficiency in real-time.
               </p>
               <div className="flex gap-8">
                 <div>
                   <div className="font-tech text-2xl font-black text-neon mb-1 tracking-tighter">0.8ms</div>
-                  <div className="text-[8px] text-electric font-black uppercase tracking-widest">Latencia</div>
+                  <div className="text-[8px] text-electric font-black uppercase tracking-widest">Latency</div>
                 </div>
                 <div>
                   <div className="font-tech text-2xl font-black text-neon mb-1 tracking-tighter">99.9%</div>
@@ -672,12 +672,12 @@ export default function Home() {
               <div className="grid md:grid-cols-12 h-full items-stretch">
                 <div className="md:col-span-7 p-8 md:p-10 flex flex-col justify-center gap-4 relative z-10">
                   <h3 className="font-tech text-2xl md:text-4xl font-black text-ice uppercase italic tracking-tighter leading-[1.0]">
-                    La IA no es Código, <br /> es <span className="neon-glow">Orquestación</span>.
+                    AI is not Code, <br /> it's <span className="neon-glow">Orchestration</span>.
                   </h3>
                   <p className="text-slate-500 text-xs md:text-sm font-medium tracking-tight max-w-md">
-                    Entiende las herramientas, nosotros las unimos por ti para crear un sistema cohesionado y escalable que responda a su demanda industrial.
+                    Understand the tools; we unite them for you to create a cohesive and scalable system that meets your industrial demand using Context Protocols.
                   </p>
-                  <button onClick={() => handleWhatsAppRedirect("Engine Orchestra")} className="btn-neon w-fit px-10 py-3 text-[10px]">Ver Arquitectura</button>
+                  <button onClick={() => handleWhatsAppRedirect("Engine Orchestra")} className="btn-neon w-fit px-10 py-3 text-[10px]">Explore Architecture</button>
                 </div>
                 <div className="md:col-span-5 relative min-h-[300px] border-l border-white/10 bg-obsidian flex items-center justify-center p-4">
                    <img 
@@ -696,12 +696,12 @@ export default function Home() {
               <div className="absolute top-0 right-0 w-64 h-64 bg-neon/10 blur-[120px]" />
               <div className="max-w-3xl flex flex-col gap-6 relative z-10">
                 <h2 className="font-tech text-4xl md:text-5xl font-black text-ice uppercase italic tracking-tighter leading-none">
-                  Auditoría <span className="neon-glow text-neon">Final</span>.
+                  Final <span className="neon-glow text-neon">Audit</span>.
                 </h2>
                 <p className="text-slate-400 text-sm md:text-base font-medium leading-relaxed uppercase tracking-wide">
-                  ¿Tu operación está blindada o es un colador de dólares? Diagnóstico Colconexus Datacenter.
+                  Is your operation shielded or a money sieve? Colconexus Datacenter Diagnostic.
                 </p>
-                <button onClick={() => handleWhatsAppRedirect("Auditoría Final")} className="btn-neon w-fit mt-4">Iniciar Diagnóstico de Ingeniería</button>
+                <button onClick={() => handleWhatsAppRedirect("Final Audit")} className="btn-neon w-fit mt-4">Start Engineering Diagnostic</button>
               </div>
            </div>
         </section>
@@ -715,14 +715,14 @@ export default function Home() {
             className="glass-card p-12 md:p-20 rounded-sm border-neon/10 bg-purple-deep/30"
           >
             <h2 className="font-tech text-2xl md:text-4xl font-black mb-4 leading-tight tracking-[0.05em] text-ice uppercase italic">
-              ¿Tu empresa tiene herramientas del
+              Does your company use 
             </h2>
-            <div className="xxi-glow mb-4 text-6xl md:text-8xl">XXI</div>
+            <div className="xxi-glow mb-4 text-6xl md:text-8xl">21ST</div>
             <h2 className="font-tech text-2xl md:text-4xl font-black mb-10 leading-tight tracking-[0.05em] text-slate-700 uppercase italic">
-              o trabaja con herramientas del siglo XIX?
+              Century tools or 19th Century methods?
             </h2>
             <p className="text-neon/60 text-[9px] md:text-[11px] font-black mb-12 max-w-2xl mx-auto uppercase tracking-[0.5em] leading-relaxed">
-              DESCÚBRELO CON NUESTRO TEST DE DIAGNÓSTICO DIGITAL PRO.
+              DISCOVER IT WITH OUR PRO DIGITAL DIAGNOSTIC TEST.
             </p>
             <a
               href="https://forms.gle/6mRAKsnYVZowXiAD6"
@@ -730,7 +730,7 @@ export default function Home() {
               rel="noopener noreferrer"
               className="inline-flex items-center gap-6 px-12 py-6 btn-neon text-sm md:text-lg group"
             >
-              REALIZAR TEST DE DIAGNÓSTICO
+              TAKE DIAGNOSTIC TEST
               <ArrowRight className="w-5 h-5 group-hover:translate-x-3 transition-transform" />
             </a>
           </motion.div>
@@ -744,15 +744,15 @@ export default function Home() {
             COLCONEXUS <br /> <span className="electric-glow">TECH HUB</span>
           </h2>
           <p className="text-slate-500 mb-12 text-xs md:text-base font-bold max-w-3xl mx-auto relative z-10 uppercase tracking-[0.3em] leading-relaxed">
-            Eliminamos el techo de su productividad. <br />
-            Auditoría estratégica y despliegue masivo de automatización.
+            We eliminate the ceiling on your productivity. <br />
+            Strategic auditing and massive automation deployment.
           </p>
 
           <button
             onClick={() => handleWhatsAppRedirect("Tech Hub Finish")}
             className="px-12 py-6 btn-neon text-sm md:text-base mx-auto relative z-10 group"
           >
-            SOLICITAR AUDITORÍA DE RENDIMIENTO
+            REQUEST PERFORMANCE AUDIT
             <ArrowRight className="w-6 h-6 group-hover:translate-x-3 transition-transform" />
           </button>
         </section>
@@ -767,13 +767,13 @@ export default function Home() {
             <span className="font-tech text-ice text-4xl font-black tracking-tighter uppercase italic">COLCONEXUS</span>
             <span className="text-neon italic font-black text-[12px] uppercase tracking-[0.5em] neon-glow">Global Engineering Hub</span>
             <p className="max-w-md text-slate-600 text-[11px] font-black uppercase tracking-[0.15em] leading-[1.8] mt-4">
-              Blindando la rentabilidad corporativa mediante orquestación de datos e inteligencia artificial de grado industrial.
+              Shielding corporate profitability through data orchestration and industrial-grade Claude Gravity AI Agents.
             </p>
             <button
               onClick={() => handleWhatsAppRedirect("Audit 2026")}
               className="btn-neon w-fit px-12 py-5 text-xs mt-4"
             >
-              Iniciar Auditoría de Procesos
+              Start Process Audit
             </button>
           </div>
           <div className="rounded-sm overflow-hidden border border-white/10 bg-graphite/20 p-2">
@@ -855,7 +855,7 @@ export default function Home() {
                 onClick={() => handleWhatsAppRedirect(`Industrial Audit: ${selectedRole.title}`)}
                 className="w-full py-8 btn-neon group"
               >
-                AUTORIZAR DESPLIEGUE TÉCNICO <ArrowRight className="w-6 h-6 group-hover:translate-x-3 transition-transform" />
+                AUTHORIZE TECHNICAL DEPLOYMENT <ArrowRight className="w-6 h-6 group-hover:translate-x-3 transition-transform" />
               </button>
             </motion.div>
           </div>
@@ -919,19 +919,19 @@ export default function Home() {
               <div className="grid gap-3">
                 <button 
                   onClick={() => {
-                    const txt = "¿Cómo mido mi nivel de automatización?";
+                    const txt = "How do I measure my automation level?";
                     setChatMessages(prev => [...prev, { role: 'user', text: txt }]);
                     simulateBotResponse(txt);
                   }}
                   className="w-full py-4 border border-white/10 hover:border-neon/50 text-slate-500 hover:text-neon transition-all rounded-sm text-[10px] font-black uppercase tracking-widest"
                 >
-                  ¿Cómo medir mi automatización?
+                  How to measure my automation?
                 </button>
                 <button 
-                  onClick={() => handleWhatsAppRedirect("Consultoría IA")}
+                  onClick={() => handleWhatsAppRedirect("AI Consulting")}
                   className="btn-neon w-full py-4 text-[10px]"
                 >
-                  Hablar con un Ingeniero
+                  Talk to an Engineer
                 </button>
               </div>
             </motion.div>
