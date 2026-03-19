@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colconexus - Mission Control Dashboard</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #6366f1;
+            --accent: #f43f5e;
+            --bg: #0f172a;
+            --glass: rgba(30, 41, 59, 0.7);
+            --card: rgba(51, 65, 85, 0.4);
+            --text: #f8fafc;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--bg);
+            background-image: radial-gradient(circle at 50% -20%, #312e81, transparent);
+            color: var(--text);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 3rem;
+            animation: fadeInDown 1s ease;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 700;
+            background: linear-gradient(to right, #818cf8, #f472b6);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .status-badge {
+            padding: 0.5rem 1rem;
+            border-radius: 99px;
+            background: var(--card);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.875rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background: #22c55e;
+            border-radius: 50%;
+            box-shadow: 0 0 10px #22c55e;
+        }
+
+        /* Mission Cards Grid */
+        .missions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .mission-card {
+            background: var(--card);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 1.5rem;
+            padding: 1.5rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .mission-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 4px; height: 100%;
+            background: var(--primary);
+        }
+
+        .mission-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+            border-color: var(--primary);
+        }
+
+        .agent-id {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #94a3b8;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .mission-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .task-status {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 0.5rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .status-todo { background: rgba(59, 130, 246, 0.1); color: #60a5fa; border: 1px solid #3b82f6; }
+        .status-done { background: rgba(34, 197, 94, 0.1); color: #4ade80; border: 1px solid #22c55e; }
+        .status-waiting { background: rgba(245, 158, 11, 0.1); color: #fbbf24; border: 1px solid #f59e0b; }
+
+        .subtasks {
+            margin-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding-top: 1rem;
+        }
+
+        .subtask-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 0.75rem;
+            font-size: 0.875rem;
+            color: #cbd5e1;
+        }
+
+        .checkbox {
+            width: 16px;
+            height: 16px;
+            border: 2px solid var(--primary);
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .priority-badge {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            font-size: 0.65rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: var(--accent);
+        }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Sidebar stats */
+        .sidebar {
+            background: var(--glass);
+            border-radius: 1.5rem;
+            padding: 1.5rem;
+            height: fit-content;
+        }
+
+        .layout {
+            display: grid;
+            grid-template-columns: 3fr 1fr;
+            gap: 2rem;
+        }
+
+        @media (max-width: 1000px) {
+            .layout { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div>
+                <div class="logo">MISSION CONTROL 🚀</div>
+                <div style="color: #64748b; margin-top: 0.5rem;">Gestión de Tareas Multi-Agente - Colconexus</div>
+            </div>
+            <div class="status-badge">
+                <div class="status-dot"></div>
+                SISTEMA OPERATIVO : OLLAMA / GEMINI 3.1
+            </div>
+        </header>
+
+        <div class="layout">
+            <main>
+                <div class="missions-grid" id="taskGrid">
+                    <!-- Tareas se cargarán vía JS -->
+                </div>
+            </main>
+
+            <aside class="sidebar">
+                <h3 style="margin-top: 0;">Agentes Activos</h3>
+                <div id="agentStatusList">
+                    <!-- Status de agentes -->
+                </div>
+            </aside>
+        </div>
+    </div>
+
+    <script>
+        // Función para cargar datos desde la API
+        async function updateDashboard() {
+            try {
+                const response = await fetch('/api/tasks');
+                const projectData = await response.json();
+                
+                const grid = document.getElementById('taskGrid');
+                grid.innerHTML = projectData.tasks.map(task => `
+                    <div class="mission-card">
+                        <span class="priority-badge">${task.priority}</span>
+                        <span class="agent-id">AGENTE: ${task.agent}</span>
+                        <div class="mission-title">${task.title}</div>
+                        <span class="task-status status-${task.status}">${task.status.toUpperCase()}</span>
+                        <p style="font-size: 0.875rem; color: #94a3b8;">${task.description}</p>
+                        
+                        ${task.subtasks && task.subtasks.length > 0 ? `
+                            <div class="subtasks">
+                                ${task.subtasks.map(s => `
+                                    <div class="subtask-item">
+                                        <div class="checkbox"></div>
+                                        <span>${s.task}</span>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        ` : ''}
+                    </div>
+                `).join('');
+
+                const agentList = document.getElementById('agentStatusList');
+                agentList.innerHTML = Object.entries(projectData.agents_status).map(([name, status]) => {
+                    const isActive = status.includes('online') || status.includes('working') || status === 'active';
+                    return `
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 0.75rem; font-size: 0.875rem;">
+                            <span style="font-weight: 600;">${name}</span>
+                            <span style="color: ${isActive ? '#60a5fa' : '#94a3b8'}">${status}</span>
+                        </div>
+                    `;
+                }).join('');
+            } catch (error) {
+                console.error('Error cargando los datos:', error);
+            }
+        }
+
+        // Cargar datos al inicio y cada 10 segundos
+        updateDashboard();
+        setInterval(updateDashboard, 10000);
+    </script>
+</body>
+</html>

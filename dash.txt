@@ -1,0 +1,18 @@
+﻿Ôöé
+Ôùç  Doctor warnings ÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔò«
+Ôöé                                                                          Ôöé
+Ôöé  - channels.telegram.groupPolicy is "allowlist" but groupAllowFrom (and  Ôöé
+Ôöé    allowFrom) is empty ÔÇö all group messages will be silently dropped.    Ôöé
+Ôöé    Add sender IDs to channels.telegram.groupAllowFrom or                 Ôöé
+Ôöé    channels.telegram.allowFrom, or set groupPolicy to "open".            Ôöé
+Ôöé  - channels.telegram.accounts.default.groupPolicy is "allowlist" but     Ôöé
+Ôöé    groupAllowFrom (and allowFrom) is empty ÔÇö all group messages will be  Ôöé
+Ôöé    silently dropped. Add sender IDs to                                   Ôöé
+Ôöé    channels.telegram.accounts.default.groupAllowFrom or                  Ôöé
+Ôöé    channels.telegram.accounts.default.allowFrom, or set groupPolicy to   Ôöé
+Ôöé    "open".                                                               Ôöé
+Ôöé                                                                          Ôöé
+Ôö£ÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔò»
+Dashboard URL: http://127.0.0.1:18789/#token=2d01fc40d48a3f423d1377ce28f69f5755c4b6931a554240
+Copied to clipboard.
+Browser launch disabled (--no-open). Use the URL above.

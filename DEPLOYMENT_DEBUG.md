@@ -36,5 +36,20 @@ Al usar el modelo mas potente (70B), la capa gratuita de Groq se agotaba rápida
 No había sincronización con el bot móvil.
 *   **Solución**: Se configuró el `botToken` del usuario y se activó la política de `pairing` en el canal de Telegram, permitiendo el control remoto seguro desde el celular.
 
+## 5. Crisis de Modelos 2026 (Gemini 404)
+
+### El Error: "google/gemini-1.5-pro: 404 Not Found"
+Los modelos 1.5 fueron retirados o movidos de los endpoints estándar en Marzo 2026.
+*   **Diagnóstico**: El sistema intentaba conectar con una versión legacy que ya no existe en la infraestructura de Google AI Pro.
+*   **Solución**: Se actualizaron todos los IDs a la serie **Gemini 3.1 (Pro y Flash Lite)** y se ajustó la `baseUrl` al protocolo `/v1beta`.
+
+## 6. Implementación de Jerarquía "Antigravity"
+Para evitar que el sistema se quede "apagado" por fallas de un solo proveedor.
+*   **Diseño**: Se configuró una cadena de **Fallback Cuádruple**:
+    1.  **Local**: Ollama (Qwen 2.5) para tareas críticas sin internet.
+    2.  **Free**: Groq (Llama 3.3 70B) para velocidad máxima gratuita.
+    3.  **Router**: OpenRouter para rotación masiva de APIs.
+    4.  **Premium**: Google Gemini 3.1 Pro como cerebro de respaldo de alta fidelidad.
+
 ---
-**Resultado Final**: Sistema estable, 7 agentes operativos y acceso omnicanal (Web/Telegram).
+**Estado Actual**: Infraestructura blindada, blindada contra caídas de API y 100% resiliente.

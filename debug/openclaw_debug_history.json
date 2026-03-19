@@ -1,0 +1,44 @@
+{
+  "timestamp": "2026-03-18T20:25:29-05:00",
+  "project": "OpenClaw Gateway - Reparacion y Debug",
+  "issues_found_and_resolved": [
+    {
+      "issue": "Gateway model_not_found 404 for Google Gemini (Agent failed before reply)",
+      "root_cause": "Configuración estancada apuntando a modelos deprecados ('gemini-1.5-pro' y 'gemini-1.5-flash') que Google dió de baja en los endpoints modernos.",
+      "solution": "Actualización forzada en openclaw.json para apuntar a la nueva API de licencias (gemini-3.1-pro-preview) bajo el esquema 'google-generative-ai'."
+    },
+    {
+      "issue": "API rate limit reached for Groq (Limite superado)",
+      "root_cause": "Al usar la capa gratuita y versátil de Groq, la demanda concurrente de los agentes de OpenClaw superó el umbral gratuito de requests por hora estipulado por Groq.",
+      "solution": "Retirar a Groq temporalmente del modelo primario y configurar a Google Gemini Premium como titular. Groq se queda solo como fallback en caso de emergencia."
+    },
+    {
+      "issue": "Gateway silently exiting at startup (Motor muere sin abrir puerto 18789)",
+      "root_cause": "Una Tarea Programada nativa de Windows (Scheduled Task) llamada 'OpenClaw Gateway' ocupaba el puerto en segundo plano, generando un archivo 'lock' que bloqueaba el inicio del Gateway 2026.3.13 en las terminales activas.",
+      "solution": "Ejecución de PowerShell con permisos elevados: Stop-ScheduledTask y Disable-ScheduledTask para purgar la tarea zombie y liberación de candados virtuales."
+    },
+    {
+      "issue": "Missing requirements: 41 en el log 'OpenClaw doctor'",
+      "root_cause": "La actualización general había dejado corrupta la estructura de directorios en '/node_modules/openclaw' provocando una falla estructural de carga de scripts nativos.",
+      "solution": "Limpieza absoluta y reinstalación desde NPM (npm install -g openclaw@latest), devolviéndole todos los paquetes esenciales al motor."
+    },
+    {
+      "issue": "UI Error 'No autorizado: el token del dispositivo no coincide' en Chrome",
+      "root_cause": "Certificado Pinning asincrónico. Tras reiniciar el Gateway a nivel binario, se generó una nueva Identidad (Device Profile). El navegador Chrome, mediante cookies e IndexedDB, intentaba usar el 'ADN Viejo' por cuestiones de seguridad (Anti-Spoofing).",
+      "solution": "Entrar mediante una pestaña en MODO INCÓGNITO hacia el enlace provisto ('/#token=...') o borrar los datos del sitio '127.0.0.1' desde la barra del navegador (candado)."
+    },
+    {
+      "issue": "Interactive prompt stalling Gateway (Interacción ciega paraliza Node)",
+      "root_cause": "El motor pedía confirmaciones ([y/n]) para generar carpetas o adaptar la configuración al cambiar de versiones, lo cual bloqueaba a cualquier script de automatización sin previo aviso.",
+      "solution": "Pipeline automático e inserción de configuración directa ('echo y | node openclaw.mjs doctor') asegurando un ecosistema donde la IA no formula preguntas sino que se asienta de antemano."
+    }
+  ],
+  "current_strategic_configuration": {
+    "primary_provider": "google",
+    "primary_model": "gemini-3.1-pro-preview",
+    "fallback_providers": ["groq", "ollama"],
+    "fixed_port": 18789,
+    "auth_status": "enabled_via_token",
+    "knowledge_retention": "Secured for future queries"
+  }
+}
