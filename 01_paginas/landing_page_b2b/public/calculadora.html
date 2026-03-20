@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calculadora ROI — Colconexus Data Center SAS</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#03030a;--bg2:#0c0c20;--bg3:#141430;--y:#ffe600;--b:#00e5ff;--r:#ff2d55;--g:#00ffb2;--p:#c084fc;--mono:'Courier New',monospace}
+body{background:var(--bg);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;color:#fff;max-width:900px;margin:0 auto}
+.hero{padding:26px 18px 22px;text-align:center;border-bottom:1px solid rgba(0,229,255,.15)}
+.badge{display:inline-flex;align-items:center;gap:7px;padding:5px 14px;border-radius:20px;border:1px solid rgba(0,229,255,.5);font-size:10px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--b);margin-bottom:14px;font-family:var(--mono);text-shadow:0 0 10px rgba(0,229,255,.6)}
+.dot{width:6px;height:6px;border-radius:50%;background:var(--b);box-shadow:0 0 8px var(--b);animation:blink 1.6s infinite;display:inline-block}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.1}}
+h1{font-size:24px;font-weight:800;line-height:1.2;color:#fff;margin-bottom:10px}
+h1 em{color:var(--r);font-style:normal;text-shadow:0 0 20px rgba(255,45,85,.7)}
+h1 strong{color:var(--y);text-shadow:0 0 20px rgba(255,230,0,.6)}
+.hero-sub{font-size:13px;color:rgba(255,255,255,.8);margin-bottom:18px;line-height:1.6}
+.hero-sub span{color:var(--g);font-weight:700}
+.hero-cta{display:inline-flex;align-items:center;gap:8px;padding:12px 24px;border-radius:8px;background:var(--y);color:#000;font-size:13px;font-weight:900;text-decoration:none;transition:all .2s;box-shadow:0 0 24px rgba(255,230,0,.4)}
+.hero-cta:hover{opacity:.88}
+.body{padding:16px 18px}
+.eyebrow{font-size:10px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--b);margin-bottom:12px;font-family:var(--mono);text-shadow:0 0 8px rgba(0,229,255,.5)}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:16px}
+.rc{border-radius:9px;padding:12px 10px;cursor:pointer;border:1px solid rgba(255,255,255,.12);background:var(--bg2);transition:all .18s;user-select:none}
+.rc:hover{border-color:rgba(0,229,255,.5);background:var(--bg3)}
+.rc.on{border-color:var(--b);background:var(--bg3);box-shadow:0 0 16px rgba(0,229,255,.18)}
+.rc-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:5px}
+.rc-icon{font-size:19px}
+.chk{width:15px;height:15px;border-radius:50%;border:1.5px solid rgba(255,255,255,.3);display:flex;align-items:center;justify-content:center;font-size:9px;transition:all .15s;color:transparent;flex-shrink:0}
+.rc.on .chk{background:var(--b);border-color:var(--b);color:#000;box-shadow:0 0 8px var(--b)}
+.rc-name{font-size:11px;font-weight:800;color:#fff;line-height:1.25;margin-bottom:2px}
+.rc-sub{font-size:9px;color:rgba(255,255,255,.55);margin-bottom:8px;line-height:1.3}
+.rc-qty{display:flex;align-items:center;margin-bottom:7px;border-radius:7px;overflow:hidden;border:2px solid #6a6aaa}
+.qbtn{width:28px;height:28px;background:#6a6aaa;border:none;color:#fff;font-size:20px;font-weight:900;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .15s;line-height:1;flex-shrink:0;font-family:var(--mono)}
+.qbtn:hover{background:var(--y);color:#000}
+.qval{flex:1;text-align:center;font-size:14px;font-weight:900;color:var(--y);font-family:var(--mono);background:#0a0a1a;height:28px;display:flex;align-items:center;justify-content:center;text-shadow:0 0 12px rgba(255,230,0,.8);border-left:2px solid #6a6aaa;border-right:2px solid #6a6aaa}
+.rc-price{font-size:13px;font-weight:900;font-family:var(--mono);color:var(--r);text-shadow:0 0 10px rgba(255,45,85,.5)}
+.rc.on .rc-price{color:var(--g);text-shadow:0 0 10px rgba(0,255,178,.5)}
+.rc-plabel{font-size:9px;color:rgba(255,255,255,.4);margin-top:1px}
+.empty{text-align:center;padding:20px;font-size:11px;color:rgba(255,255,255,.35);font-family:var(--mono)}
+.results{display:none}.results.show{display:block}
+.vs{display:grid;grid-template-columns:1fr 28px 1fr;gap:8px;align-items:stretch;margin-bottom:8px}
+.vs-card{border-radius:10px;padding:15px}
+.vs-h{background:rgba(255,45,85,.1);border:1px solid rgba(255,45,85,.4)}
+.vs-a{background:rgba(0,255,178,.07);border:1px solid rgba(0,255,178,.35)}
+.vs-tag{font-size:9px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;margin-bottom:7px;font-family:var(--mono)}
+.vs-h .vs-tag{color:var(--r)}
+.vs-a .vs-tag{color:var(--g)}
+.vs-num{font-size:22px;font-weight:900;font-family:var(--mono);line-height:1;margin-bottom:4px}
+.vs-h .vs-num{color:var(--r);text-shadow:0 0 18px rgba(255,45,85,.6)}
+.vs-a .vs-num{color:var(--g);text-shadow:0 0 18px rgba(0,255,178,.6)}
+.vs-detail{font-size:10px;color:rgba(255,255,255,.55);line-height:1.5}
+.vs-mid{display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:900;color:var(--y);font-family:var(--mono)}
+.save{display:flex;justify-content:space-between;align-items:center;padding:12px 16px;border-radius:9px;border:1px solid rgba(0,229,255,.35);background:rgba(0,229,255,.06);margin-bottom:8px}
+.save-l{font-size:12px;color:var(--b);font-weight:700}
+.save-r{font-size:18px;font-weight:900;color:var(--b);font-family:var(--mono);text-shadow:0 0 16px rgba(0,229,255,.6)}
+.breakdown{background:var(--bg2);border:1px solid rgba(255,255,255,.1);border-radius:9px;padding:12px 14px;margin-bottom:8px}
+.br{display:flex;justify-content:space-between;align-items:center;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.07);font-size:11px}
+.br:last-child{border-bottom:none;padding-top:7px;margin-top:3px;border-top:1px solid rgba(255,255,255,.1)}
+.br-l{color:rgba(255,255,255,.85);font-weight:500}
+.br-bad{color:var(--r);font-weight:800;font-family:var(--mono)}
+.br-good{color:var(--g);font-weight:800;font-family:var(--mono)}
+.br-sep{color:rgba(255,255,255,.3);font-size:10px;margin:0 4px}
+.br-tot .br-l{color:#fff;font-weight:800;font-size:12px}
+.chain{background:rgba(192,132,252,.07);border:1px solid rgba(192,132,252,.25);border-radius:9px;padding:13px 14px;margin-bottom:8px}
+.chain-t{font-size:9px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--p);margin-bottom:8px;font-family:var(--mono)}
+.chain-sub{font-size:10px;color:rgba(255,255,255,.65);margin-bottom:5px;font-weight:500}
+.chain-row{display:flex;align-items:center;gap:4px;flex-wrap:wrap;margin-bottom:2px}
+.cp{padding:4px 9px;border-radius:20px;font-size:10px;font-weight:700;white-space:nowrap}
+.cp-ok{background:rgba(255,255,255,.1);color:rgba(255,255,255,.85)}
+.cp-x{background:rgba(255,45,85,.15);color:var(--r);border:1px solid rgba(255,45,85,.4)}
+.cp-ai{background:rgba(0,255,178,.1);color:var(--g);border:1px solid rgba(0,255,178,.3)}
+.arr{font-size:10px;color:rgba(255,255,255,.3)}
+.arrx{font-size:11px;color:var(--r)}
+.cta{background:var(--bg2);border:1px solid rgba(255,230,0,.2);border-radius:9px;padding:16px;text-align:center;margin-bottom:8px}
+.cta-big{font-size:13px;font-weight:700;color:#fff;margin-bottom:4px;line-height:1.4}
+.cta-big em{color:var(--r);font-style:normal}
+.cta-big strong{color:var(--g)}
+.cta-sub{font-size:11px;color:rgba(255,255,255,.65);margin-bottom:14px;line-height:1.6}
+.btn-y{padding:11px 26px;border-radius:8px;font-size:13px;font-weight:900;background:var(--y);color:#000;border:none;cursor:pointer;font-family:inherit;text-decoration:none;display:inline-block;transition:all .2s;box-shadow:0 0 24px rgba(255,230,0,.4)}
+.footnote{font-size:10px;color:rgba(255,255,255,.4);line-height:1.65;padding:11px 13px;border:1px solid rgba(255,255,255,.08);border-radius:8px;background:var(--bg2)}
+.footnote strong{color:rgba(255,230,0,.7)}
+</style>
+</head>
+<body>
+<div class="hero">
+  <div class="badge"><span class="dot"></span>Colconexus Data Center SAS</div>
+  <h1>Tu empresa paga <em>mas de 10x</em><br>de lo que necesita. <strong>Descubrelo en 20 seg.</strong></h1>
+  <p class="hero-sub">Agentes IA <span>24/7</span> sin renuncia operador inmediato desde el dia 1</p>
+  <a class="hero-cta" href="https://docs.google.com/forms/d/e/1FAIpQLSfv5MsYMHH3nkcco9W2YnMC8Tp8xtYUvjZmpha9XsCe_0jNrQ/viewform" target="_blank">Calcular mi nivel de automatizacion</a>
+</div>
+<div class="body">
+  <div class="eyebrow">// selecciona perfiles + cantidad - calcula al instante</div>
+  <div class="grid" id="grid"></div>
+  <div class="empty" id="empty">// selecciona un perfil para iniciar el analisis</div>
+  <div class="results" id="results">
+    <div class="vs">
+      <div class="vs-card vs-h"><div class="vs-tag">Equipo humano / mes</div><div class="vs-num" id="v-human">-</div><div class="vs-detail" id="v-detail">-</div></div>
+      <div class="vs-mid">VS</div>
+      <div class="vs-card vs-a"><div class="vs-tag">Colconexus IA / mes</div><div class="vs-num" id="v-ai">-</div><div class="vs-detail">24/7 sin reclutamiento sin renuncia todo incluido</div></div>
+    </div>
+    <div class="save"><span class="save-l">Ahorro mensual estimado</span><span class="save-r" id="v-save">-</span></div>
+    <div class="breakdown" id="breakdown"></div>
+    <div class="chain">
+      <div class="chain-t">// el eslabon que rompe la metodologia agil</div>
+      <div class="chain-sub">Sin IA un ausente paraliza el sprint</div>
+      <div class="chain-row" id="chain-h"></div>
+      <div class="chain-sub" style="margin-top:8px">Con Colconexus flujo continuo 24/7</div>
+      <div class="chain-row" id="chain-a"></div>
+    </div>
+    <div class="cta">
+      <div class="cta-big" id="cta-big">-</div>
+      <div class="cta-sub" id="cta-sub">-</div>
+      <a class="btn-y" href="https://docs.google.com/forms/d/e/1FAIpQLSfv5MsYMHH3nkcco9W2YnMC8Tp8xtYUvjZmpha9XsCe_0jNrQ/viewform" target="_blank">Diagnostico gratuito</a>
+    </div>
+    <div class="footnote"><strong>Por que 65%?</strong> Salud pension ARL ICBF SENA caja cesantias prima vacaciones = <strong>52-65% adicional</strong> al salario base en Colombia.</div>
+  </div>
+</div>
+<script>
+const R=[
+  {id:"age",icon:"🎧",name:"Agente de servicio",sub:"Atencion al cliente / call center",base:1820000},
+  {id:"aud",icon:"📋",name:"Auditor de calidad",sub:"Escucha y calificacion de llamadas",base:2050000},
+  {id:"asi",icon:"🎓",name:"Asistente e-formacion",sub:"Capacitacion y seguimiento",base:1900000},
+  {id:"bck",icon:"📂",name:"Gestor backoffice",sub:"Tramites y procesos internos",base:1950000},
+  {id:"doc",icon:"📄",name:"Gestor documental",sub:"Archivo, formularios, validacion",base:1870000},
+  {id:"dev",icon:"💻",name:"Desarrollador web/movil",sub:"Apps, APIs, mantenimiento",base:4800000},
+  {id:"mkt",icon:"📈",name:"Especialista publicidad",sub:"Google Ads, Meta, campanas",base:3800000},
+  {id:"dat",icon:"📊",name:"Analista de datos / BI",sub:"Dashboards, KPIs, reportes",base:4200000},
+  {id:"vid",icon:"🎬",name:"Editor de video",sub:"Reels, videos, motion",base:3100000},
+  {id:"dsn",icon:"🎨",name:"Disenador UX/UI",sub:"Interfaces, identidad visual",base:3400000},
+  {id:"sec",icon:"🔐",name:"Seguridad IT",sub:"Monitoreo, alertas, accesos",base:5000000},
+  {id:"int",icon:"🚀",name:"Integrador DevOps",sub:"CI/CD, automatizacion, APIs",base:5400000},
+];
+const qty={};R.forEach(r=>{qty[r.id]=0;});
+const sel=new Set();
+const withP=s=>Math.round(s*1.65);
+const aiCost=s=>Math.round(s*0.35);
+const fmtM=n=>"$"+(n/1000000).toFixed(1)+"M";
+function render(){
+  document.getElementById("grid").innerHTML=R.map(r=>{
+    const on=sel.has(r.id);
+    return `<div class="rc${on?" on":""}" onclick="tog('${r.id}')">
+      <div class="rc-top"><span class="rc-icon">${r.icon}</span><span class="chk">${on?"v":""}</span></div>
+      <div class="rc-name">${r.name}</div><div class="rc-sub">${r.sub}</div>
+      <div class="rc-qty" onclick="event.stopPropagation()">
+        <button class="qbtn" onclick="chg('${r.id}',-1)">&#8722;</button>
+        <div class="qval">${qty[r.id]}</div>
+        <button class="qbtn" onclick="chg('${r.id}',1)">&#43;</button>
+      </div>
+      <div class="rc-price">${fmtM(withP(r.base))}</div>
+      <div class="rc-plabel">salario + prestaciones 65%</div>
+    </div>`;}).join("");update();
+}
+function tog(id){if(sel.has(id)){sel.delete(id);qty[id]=0;}else{sel.add(id);if(!qty[id])qty[id]=1;}render();}
+function chg(id,d){qty[id]=Math.max(0,(qty[id]||0)+d);if(qty[id]>0)sel.add(id);else sel.delete(id);render();}
+function update(){
+  const s=R.filter(r=>sel.has(r.id));
+  const res=document.getElementById("results");const emp=document.getElementById("empty");
+  if(!s.length){res.classList.remove("show");emp.style.display="block";return;}
+  res.classList.add("show");emp.style.display="none";
+  let hTotal=0,aTotal=0;
+  const rows=s.map(r=>{const q=qty[r.id]||1;const hT=withP(r.base)*q,aT=aiCost(r.base)*q;hTotal+=hT;aTotal+=aT;return{r,q,hT,aT};});
+  const save=hTotal-aTotal;const pct=Math.round(save/hTotal*100);const mult=(hTotal/aTotal).toFixed(1);const totalQ=rows.reduce((a,x)=>a+x.q,0);
+  document.getElementById("v-human").textContent=fmtM(hTotal);
+  document.getElementById("v-detail").textContent=rows.map(x=>`${x.q}x ${x.r.name.split(" ")[0]}`).join(" - ");
+  document.getElementById("v-ai").textContent=fmtM(aTotal);
+  document.getElementById("v-save").textContent=fmtM(save)+"/mes";
+  document.getElementById("breakdown").innerHTML=rows.map(x=>`<div class="br"><span class="br-l">${x.r.icon} ${x.q}x ${x.r.name}</span><span style="display:flex;align-items:center;gap:6px"><span class="br-bad">${fmtM(x.hT)}</span><span class="br-sep">-></span><span class="br-good">${fmtM(x.aT)}</span></span></div>`).join("")+`<div class="br br-tot"><span class="br-l">Total</span><span style="display:flex;align-items:center;gap:6px"><span class="br-bad">${fmtM(hTotal)}</span><span class="br-sep">-></span><span class="br-good">${fmtM(aTotal)}</span></span></div>`;
+  const mid=Math.floor(s.length/2);
+  document.getElementById("chain-h").innerHTML=s.map((r,i)=>`<span class="cp ${i===mid?"cp-x":"cp-ok"}">${r.icon} ${r.name.split(" ")[0]}</span>${i<s.length-1?`<span class="${(i===mid-1||i===mid)?"arrx":"arr"}">${(i===mid-1||i===mid)?"X":"->"}</span>`:""}`).join("");
+  document.getElementById("chain-a").innerHTML=s.map((r,i)=>`<span class="cp cp-ai">${r.icon} Agente IA</span>${i<s.length-1?"<span class='arr'>-></span>":""}`).join("");
+  document.getElementById("cta-big").innerHTML=`Con ${totalQ} profesional${totalQ>1?"es":""}: <em>${fmtM(hTotal)}/mes</em>. Colconexus: <strong>${fmtM(aTotal)}/mes</strong>.`;
+  document.getElementById("cta-sub").textContent=`Ahorras el ${pct}% - ${fmtM(save)}/mes que reinviertes en crecer. ${mult}x mas economico, activo en 72 horas.`;
+}
+render();
+</script>
+</body>
+</html>

@@ -410,6 +410,12 @@ export default function Home() {
                   Mide tu Nivel Ahora
                 </button>
                 <button 
+                  onClick={() => window.open('/calculadora.html', '_blank')}
+                  className="btn-roi text-[10px] py-3.5"
+                >
+                  Calculadora ROI Pro
+                </button>
+                <button 
                   onClick={() => handleWhatsAppRedirect("Tech Demo")}
                   className="btn-purple text-[10px] py-3.5"
                 >
@@ -661,6 +667,42 @@ export default function Home() {
                 title="Shorts"
                 allowFullScreen
               />
+            </div>
+          </div>
+        </section>
+
+        {/* --- Calculadora ROI Section --- */}
+        <section id="calculadora-roi" className="max-w-7xl mx-auto mb-20 px-6">
+          <div className="glass-card overflow-hidden border-electric/30 bg-purple-deep/30">
+            <div className="grid md:grid-cols-2">
+              <div className="p-8 md:p-12 flex flex-col justify-center gap-6">
+                <div className="flex items-center gap-3 px-3 py-1 bg-electric/10 border border-electric/30 w-fit">
+                   <div className="w-2 h-2 bg-electric rounded-full animate-pulse shadow-[0_0_10px_#0088ff]" />
+                   <span className="text-electric font-tech text-[9px] uppercase font-black tracking-[0.3em]">HERRAMIENTA DE INGENIERÍA</span>
+                </div>
+                <h2 className="font-tech text-3xl md:text-5xl font-black text-ice leading-[1.0] uppercase italic tracking-tighter">
+                  Calcula tu <br /> <span className="electric-glow">Retorno de Inversión</span>.
+                </h2>
+                <p className="text-slate-400 text-xs md:text-sm font-medium leading-relaxed max-w-lg">
+                  Nuestra calculadora ROI permite proyectar el ahorro masivo al transicionar de fuerza humana a agentes de IA. Descubre cuánto estás pagando por la inercia operativa.
+                </p>
+                <div className="flex flex-wrap gap-4 pt-2">
+                  <button 
+                    onClick={() => window.open('/calculadora.html', '_blank')}
+                    className="btn-roi text-[10px] py-3.5"
+                  >
+                    Abrir en Pantalla Completa
+                  </button>
+                </div>
+              </div>
+              <div className="bg-[#03030a] relative h-[400px] md:h-auto border-l border-white/5 overflow-hidden group">
+                <div className="absolute inset-0 z-10 pointer-events-none border-[12px] border-[#03030a]" />
+                <iframe 
+                  src="/calculadora.html" 
+                  className="w-full h-full border-none grayscale-[0.2] group-hover:grayscale-0 transition-all duration-700"
+                  title="Calculadora ROI"
+                />
+              </div>
             </div>
           </div>
         </section>
