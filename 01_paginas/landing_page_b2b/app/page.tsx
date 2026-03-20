@@ -580,6 +580,96 @@ export default function Home() {
       </section>
 
 
+        {/* --- Re-Formate Profesional: Producto Estrella --- */}
+        <section id="re-formate" className="max-w-7xl mx-auto mb-20 px-6">
+          <div className="glass-card p-12 md:p-20 border-neon/30 bg-purple-deep/40 relative overflow-hidden group">
+            {/* Background elements */}
+            <div className="absolute top-0 right-0 w-96 h-96 bg-neon/5 blur-[120px] -z-10 group-hover:bg-neon/10 transition-all duration-1000" />
+            
+            <div className="grid md:grid-cols-2 gap-16 items-center">
+              <div>
+                <div className="mb-8">
+                  <div className="logo-reformate text-4xl md:text-5xl lg:text-6xl mb-2">Re-Formate</div>
+                  <div className="flex items-center gap-4">
+                    <span className="text-neon font-tech text-[10px] font-black uppercase tracking-[0.4em]">Actualizar tu Perfil con IA</span>
+                    <div className="loading-bar-container max-w-[200px]">
+                      <div className="loading-bar-fill" />
+                    </div>
+                  </div>
+                </div>
+
+                <h2 className="font-tech text-3xl md:text-5xl font-black text-ice leading-[1.0] uppercase italic tracking-tighter mb-6">
+                   Borra lo obsoleto. <br /> <span className="neon-glow text-neon">Orquesta tu futuro</span>.
+                </h2>
+                
+                <p className="text-ice font-bold text-lg mb-8 border-l-4 border-neon pl-6">
+                  "Limpia tus procesos lentos, elimina las tareas manuales y actualiza tu perfil con IA. Pasa de ser un ejecutor a un profesional orquestando IAs."
+                </p>
+
+                <div className="space-y-6 text-slate-400 text-sm font-medium leading-relaxed max-w-lg mb-10">
+                  <p>
+                    Tu experiencia es el hardware, pero tu sistema operativo necesita un <span className="text-neon">Re-Formate</span>.
+                  </p>
+                  <p>
+                    En el mundo actual, saber dar instrucciones no es suficiente; hay que saber orquestar. Re-Formate Profesional es el programa de Colconexus diseñado para que analistas, jefes y gerentes actualicen su perfil con IA.
+                  </p>
+                  <p>
+                    Aprende a diseñar agentes personalizados, delega la carga operativa y optimiza costos reales. Deja de trabajar para el sistema y haz que la IA trabaje para ti.
+                  </p>
+                </div>
+
+                <button 
+                  onClick={() => handleWhatsAppRedirect("Iniciar Re-Formate Profesional")}
+                  className="btn-roi text-[12px] py-5 px-12 group"
+                >
+                  INICIAR RE-FORMATE <ArrowRight className="w-5 h-5 group-hover:translate-x-3 transition-transform ml-2 inline-block" />
+                </button>
+                <p className="text-[10px] text-slate-500 mt-4 uppercase font-black tracking-widest italic">
+                  Actualiza tu perfil y empieza a orquestar hoy.
+                </p>
+              </div>
+
+              <div className="space-y-6">
+                <div className="bg-obsidian/60 border border-white/5 p-8 rounded-sm">
+                   <h4 className="font-tech text-xl font-black text-ice uppercase tracking-tight mb-8 flex items-center gap-3">
+                     <Settings className="w-5 h-5 text-neon" /> Niveles de Instalación
+                   </h4>
+                   
+                   <div className="space-y-4">
+                     {[
+                       { level: "Core Update", target: "Analistas", goal: "Automatizar reportes y limpieza de datos con agentes.", icon: <Cpu className="w-4 h-4" /> },
+                       { level: "System Upgrade", target: "Coordinadores", goal: "Orquestar flujos de trabajo y comunicación entre IAs.", icon: <Layers className="w-4 h-4" /> },
+                       { level: "Enterprise OS", target: "Jefes y Gerentes", goal: "Optimización de costos masiva delegando procesos a agentes.", icon: <Globe className="w-4 h-4" /> }
+                     ].map((item) => (
+                       <div key={item.level} className="p-6 bg-white/5 border border-white/5 hover:border-neon/30 transition-all rounded-sm group/item">
+                         <div className="flex justify-between items-start mb-2">
+                           <div className="flex items-center gap-3">
+                             <div className="text-neon">{item.icon}</div>
+                             <span className="font-tech font-black text-ice uppercase text-sm tracking-wide">{item.level}</span>
+                           </div>
+                           <span className="text-[9px] bg-neon/10 text-neon px-2 py-0.5 rounded-sm font-black uppercase tracking-tighter">{item.target}</span>
+                         </div>
+                         <p className="text-[11px] text-slate-500 font-medium leading-relaxed group-hover/item:text-slate-300 transition-colors">
+                           {item.goal}
+                         </p>
+                       </div>
+                     ))}
+                   </div>
+
+                   <div className="mt-10 p-6 bg-electric/5 border border-electric/20 rounded-sm">
+                      <div className="text-electric font-tech text-[10px] font-black uppercase tracking-[0.2em] mb-2 flex items-center gap-2">
+                        <BarChart3 className="w-4 h-4" /> Material Exclusivo
+                      </div>
+                      <p className="text-ice font-bold text-sm leading-tight uppercase tracking-tight">
+                        "Re-Formate Profesional: El Manual para Orquestar IAs y Recuperar tu Tiempo."
+                      </p>
+                   </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* --- Data Master Technical Specs Summary --- */}
         <section className="max-w-7xl mx-auto py-16 px-4 grid md:grid-cols-4 gap-8 border-y border-white/5 my-16">
           <div className="text-center">
