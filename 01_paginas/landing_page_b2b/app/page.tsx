@@ -602,19 +602,19 @@ export default function Home() {
                    Borra lo obsoleto. <br /> <span className="neon-glow text-neon">Orquesta tu futuro</span>.
                 </h2>
                 
-                <p className="text-ice font-bold text-lg mb-8 border-l-4 border-neon pl-6">
-                  "Limpia tus procesos lentos, elimina las tareas manuales y actualiza tu perfil con IA. Pasa de ser un ejecutor a un profesional orquestando IAs."
+                <p className="text-ice font-bold text-lg mb-8 border-l-4 border-neon pl-6 uppercase tracking-tight">
+                   "Limpia tus procesos lentos, elimina las tareas manuales y <span className="text-neon">Re-Formate a ti, a tu empresa y a tus equipos de trabajo</span>. Dominar la IA ya no es opcional, es la clave para no quedarte atrás."
                 </p>
 
                 <div className="space-y-6 text-slate-400 text-sm font-medium leading-relaxed max-w-lg mb-10">
                   <p>
-                    Tu experiencia es el hardware, pero tu sistema operativo necesita un <span className="text-neon">Re-Formate</span>.
+                    Tu experiencia es el hardware, pero tu sistema operativo necesita un <span className="text-neon">Re-Formate</span>. 
                   </p>
                   <p>
-                    En el mundo actual, saber dar instrucciones no es suficiente; hay que saber orquestar. Re-Formate Profesional es el programa de Colconexus diseñado para que analistas, jefes y gerentes actualicen su perfil con IA.
+                    En la revolución tecnológica actual, <span className="text-white font-black">saber de IA es obligatorio</span>. Re-Formate Profesional es el programa de Colconexus diseñado para que analistas, jefes y gerentes actualicen su perfil delegando la carga operativa.
                   </p>
                   <p>
-                    Aprende a diseñar agentes personalizados, delega la carga operativa y optimiza costos reales. Deja de trabajar para el sistema y haz que la IA trabaje para ti.
+                    Deja de ser un ejecutor lento y conviértete en un estratega que orquestra agentes inteligentes. Pasa de trabajar para el sistema a que la IA trabaje para ti y tus equipos.
                   </p>
                 </div>
 
@@ -625,7 +625,7 @@ export default function Home() {
                   INICIAR RE-FORMATE <ArrowRight className="w-5 h-5 group-hover:translate-x-3 transition-transform ml-2 inline-block" />
                 </button>
                 <p className="text-[10px] text-slate-500 mt-4 uppercase font-black tracking-widest italic">
-                  Actualiza tu perfil y empieza a orquestar hoy.
+                  Actualiza tu perfil, lidera la revolución y no te quedes atrás.
                 </p>
               </div>
 
@@ -637,9 +637,9 @@ export default function Home() {
                    
                    <div className="space-y-4">
                      {[
-                       { level: "Core Update", target: "Analistas", goal: "Automatizar reportes y limpieza de datos con agentes.", icon: <Cpu className="w-4 h-4" /> },
-                       { level: "System Upgrade", target: "Coordinadores", goal: "Orquestar flujos de trabajo y comunicación entre IAs.", icon: <Layers className="w-4 h-4" /> },
-                       { level: "Enterprise OS", target: "Jefes y Gerentes", goal: "Optimización de costos masiva delegando procesos a agentes.", icon: <Globe className="w-4 h-4" /> }
+                       { level: "Core Update", target: "Analistas", goal: "Automatizar reportes y limpieza de datos con agentes autogestores.", icon: <Cpu className="w-4 h-4" /> },
+                       { level: "System Upgrade", target: "Coordinadores", goal: "Orquestar flujos de trabajo y comunicación entre IAs en tiempo real.", icon: <Layers className="w-4 h-4" /> },
+                       { level: "Enterprise OS", target: "Gerentes y Equipos", goal: "Optimización corporativa masiva. Re-formateamos la cultura y procesos de tu equipo con IA.", icon: <Globe className="w-4 h-4" /> }
                      ].map((item) => (
                        <div key={item.level} className="p-6 bg-white/5 border border-white/5 hover:border-neon/30 transition-all rounded-sm group/item">
                          <div className="flex justify-between items-start mb-2">
