@@ -591,7 +591,7 @@ export default function Home() {
                 <div className="mb-8">
                   <div className="logo-reformate text-4xl md:text-5xl lg:text-6xl mb-2">Re-Formate</div>
                   <div className="flex items-center gap-4">
-                    <span className="text-neon font-tech text-[10px] font-black uppercase tracking-[0.4em]">Actualizar tu Perfil con IA</span>
+                    <span className="text-neon font-tech text-[10px] font-black uppercase tracking-[0.4em]">Actualiza tu perfil aprendiendo a usar la IA sin código, solo lenguaje natural</span>
                     <div className="loading-bar-container max-w-[200px]">
                       <div className="loading-bar-fill" />
                     </div>
@@ -632,7 +632,7 @@ export default function Home() {
               <div className="space-y-6">
                 <div className="bg-obsidian/60 border border-white/5 p-8 rounded-sm">
                    <h4 className="font-tech text-xl font-black text-ice uppercase tracking-tight mb-8 flex items-center gap-3">
-                     <Settings className="w-5 h-5 text-neon" /> Niveles de Instalación
+                     <Settings className="w-5 h-5 text-neon" /> Perfiles para Re-Capacitación
                    </h4>
                    
                    <div className="space-y-4">
