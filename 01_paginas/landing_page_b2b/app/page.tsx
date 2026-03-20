@@ -439,30 +439,34 @@ export default function Home() {
           </div>
         </section>
 
-        {/* --- Comparison Section Refined --- */}
-        <section className="max-w-7xl mx-auto mb-16 px-6">
-          <div className="glass-card overflow-hidden rounded-sm flex flex-col md:flex-row items-stretch border-neon/10 h-auto md:h-[400px]">
+        {/* --- Re-Formate Quick Promo --- */}
+        <section id="re-formate-promo" className="max-w-7xl mx-auto mb-16 px-6">
+          <div className="glass-card overflow-hidden rounded-sm flex flex-col md:flex-row items-stretch border-neon/30 h-auto md:h-[400px]">
             <div className="flex-[1.5] p-8 md:p-10 flex flex-col justify-center bg-purple-deep/60 relative overflow-hidden">
               <div className="absolute top-0 right-0 w-32 h-32 bg-neon/10 blur-3xl opacity-20" />
-              <h2 className="font-tech text-2xl md:text-3xl font-black text-ice mb-2 leading-[1.0] uppercase italic tracking-tighter">
-                ¿Pagas por el <br /> <span className="neon-glow">Talento</span> o por la <span className="text-slate-700 font-extrabold text-shadow-sm">Inercia</span>?
+              <div className="logo-reformate text-2xl md:text-4xl mb-4">Re-Formate</div>
+              <h2 className="font-tech text-2xl md:text-5xl font-black text-ice mb-4 leading-[0.9] uppercase italic tracking-tighter">
+                 Dominio de la IA: <br /> <span className="neon-glow">Ahora es Obligatorio</span>.
               </h2>
-              <p className="electric-glow font-tech text-[10px] font-bold mb-4 uppercase tracking-tighter">
-                IA = Inversión Única // Humano = Gasto Perpetuo
+              <p className="electric-glow font-tech text-[10px] font-bold mb-6 uppercase tracking-widest border-l-2 border-electric pl-4">
+                "Re-Formatea a tu empresa y equipos para la revolución tecnológica. No te quedes atrás."
               </p>
               <div className="space-y-1 mb-6 text-[9px] uppercase font-black text-slate-400">
                 <div className="flex items-center gap-3">
-                  <div className="w-1.5 h-1.5 bg-neon rounded-full" /> Automate the role, not the salary.
+                  <div className="w-1.5 h-1.5 bg-neon rounded-full" /> Automatiza roles, no salarios.
                 </div>
                 <div className="flex items-center gap-3">
-                  <div className="w-1.5 h-1.5 bg-neon rounded-full" /> 24/7 Operational shielding without errors.
+                  <div className="w-1.5 h-1.5 bg-neon rounded-full" /> Orquesta IAs con lenguaje natural.
                 </div>
               </div>
               <button
-                onClick={() => handleWhatsAppRedirect("Profitability Comparison")}
-                className="btn-neon w-fit px-8 py-3 text-[10px]"
+                onClick={() => {
+                  const el = document.getElementById('re-formate');
+                  el?.scrollIntoView({ behavior: 'smooth' });
+                }}
+                className="btn-roi w-fit px-8 py-3 text-[10px]"
               >
-                Request Business Case
+                Iniciar Re-Formate Profesional
               </button>
             </div>
             <div className="flex-1 p-6 flex items-center justify-center border-l border-white/10">
