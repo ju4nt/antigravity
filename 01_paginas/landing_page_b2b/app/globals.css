@@ -16,6 +16,12 @@
 }
 
 :root {
+  --color-obsidian: #080315;
+  --color-purple-deep: #160a2c;
+  --color-neon: #00ffcc;
+  --color-electric: #0088ff;
+  --color-ice: #f8faff;
+  --color-graphite: #1a1e26;
   --font-inter: 'Inter', sans-serif;
   --font-space-grotesk: 'Space Grotesk', sans-serif;
   color-scheme: dark;
@@ -112,8 +118,29 @@ body {
 }
 
 .btn-roi {
-  @apply bg-gradient-to-r from-neon via-electric to-neon bg-[length:200%_auto] border-none text-obsidian font-tech font-black uppercase tracking-[0.2em] px-10 py-4 rounded-sm
-          hover:text-white transition-all duration-500 shadow-[0_0_30px_rgba(0,255,204,0.4)] animate-gradient-flow scale-[1.1] hover:scale-[1.15];
+  background: linear-gradient(90deg, var(--color-neon), var(--color-electric), var(--color-neon));
+  background-size: 200% auto;
+  border: none;
+  color: var(--color-obsidian);
+  font-family: var(--font-space-grotesk), monospace;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  padding: 1rem 2.5rem;
+  border-radius: 0.125rem;
+  transition: all 0.5s ease;
+  box-shadow: 0 0 30px rgba(0, 255, 204, 0.4);
+  animation: gradient-flow 3s ease infinite;
+  transform: scale(1.1);
+  display: inline-block;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.btn-roi:hover {
+  color: #fff;
+  transform: scale(1.15);
+  box-shadow: 0 0 50px rgba(0, 255, 204, 0.6);
 }
 
 @keyframes gradient-flow {
