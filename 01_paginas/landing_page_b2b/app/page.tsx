@@ -40,7 +40,7 @@ import {
 } from "lucide-react";
 
 export default function Home() {
-  const WHATSAPP_NUMBER = "573214378318";
+  const WHATSAPP_NUMBER = "573213907202";
   const [selectedRole, setSelectedRole] = useState<null | any>(null);
   const [isChatOpen, setIsChatOpen] = useState(false);
   const [chatMessages, setChatMessages] = useState<any[]>([
