@@ -671,6 +671,82 @@ export default function Home() {
                 </div>
               </div>
             </div>
+
+            {/* --- Pénsum / Fases del Programa --- */}
+            <div className="mt-20 pt-16 border-t border-white/5 relative z-10 w-full overflow-hidden">
+                <div className="mb-12 border-l-4 border-electric pl-6">
+                    <h3 className="font-tech text-3xl font-black text-ice uppercase tracking-tighter mb-4 flex items-center gap-3">
+                        <Layers className="w-8 h-8 text-electric" /> Pénsum Especializado
+                    </h3>
+                    <p className="text-slate-400 text-sm font-medium leading-relaxed max-w-2xl">
+                        Especialización corporativa en <span className="text-electric font-bold">Orquestación de Ecosistemas Agénticos con Claude</span>. Actualice el perfil de su equipo y lidere la vanguardia operativa.
+                    </p>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    
+                    {/* Fase 01 */}
+                    <div className="flex flex-col gap-4 p-8 rounded-sm border border-white/5 hover:border-electric/50 transition-colors bg-obsidian/40 backdrop-blur-sm group">
+                        <span className="text-electric font-tech text-[10px] font-black uppercase tracking-[0.3em]">Fase 01</span>
+                        <h4 className="text-lg font-bold text-ice leading-tight uppercase tracking-wide">Auditoría y Clean Install</h4>
+                        <p className="text-slate-500 text-xs leading-relaxed group-hover:text-slate-300 transition-colors">
+                            Diagnóstico de fricción operativa, deconstrucción de flujos análogos y transición al mindset de orquestador.
+                        </p>
+                    </div>
+
+                    {/* Fase 02 */}
+                    <div className="flex flex-col gap-4 p-8 rounded-sm border border-white/5 hover:border-electric/50 transition-colors bg-obsidian/40 backdrop-blur-sm group">
+                        <span className="text-electric font-tech text-[10px] font-black uppercase tracking-[0.3em]">Fase 02</span>
+                        <h4 className="text-lg font-bold text-ice leading-tight uppercase tracking-wide">Ingeniería de Mando</h4>
+                        <p className="text-slate-500 text-xs leading-relaxed group-hover:text-slate-300 transition-colors">
+                            Frameworks XML para Claude, inyección de contexto corporativo y protocolos de auditoría de calidad.
+                        </p>
+                    </div>
+
+                    {/* Fase 03 */}
+                    <div className="flex flex-col gap-4 p-8 rounded-sm border border-white/5 hover:border-electric/50 transition-colors bg-obsidian/40 backdrop-blur-sm group">
+                        <span className="text-electric font-tech text-[10px] font-black uppercase tracking-[0.3em]">Fase 03</span>
+                        <h4 className="text-lg font-bold text-ice leading-tight uppercase tracking-wide">Despliegue de Agentes</h4>
+                        <p className="text-slate-500 text-xs leading-relaxed group-hover:text-slate-300 transition-colors">
+                            Arquitectura de agentes especializados con integración RAG y protocolos de delegación radical.
+                        </p>
+                    </div>
+
+                    {/* Fase 04 */}
+                    <div className="flex flex-col gap-4 p-8 rounded-sm border border-white/5 hover:border-electric/50 transition-colors bg-obsidian/40 backdrop-blur-sm group">
+                        <span className="text-electric font-tech text-[10px] font-black uppercase tracking-[0.3em]">Fase 04</span>
+                        <h4 className="text-lg font-bold text-ice leading-tight uppercase tracking-wide">Orquestación Sistémica</h4>
+                        <p className="text-slate-500 text-xs leading-relaxed group-hover:text-slate-300 transition-colors">
+                            Diseño de pipelines interconectados, automatización No-Code y monitorización de procesos en tiempo real.
+                        </p>
+                    </div>
+
+                    {/* Fase 05 */}
+                    <div className="flex flex-col gap-4 p-8 rounded-sm border border-white/5 hover:border-electric/50 transition-colors bg-obsidian/40 backdrop-blur-sm group">
+                        <span className="text-electric font-tech text-[10px] font-black uppercase tracking-[0.3em]">Fase 05</span>
+                        <h4 className="text-lg font-bold text-ice leading-tight uppercase tracking-wide">Gobernanza y ROI</h4>
+                        <p className="text-slate-500 text-xs leading-relaxed group-hover:text-slate-300 transition-colors">
+                            Seguridad de datos global, métricas de impacto financiero y alineación con los ODS de la ONU.
+                        </p>
+                    </div>
+
+                    {/* Proyecto Final CTA */}
+                    <div className="flex flex-col justify-center items-center p-8 rounded-sm border border-neon/30 bg-neon/5 relative overflow-hidden group hover:scale-[1.02] transition-transform cursor-crosshair">
+                        <div className="absolute inset-x-0 bottom-0 h-1 bg-neon shadow-[0_0_15px_#ccff00]" />
+                        <h4 className="font-tech text-ice text-xl font-black mb-2 uppercase tracking-tight">Proyecto Final</h4>
+                        <p className="text-slate-400 text-xs mb-8 text-center px-4">
+                            Certificación mediante despliegue real aplicado a la organización.
+                        </p>
+                        <button 
+                          onClick={() => handleWhatsAppRedirect("Solicitar Auditoría de Proyecto Final")}
+                          className="btn-neon w-full py-4 text-[10px]"
+                        >
+                            Solicitar Auditoría
+                        </button>
+                    </div>
+
+                </div>
+            </div>
           </div>
         </section>
 
