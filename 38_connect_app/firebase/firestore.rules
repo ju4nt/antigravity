@@ -1,0 +1,38 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // RBAC Helpers
+    function isAdmin() {
+      return request.auth != null && request.auth.token.role == 'admin';
+    }
+    function isVendor(vendorId) {
+      return request.auth != null && request.auth.token.role == 'vendor' && request.auth.uid == vendorId;
+    }
+    function isStaff() {
+      return request.auth != null && request.auth.token.role == 'staff';
+    }
+    
+    // Reglas hiperlocales para Productos
+    match /products/{productId} {
+      // Público: visualización para compradores en San Andresito 38
+      // Solamente lectura abierta, cero mutación
+      allow read: if true; 
+      
+      // Creación y borrado requiere control total (Dueño del local o Admin central)
+      allow create, delete: if isAdmin() || isVendor(request.resource.data.vendorId);
+      
+      // La clave de orquestación ágil:
+      // El staff (Corredores) SOLO pueden tocar el `stock_status` y `last_updated` para
+      // mantener el mapa en Verde/Amarillo sin poder afectar precios ni descripciones.
+      allow update: if isAdmin() 
+        || isVendor(resource.data.vendorId) 
+        || (isStaff() && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['stock_status', 'last_updated']));
+    }
+    
+    // El resto de colecciones dependerá de la escalabilidad (users, orders, logs...)
+    // match /{document=**} {
+    //   allow read, write: if isAdmin();
+    // }
+  }
+}
