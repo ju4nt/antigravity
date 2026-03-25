@@ -1,0 +1,65 @@
+[
+  {
+    "collection": "geozones",
+    "documentId": "geo_norte",
+    "name": "Chapinero / Lago",
+    "city": "Bogotá",
+    "type": "Tech Hub Principal"
+  },
+  {
+    "collection": "malls",
+    "documentId": "mall_unilago",
+    "geozoneId": "geo_norte",
+    "name": "Centro Comercial Unilago",
+    "location": {"lat": 4.666, "lng": -74.058},
+    "description": "El corazón de la tecnología de consumo y ensamble de PCs."
+  },
+  {
+    "collection": "malls",
+    "documentId": "mall_alta_tecnologia",
+    "geozoneId": "geo_norte",
+    "name": "Centro de Alta Tecnología",
+    "location": {"lat": 4.665, "lng": -74.059},
+    "description": "Junto a Unilago, foco en marcas oficiales y distribuidores."
+  },
+
+  {
+    "collection": "geozones",
+    "documentId": "geo_occidente",
+    "name": "San Andresito de la 38",
+    "city": "Bogotá",
+    "type": "Comercio Mayorista y Minorista"
+  },
+  {
+    "collection": "malls",
+    "documentId": "mall_puerto_libre",
+    "geozoneId": "geo_occidente",
+    "name": "C.C. Puerto Libre",
+    "location": {"lat": 4.619, "lng": -74.113},
+    "description": "Epicentro de telefonía y consolas en la 38."
+  },
+
+  {
+    "collection": "geozones",
+    "documentId": "geo_centro",
+    "name": "San Andresito San José & Centro",
+    "city": "Bogotá",
+    "type": "Repuestos, Electrónica y Telefonía"
+  },
+  {
+    "collection": "malls",
+    "documentId": "mall_san_jose",
+    "geozoneId": "geo_centro",
+    "name": "San Andresito San José",
+    "location": {"lat": 4.606, "lng": -74.084},
+    "description": "Comercio tradicional masivo en pleno centro de Bogotá."
+  },
+  {
+    "collection": "malls",
+    "documentId": "mall_carrera_novena",
+    "geozoneId": "geo_centro",
+    "name": "Pasaje Comercial Calle 19 con Cr 9",
+    "location": {"lat": 4.605, "lng": -74.072},
+    "description": "La central mayorista de partes de celulares, display y microelectrónica."
+  }
+]
