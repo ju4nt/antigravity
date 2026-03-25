@@ -1,0 +1,53 @@
+{
+  "geozones": {
+    "__description__": "Zonas macro de comercio en la ciudad",
+    "documentId": "geo_123",
+    "fields": {
+      "name": "San Andresito de la 38",
+      "city": "Bogotá",
+      "boundaries_polygon": ["GEOPOINT", "GEOPOINT..."] 
+    }
+  },
+
+  "malls": {
+    "__description__": "Centros comerciales dentro de las geozones",
+    "documentId": "mall_456",
+    "fields": {
+      "geozoneId": "geo_123",
+      "name": "Centro Comercial Puerto Libre",
+      "location": "GEOPOINT (Google Maps Pin)",
+      "total_locales": 150
+    }
+  },
+
+  "stores": {
+    "__description__": "Los clientes/locales que se registran en la app",
+    "documentId": "store_789",
+    "fields": {
+      "vendorId": "user_uid (Firebase Auth)",
+      "geozoneId": "geo_123",
+      "mallId": "mall_456 (Se puede autocalcular por proximidad de GPS en Cloud Functions)",
+      "name": "Fox Technology",
+      "local_number": "Local 314",
+      "google_maps_url": "https://maps.google.com/...",
+      "location": "GEOPOINT",
+      "tech_catalogs": ["Celulares", "Gaming", "Accesorios"],
+      "last_updated": "TIMESTAMP (Para pintar el Pin en el mapa de Verde/Amarillo/Gris)"
+    }
+  },
+
+  "products": {
+    "__description__": "El inventario hiperlocal",
+    "documentId": "prod_abc",
+    "fields": {
+      "storeId": "store_789",
+      "geozoneId": "geo_123",
+      "title": "iPhone 15 Pro Max 256GB Sellado",
+      "base_price": 4500000,
+      "markup_percentage": 0.05,
+      "video_file_id": "GOCSPX-0IfL1yu... (Telegram ID para Storage Cero Costo)",
+      "stock_status": "in_stock",
+      "last_updated": "TIMESTAMP"
+    }
+  }
+}
